@@ -1,2 +1,9 @@
-<h1>Orders#show</h1>
-<p>Find me in app/views/orders/show.html.erb</p>
+<h1>Detalhes do pedido:</h1>
+<p>Confirma abaixo os detalhes deste pedido</p>
+
+<p>Nome do usuário que pediu: <%= @order.user.first_name %> </p>
+<p>Preço do prato pedido: <%= @order.dish.price %> </p>
+<p>Descrição do prato pedido: <%= @order.dish.description %> </p>
+
+<p>Avalição deste pedido: <%= @order.rating %> </p>
+<p>Descrição deste pedido: <%= @order.description_rating %> </p>
