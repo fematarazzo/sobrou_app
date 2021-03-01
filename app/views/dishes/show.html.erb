@@ -3,3 +3,5 @@
 
 <%= @dish.price %>
 <%= @dish.description %>
+
+<%= link_to "Fazer Pedido", dish_orders_path(@dish), method: :post, class:"btn btn-success" %>

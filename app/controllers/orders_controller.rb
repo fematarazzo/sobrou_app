@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(order_params)
+    @order = Order.new
     @dish = Dish.find(params[:id])
     @order.dish = @dish
     @order.user = current_user
@@ -17,6 +17,15 @@ class OrdersController < ApplicationController
     else
       render "dishes/show"
     end
+  end
+
+  def edit
+    @order = Order.find(params[:id])
+  end
+
+  def update
+    @dish.update(dish_params)
+    redirect_to dish_path(@dish)
   end
 
   def destroy
