@@ -1,7 +1,17 @@
 class DishesController < ApplicationController
   before_action :set_dish, only: %i[show edit update destroy]
   def index
-    @dishes = Dish.all
+    if params[:search].nil? && params[:category].nil? || params[:search].blank?
+      @dishes = Dish.all
+    else
+      @restaurants = Restaurant.where("address ILIKE ?", "%#{params[:search]}%") if params[:search]
+      @restaurants = Restaurant.where(category: params[:category]) if params[:category]
+      @dishes = []
+      @restaurants.each do |restaurant|
+        restaurant.dishes.each { |dish| @dishes << dish }
+      end
+    end
+    @dishes
   end
 
   def show
