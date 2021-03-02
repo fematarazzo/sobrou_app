@@ -1,0 +1,35 @@
+<h1><%= current_user.first_name.capitalize %> <%=current_user.last_name.capitalize  %></h1>
+
+<h2 class="mt-4">Minhas Contribuições</h2>
+
+<h3 class="mt-4">Refeições salvas: </h3>
+<p><%= @orders.empty? ? "Não há refeições salvas" : @orders.size%> </p>
+
+
+
+<h3 class="mt-4">Kg Comida: </h3>
+<p><%= @orders.size * 2.56 %></p>
+
+<p class="btn btn-success"> <%= link_to "Editar perfil", edit_user_registration_path %></p>
+
+<h4>Nome:</h4>
+      <%= current_user.first_name.capitalize %> <%=  current_user.last_name.capitalize %>
+<h4 class="mt-4">E-mail:</h4>
+      <%=  current_user.email %>
+<h4 class="mt-4">Telefone:</h4>
+      <%=  current_user.phone %>
+<h4 class="mt-4">Data de Nascimento:</h4>
+      <%=  current_user.birthday %>
+
+<h2>Seus pedidos</h2>
+  <% unless @orders.empty? %>
+    <% @orders.each do |order| %>
+    <div class="card p-3">
+      <p>Nome do Restaurante:<%=order.dish.restaurant.name%> - <%= order.dish.restaurant.category%></p>
+      <p>Endereço:<%=order.dish.restaurant.address%></p>
+      <p>Valor Total do Pedido<%=order.dish.price %></p>
+    </div>
+    <% end %>
+  <% else %>
+    <p>Não há pedido</p>
+  <% end %>
