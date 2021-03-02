@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_01_201447) do
+ActiveRecord::Schema.define(version: 2021_03_02_184931) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2021_03_01_201447) do
     t.bigint "restaurant_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
     t.index ["restaurant_id"], name: "index_dishes_on_restaurant_id"
   end
 
@@ -43,6 +44,8 @@ ActiveRecord::Schema.define(version: 2021_03_01_201447) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "phone"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["user_id"], name: "index_restaurants_on_user_id"
   end
 

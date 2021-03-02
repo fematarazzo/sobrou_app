@@ -1,7 +1,150 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+puts "Limpando base..."
+
+User.destroy_all
+Restaurant.destroy_all
+Order.destroy_all
+
+puts "Criando usuario teste..."
+teste = User.new(
+  first_name: "Teste",
+  last_name: "Teste",
+  email: "teste@teste.com",
+  password: "123123",
+  phone: "123456",
+  birthday: DateTime.now - 10000
+)
+teste.save!
+
+puts "Criando padoca..."
+padoca = Restaurant.new(
+  name: "Padoca",
+  address: "Avenida Paulista 1000, São Paulo",
+  category: "Padaria",
+  phone: "123456",
+  user_id: teste.id
+)
+padoca.save!
+
+puts "Criando pratos..."
+5.times do
+  dish = Dish.new(
+    name: ["Misto quente", "Empadinha", "Beirute", "Pão na chapa", "Bolovo", "Enroladinho"].sample,
+    price: rand(5..20),
+    description: "Lorem ipsum bacon queijo",
+    restaurant_id: padoca.id
+  )
+  dish.save!
+  puts "Prato #{dish.id} criado!"
+end
+
+puts "Criando japones..."
+japones = Restaurant.new(
+  name: "Japonês",
+  address: "Alameda Franca 241, São Paulo",
+  category: "Japonesa",
+  phone: "123456",
+  user_id: teste.id
+)
+japones.save!
+
+puts "Criando pratos..."
+5.times do
+  dish = Dish.new(
+    name: ["Temaki", "Sushi", "Hossomaki", "Tempurá", "Lamen", "Gyoza"].sample,
+    price: rand(5..20),
+    description: "Lorem ipsum arroz peixe",
+    restaurant_id: japones.id
+  )
+  dish.save!
+  puts "Prato #{dish.id} criado!"
+end
+
+puts "Criando boteco..."
+boteco = Restaurant.new(
+  name: "Boteco",
+  address: "Avenida Brigadeiro Luís Antônio, 2642, São Paulo",
+  category: "Marmita",
+  phone: "123456",
+  user_id: teste.id
+)
+boteco.save!
+
+puts "Criando pratos..."
+5.times do
+  dish = Dish.new(
+    name: ["Feijoada", "PF com ovo", "Bife com batata frita", "X-Canaleta", "Salada duvidosa", "Arroz e feijão"].sample,
+    price: rand(5..20),
+    description: "Lorem ipsum podrão duvidoso",
+    restaurant_id: boteco.id
+  )
+  dish.save!
+  puts "Prato #{dish.id} criado!"
+end
+
+
+puts "Criando pizzaria..."
+pizzaria = Restaurant.new(
+  name: "Pizzaria",
+  address: "Rua Arthur Prado, 394, São Paulo",
+  category: "Pizza",
+  phone: "123456",
+  user_id: teste.id
+)
+pizzaria.save!
+
+puts "Criando pratos..."
+5.times do
+  dish = Dish.new(
+    name: ["Margherita", "Mussarela", "Pepperoni", "Portuguesa", "Catupiry", "Quatro queijos"].sample,
+    price: rand(5..20),
+    description: "Lorem ipsum massa molho de tomate",
+    restaurant_id: pizzaria.id
+  )
+  dish.save!
+  puts "Prato #{dish.id} criado!"
+end
+
+puts "Criando arabe..."
+arabe = Restaurant.new(
+  name: "Arebaba",
+  address: "Rua Antônio Carlos, 282, São Paulo",
+  category: "Árabe",
+  phone: "123456",
+  user_id: teste.id
+)
+arabe.save!
+
+puts "Criando pratos..."
+5.times do
+  dish = Dish.new(
+    name: ["Kebab", "Esfiha", "Kibe", "Homus", "Kafta", "Babaganush"].sample,
+    price: rand(5..20),
+    description: "Lorem ipsum esfiha aberta",
+    restaurant_id: arabe.id
+  )
+  dish.save!
+  puts "Prato #{dish.id} criado!"
+end
+
+puts "Criando chines..."
+chines = Restaurant.new(
+  name: "Chinchin",
+  address: "Alameda Itu, 1048, São Paulo",
+  category: "Chinesa",
+  phone: "123456",
+  user_id: teste.id
+)
+chines.save!
+
+puts "Criando pratos..."
+5.times do
+  dish = Dish.new(
+    name: ["Yakissoba", "Arroz chop suey", "Frango Xadrez", "Dumpling", "Bolinho de carne", "Arroz frito"].sample,
+    price: rand(5..20),
+    description: "Lorem ipsum macarrão agridoce",
+    restaurant_id: chines.id
+  )
+  dish.save!
+  puts "Prato #{dish.id} criado!"
+end
+

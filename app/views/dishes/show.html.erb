@@ -1,7 +1,22 @@
-<h1>Dishes#show</h1>
-<p>Find me in app/views/dishes/show.html.erb</p>
+<div class="container mt-4">
 
-<%= @dish.price %>
-<%= @dish.description %>
+  <h1><%= @dish.name %></h1>
 
-<%= link_to "Fazer Pedido", dish_orders_path(@dish), method: :post, class:"btn btn-success" %>
+  <div class="card">
+    <%= cl_image_tag @dish.photo.key, crop: :pad %>
+    <div class="d-flex justify-content-between p-5">
+      <div class="card-model p-3 card-border card-width">
+        <h4> <%= @dish.description %> </h4>
+        <hr>
+        <div class="d-flex justify-content-left">
+          <p> Preço:</p>
+          <p class="ml-2"> <%= @dish.price %> </p>
+        </div>
+      </div>
+      <div class="card-model p-3 card-border">
+      
+      <%= link_to "Reserve este prato aqui", dish_orders_path(@dish), method: :post, class:"btn btn-success" %>
+      </div>
+    </div>
+  </div>
+</div>
