@@ -9,5 +9,9 @@ Rails.application.routes.draw do
     resources :orders, only: [:create]
   end
 
+  resources :dashboard, only: [:show]
+
   root to: 'pages#home'
+
+
 end
