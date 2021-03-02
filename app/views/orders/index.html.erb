@@ -1,10 +1,13 @@
-<h1>Lista de pedidos</h1>
-<p>Confirma a lista de todos os pedidos</p>
+<div class="container mt-4">
 
-<% @orders.each do |order| %>
-  <%= order.user.first_name %>
-  <%= order.user.phone %>
-  <%= order.dish.price %>
-  <%= order.dish.description %>
+  <h1>Lista de pedidos</h1>
+  <p>Confirma a lista de todos os pedidos</p>
 
-<% end %>
+  <% @orders.each do |order| %>
+    <%= order.user.first_name %>
+    <%= order.user.phone %>
+    <%= order.dish.price %>
+    <%= order.dish.description %>
+
+  <% end %>
+</div>

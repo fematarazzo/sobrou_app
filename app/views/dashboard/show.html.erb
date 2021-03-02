@@ -1,7 +1,7 @@
 <div class="container-fluid mt-4">
-  <div class:"row">
+  <div class="row justify-content-right">
 
-<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
       <div class="position-sticky pt-3">
         <ul class="nav flex-column">
           <li class="nav-item">
@@ -34,39 +34,32 @@
             </a>
           </li>
         </ul>
+      </div>
     </nav>
 
-
-    <main class="col-md-9 ml-5 col-lg-10 px-md-4 mb-15">
-
-
+    <div class="col-12 col-lg-6">
+      <main class="col-md-9 col-lg-10 px-md-4 mb-15">
         <div class="card-model p-3 card-border">
             <h1>Seja Bem-vindo!</h1>
             <p> Nesta página você encontra tudo sobre os seus dados cadastrados, seus pratos disponíveis, pedidos e pagamentos.</p>
              <p> Obrigado por fazer parte desta revolução :) </p>
-          </div>
-        <div class="card">
-
-
-          <div class="d-flex justify-content-between">
-
-        <div class="card m-5 p-3 card-main card-border col-12 col-lg-5" style="width: 100%">
-
-            <h1>Adicione a refeição que sobrou aqui:</h1>
-            <p>Conte-nos um pouco sobre a comida que você oferecerá em suas bolsas mágicas e prepare-se para começar a economizar seu excedente de comida.</p>
-
-            <%= link_to "Adicione o prato", dish_path, class:"btn btn-primeiro"%>
         </div>
+        <div class="card">
+          <div class="d-flex justify-content-between">
+            <div class="card m-5 p-3 card-main card-border col-12 col-lg-5" style="width: 100%">
+              <h1>Adicione a refeição que sobrou aqui:</h1>
+              <p>Conte-nos um pouco sobre a comida que você oferecerá em suas bolsas mágicas e prepare-se para começar a economizar seu excedente de comida.</p>
+              <%= link_to "Adicione o prato", dish_path, class:"btn btn-primeiro"%>
+            </div>
 
-          <div class="card m-5 p-3 card-main card-border col-12 col-lg-5" style="width: 100%">
-        <h1>Acompanhe os seus pedidos:</h1>
-        <p> Aqui você pode acompanhar quais pedidos você têm em andamento, qual é o horário de coleta, forma de pagamento e o nome do cliente irá recolher.</p>
-
-
-        <%= link_to "Seus pedidos", dish_path, class:"btn btn-primeiro"%>
-      </div>
-      </div>
+            <div class="card m-5 p-3 card-main card-border col-12 col-lg-5" style="width: 100%">
+              <h1>Acompanhe os seus pedidos:</h1>
+              <p> Aqui você pode acompanhar quais pedidos você têm em andamento, qual é o horário de coleta, forma de pagamento e o nome do cliente irá recolher.</p>
+              <%= link_to "Seus pedidos", dish_path, class:"btn btn-primeiro"%>
+            </div>
+          </div>
+        </div>
+      </main>
     </div>
-   </div>
- </main>
+  </div>
 </div>
