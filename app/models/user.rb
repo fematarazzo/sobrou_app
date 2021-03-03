@@ -8,4 +8,5 @@ class User < ApplicationRecord
   has_many :restaurants
   has_many :orders
   has_many :dishes, through: :orders
+  has_one_attached :photo
 end
