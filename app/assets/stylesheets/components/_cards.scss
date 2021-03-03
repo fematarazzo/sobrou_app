@@ -1,4 +1,4 @@
-.card-border { box-shadow: 3px 3px 3px 3px white;
+.card-border { box-shadow: 3px 3px 3px 3px lightgrey;
    border-radius: 20px;
  }
 
@@ -19,4 +19,16 @@
 
 .mb-3 {
   color: #454851;
+}
+
+.card-dish {
+  width: 900px;
+  background-color: white;
+}
+
+.card-space {
+  width: 100%;
+  position: relative;
+  padding-right: 15px;
+  padding-left: 15px;
 }

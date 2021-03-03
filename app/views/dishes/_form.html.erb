@@ -1,11 +1,11 @@
 <div class="container mt-4">
 
-  <%= simple_form_for dish do |f| %>
+  <%= simple_form_for [restaurant, dish] do |f| %>
     <%= f.input :name %>
     <%= f.input :price %>
     <%= f.input :description %>
     <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-    <%= f.button :submit, class:"btn btn-primary" %>
+    <%= f.button :submit, class:"btn btn-primary " %>
   <% end %>
 
 </div>
