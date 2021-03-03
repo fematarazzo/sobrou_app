@@ -9,6 +9,7 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import { initMapbox } from '../plugins/init_mapbox';
 import { loadDynamicBannerText } from '../components/banner';
+import { initSelect2 } from '../plugins/init_select2';
 
 Rails.start()
 Turbolinks.start()
@@ -29,4 +30,5 @@ import "bootstrap";
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
   loadDynamicBannerText();
+  initSelect2();
 });

@@ -1,17 +1,13 @@
 class DishesController < ApplicationController
   before_action :set_dish, only: %i[show edit update destroy]
   def index
-    if params[:search].nil? && params[:category].nil? || params[:search].blank?
-      @dishes = Dish.all
-    else
-      @restaurants = Restaurant.where("address ILIKE ?", "%#{params[:search]}%") if params[:search]
-      @restaurants = Restaurant.where(category: params[:category]) if params[:category]
-      @dishes = []
-      @restaurants.each do |restaurant|
-        restaurant.dishes.each { |dish| @dishes << dish }
-      end
+    @restaurants = Restaurant.all
+    @restaurants = @restaurants.near(params[:address], 5) if params[:address].present?
+    @restaurants = @restaurants.where(category: params[:category]) if params[:category].present?
+    @dishes = []
+    @restaurants.each do |restaurant|
+      restaurant.dishes.each { |dish| @dishes << dish }
     end
-    @dishes
   end
 
   def show
@@ -19,11 +15,12 @@ class DishesController < ApplicationController
 
   def new
     @dish = Dish.new
+    @restaurant = Restaurant.find(params[:restaurant_id])
   end
 
   def create
     @dish = Dish.new(dish_params)
-    @restaurant = Restaurant.find(params[:id])
+    @restaurant = Restaurant.find(params[:restaurant_id])
     @dish.restaurant = @restaurant
     if @dish.save
       redirect_to dish_path(@dish)
@@ -47,11 +44,11 @@ class DishesController < ApplicationController
 
   private
 
-  def set_trailer
+  def set_dish
     @dish = Dish.find(params[:id])
   end
 
   def dish_params
-    params.require(:dish).permit(:price, :description)
+    params.require(:dish).permit(:name, :price, :description, :photo)
   end
 end

@@ -1,7 +1,9 @@
 <%= simple_form_for restaurant do |f| %>
   <%= f.input :name %>
   <%= f.input :address %>
-  <%= f.input :category %>
+  <%= f.input :category, collection: ["Árabe", "Chinesa", "Japonesa", "Lanche", "Marmita", "Padaria", "Pizza"]  %>
   <%= f.input :phone %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   <%= f.button :submit, class:"btn btn-flat" %>
 <% end %>
+

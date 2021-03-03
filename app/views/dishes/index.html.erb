@@ -1,5 +1,26 @@
 <div class="container mt-4">
 
+  <div class="my-4">
+    <%= simple_form_for :search, url: dishes_path, method: :get do |f| %>
+      <div class="search-form-control form-group">
+        <input class="form-control string required" type="text" value="<%= params[:address] %>" name="address" id="search_query" />
+        <button name="button" type="submit" class="btn btn-flat">
+          <i class="fas fa-search"></i> Search
+        </button>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="list-buttons d-flex justify-content-between mt-5 mb-5">
+      <%= link_to "Lanche", dishes_path({category: "Lanche"}), class: "btn btn-flat" %>
+      <%= link_to "Marmita", dishes_path({category: "Marmita"}), class: "btn btn-flat" %>
+      <%= link_to "Japonesa", dishes_path({category: "Japonesa"}), class: "btn btn-flat" %>
+      <%= link_to "Pizza", dishes_path({category: "Pizza"}), class: "btn btn-flat" %>
+      <%= link_to "Padaria", dishes_path({category: "Padaria"}), class: "btn btn-flat" %>
+      <%= link_to "Árabe", dishes_path({category: "Árabe"}), class: "btn btn-flat" %>
+      <%= link_to "Chinesa", dishes_path({category: "Chinesa"}), class: "btn btn-flat" %>
+    </div>
+  
   <h1>Pratos disponíveis próximos a você</h1>
   <p>Aqui embaixo você encontra os pratos disponibilizados por restaurantes próximos a você</p>
 
@@ -8,19 +29,23 @@
     <div class="col-7">
 <!-- # Iteracao sobre cada um dos pratos -->
       <div class="row">
-        <% @dishes.each do |dish| %>
-          <div class="card m-2 card-main card-border col-5" style="width: 100%">
-<!--            <div class="card-image"> -->
-<!--              <%= # cl_image_tag dish.photo.key, class:"card-img-top mt-2"%> -->
-<!--            </div> -->
-<!--  #corpo com texto do card -->
-            <div class="card-body">
-              <%= link_to dish_path(dish), class:"card-link card-title" do %>
-                <h5 class="card-title"> <%= dish.name %></h5>
-              <% end %>
-              <p class="card-text"> R$ <%= dish.price %></p>
+        <% if @dishes.present? %>
+          <% @dishes.each do |dish| %>
+            <div class="card m-2 card-main card-border col-5" style="width: 100%">
+              <div class="card-image">
+                <%#= cl_image_tag dish.photo.key, class:"card-img-top mt-2"%>
+              </div>
+  <!--  #corpo com texto do card -->
+              <div class="card-body">
+                <%= link_to dish_path(dish), class:"card-link card-title" do %>
+                  <h5 class="card-title"> <%= dish.name %></h5>
+                <% end %>
+                <p class="card-text"> R$ <%= dish.price %></p>
+              </div>
             </div>
-          </div>
+          <% end %>
+        <% else %>
+        <h2>Não temos pratos próximos a você</h2>
         <% end %>
       </div>
     </div>
