@@ -1,7 +1,16 @@
-<h1>Veja todos os restaurantes abaixo:</h1>
-<p>Confirma a seleção de restaurantes que encontramos para você!</p>
+<div class="container mt-4">
+  <h1 class="my-3">Gerencie seus restaurantes:</h1>
 
-<% @restaurants.each do |restaurant| %>
-  <p>Nome: <%= restaurant.name %> </p>
-  <p>Endereço: <%= restaurant.address %> </p>
-<% end %>
+  <% @restaurants.each do |restaurant| %>
+    <div class="card-product my-4">
+      <%= cl_image_tag restaurant.photo.key, height: 300, width: 300, crop: :fill %>
+      <div class="card-product-infos">
+        <h2><%= restaurant.name %></h2>
+        <p>Endereço: <%= restaurant.address %> </p>
+      </div>
+      <div class="d-flex justify-content-right">
+        <%= link_to "Dashboard de #{restaurant.name}", restaurant_dashboard_path(restaurant), class:"btn-flat" %>
+      </div>
+    </div>
+  <% end %>
+</div>

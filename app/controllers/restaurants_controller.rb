@@ -1,7 +1,11 @@
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: %i[show edit update destroy]
   def index
-    @restaurants = Restaurant.all
+    @restaurants = Restaurant.where(user_id: current_user)
+  end
+
+  def dashboard
+    @restaurant = Restaurant.find(params[:restaurant_id])
   end
 
   def show
