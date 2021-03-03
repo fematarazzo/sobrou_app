@@ -49,13 +49,13 @@
             <div class="card m-5 p-3 card-main card-border col-12 col-lg-5" style="width: 100%">
               <h1>Adicione a refeição que sobrou aqui:</h1>
               <p>Conte-nos um pouco sobre a comida que você oferecerá em suas bolsas mágicas e prepare-se para começar a economizar seu excedente de comida.</p>
-              <%= link_to "Adicione o prato", new_restaurant_dish_path(@restaurant), class:"btn btn-primeiro"%>
+              <%= link_to "Adicione o prato", new_restaurant_dish_path(@restaurant), class:"btn-dashboard btn-primeiro"%>
             </div>
 
             <div class="card m-5 p-3 card-main card-border col-12 col-lg-5" style="width: 100%">
               <h1>Acompanhe os seus pedidos:</h1>
               <p> Aqui você pode acompanhar quais pedidos você têm em andamento, qual é o horário de coleta, forma de pagamento e o nome do cliente irá recolher.</p>
-              <%= link_to "Seus pedidos", restaurant_dishes_path(@restaurant), class:"btn btn-primeiro"%>
+              <%= link_to "Seus pedidos", restaurant_dishes_path(@restaurant), class:"btn-dashboard btn-primeiro"%>
             </div>
           </div>
         </div>
