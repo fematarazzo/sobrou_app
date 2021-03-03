@@ -1,5 +1,26 @@
 <div class="container mt-4">
 
+  <div class="my-4">
+    <%= simple_form_for :search, url: dishes_path, method: :get do |f| %>
+      <div class="search-form-control form-group">
+        <input class="form-control string required" type="text" value="<%= params[:address] %>" name="address" id="search_query" />
+        <button name="button" type="submit" class="btn btn-flat">
+          <i class="fas fa-search"></i> Search
+        </button>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="list-buttons d-flex justify-content-between mt-5 mb-5">
+      <%= link_to "Lanche", dishes_path({category: "Lanche"}), class: "btn btn-flat" %>
+      <%= link_to "Marmita", dishes_path({category: "Marmita"}), class: "btn btn-flat" %>
+      <%= link_to "Japonesa", dishes_path({category: "Japonesa"}), class: "btn btn-flat" %>
+      <%= link_to "Pizza", dishes_path({category: "Pizza"}), class: "btn btn-flat" %>
+      <%= link_to "Padaria", dishes_path({category: "Padaria"}), class: "btn btn-flat" %>
+      <%= link_to "Árabe", dishes_path({category: "Árabe"}), class: "btn btn-flat" %>
+      <%= link_to "Chinesa", dishes_path({category: "Chinesa"}), class: "btn btn-flat" %>
+    </div>
+  
   <h1>Pratos disponíveis próximos a você</h1>
   <p>Aqui embaixo você encontra os pratos disponibilizados por restaurantes próximos a você</p>
 
