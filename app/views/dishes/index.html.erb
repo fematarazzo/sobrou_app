@@ -8,19 +8,23 @@
     <div class="col-7">
 <!-- # Iteracao sobre cada um dos pratos -->
       <div class="row">
-        <% @dishes.each do |dish| %>
-          <div class="card m-2 card-main card-border col-5" style="width: 100%">
-<!--            <div class="card-image"> -->
-<!--              <%= # cl_image_tag dish.photo.key, class:"card-img-top mt-2"%> -->
-<!--            </div> -->
-<!--  #corpo com texto do card -->
-            <div class="card-body">
-              <%= link_to dish_path(dish), class:"card-link card-title" do %>
-                <h5 class="card-title"> <%= dish.name %></h5>
-              <% end %>
-              <p class="card-text"> R$ <%= dish.price %></p>
+        <% if @dishes.present? %>
+          <% @dishes.each do |dish| %>
+            <div class="card m-2 card-main card-border col-5" style="width: 100%">
+              <div class="card-image">
+                <%#= cl_image_tag dish.photo.key, class:"card-img-top mt-2"%>
+              </div>
+  <!--  #corpo com texto do card -->
+              <div class="card-body">
+                <%= link_to dish_path(dish), class:"card-link card-title" do %>
+                  <h5 class="card-title"> <%= dish.name %></h5>
+                <% end %>
+                <p class="card-text"> R$ <%= dish.price %></p>
+              </div>
             </div>
-          </div>
+          <% end %>
+        <% else %>
+        <h2>Não temos pratos próximos a você</h2>
         <% end %>
       </div>
     </div>
