@@ -12,6 +12,7 @@ teste = User.new(
   phone: "123456",
   birthday: DateTime.now - 10000
 )
+teste.photo.attach(io: File.open('app/assets/images/dwight.jpg'), filename: 'dwight.jpg', content_type: 'image/jpg')
 teste.save!
 
 puts "Criando padoca..."
