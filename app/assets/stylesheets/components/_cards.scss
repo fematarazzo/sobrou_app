@@ -1,4 +1,4 @@
-.card-border { box-shadow: 3px 3px 3px 3px lightgrey;
+.card-border { box-shadow: 3px 3px 3px 3px white;
    border-radius: 20px;
  }
 
@@ -9,4 +9,14 @@
 
 .card {
   width: 1000px;
+}
+
+.card-form {
+  width: 400px;
+  background-color: white;
+}
+
+
+.mb-3 {
+  color: #454851;
 }
