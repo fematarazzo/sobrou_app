@@ -1,7 +1,7 @@
 class DishesController < ApplicationController
   before_action :set_dish, only: %i[show edit update destroy]
   def index
-    if params[:search].nil? && params[:category].nil? || params[:search].blank?
+    if params[:search].nil? && params[:category].nil? || params[:search].blank? && params[:category].nil?
       @dishes = Dish.all
     else
       @restaurants = Restaurant.where("address ILIKE ?", "%#{params[:search]}%") if params[:search]
@@ -47,7 +47,7 @@ class DishesController < ApplicationController
 
   private
 
-  def set_trailer
+  def set_dish
     @dish = Dish.find(params[:id])
   end
 
