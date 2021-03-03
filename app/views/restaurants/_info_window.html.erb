@@ -1,5 +1,4 @@
 <%= link_to restaurant_path(restaurant), class:"map-link" do %>
-  <%= cl_image_tag restaurant.photo.key, height: 50, width: 50, crop: :fill %>
   <h2> <%=  restaurant.name %> </h2>
 <% end %>
 <p><%= restaurant.address %></p>
