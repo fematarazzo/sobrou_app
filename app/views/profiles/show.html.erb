@@ -1,38 +1,85 @@
 <div class="container mt-4">
-  <h1><%= current_user.first_name.capitalize %> <%=current_user.last_name.capitalize  %></h1>
+  <div class="card-border-profile mb-3">
+    <div class="text-center">
+      <h3 class="p-3"><%= current_user.first_name.capitalize %> <%=current_user.last_name.capitalize  %></h3>
+      <h5 class="mt-2">Minhas Contribuições</h5>
+    </div>
 
-  <h2 class="mt-4">Minhas Contribuições</h2>
-
-  <h3 class="mt-4">Refeições salvas: </h3>
-  <p><%= @orders.empty? ? "Não há refeições salvas" : @orders.size%> </p>
-
-
-
-  <h3 class="mt-4">Kg Comida: </h3>
-  <p><%= @orders.size * 2.56 %></p>
-
-  <p class="btn btn-success"> <%= link_to "Editar perfil", edit_user_registration_path %></p>
-
-  <h4>Nome:</h4>
-        <%= current_user.first_name.capitalize %> <%=  current_user.last_name.capitalize %>
-  <h4 class="mt-4">E-mail:</h4>
-        <%=  current_user.email %>
-  <h4 class="mt-4">Telefone:</h4>
-        <%=  current_user.phone %>
-  <h4 class="mt-4">Data de Nascimento:</h4>
-        <%=  current_user.birthday %>
-
-  <h2>Seus pedidos</h2>
-    <% unless @orders.empty? %>
-      <% @orders.each do |order| %>
-      <div class="card p-3">
-        <p>Nome do Restaurante:<%=order.dish.restaurant.name%> - <%= order.dish.restaurant.category%></p>
-        <p>Endereço:<%=order.dish.restaurant.address%></p>
-        <p>Valor Total do Pedido<%=order.dish.price %></p>
+    <div class="d-flex justify-content-around mt-4">
+      <div class= "d-flex flex-column align-items-center">
+        <h6><%= @orders.empty? ? "0" : @orders.size%> </h6>
+        <p class="mt-2">Refeições salvas</p>
       </div>
-      <% end %>
-    <% else %>
-      <p>Não há pedido</p>
-    <% end %>
 
-</div>
+      <div class= "d-flex flex-column align-items-center">
+        <h6><%= @orders.size * 2.56 %></h6>
+        <p class="mt-2">Kg salvos</p>
+      </div>
+    </div>
+  </div>
+
+
+    <div>
+
+      <div id="accordion">
+        <div>
+          <div class="accordion-card mb-2" id="headingOne">
+            <h5 class="mb-0">
+            <button class="btn btn-link m-0 decoration-none" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              Meus dados 
+            </button>
+            </h5>
+            <i class="fas fa-sliders-h" style="margin-left:83%"></i>
+          </div>
+       <div>
+
+       <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+        <div class="card-body">
+          <div class="d-flex flex-column">
+            <h4>Nome:</h4>
+            <%= current_user.first_name.capitalize %> <%=  current_user.last_name.capitalize %>
+              <h4 class="mt-4">E-mail:</h4>
+              <%=  current_user.email %>
+              <h4 class="mt-4">Telefone:</h4>
+              <%=  current_user.phone %>
+              <h4 class="mt-4">Data de Nascimento:</h4>
+              <%=  current_user.birthday %>
+              <p> <%= link_to "Editar dados", edit_user_registration_path %></p>
+          </div>
+        </div>
+      </div>
+
+      <div id="accordion">
+        <div>
+          <div class="accordion-card" id="headingTwo">
+            <h5 class="mb-0">
+            <button class="btn btn-link m-0 decoration-none" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+              Meus Pedidos  
+            </button>
+            </h5>
+            <i class="fas fa-utensils" style="margin-left:82%"></i>
+          </div>
+       <div>
+
+       <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
+        <div class="card-body">
+          <div class="d-flex flex-column">
+          <% unless @orders.empty? %>
+          <% @orders.each do |order| %>
+            <div class="card p-3">
+            <p>Nome do Restaurante:<%=order.dish.restaurant.name%> - <%= order.dish.restaurant.category%></p>
+            <p>Endereço:<%=order.dish.restaurant.address%></p>
+            <p>Valor Total do Pedido<%=order.dish.price %></p>
+          </div>
+          <% end %>
+        <% else %>
+        <p>Não há pedidos ainda</p>
+        <% end %>
+          </div>
+        </div>
+      </div>
+
+
+
+
+  
