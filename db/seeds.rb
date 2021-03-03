@@ -1,8 +1,7 @@
+
 puts "Limpando base..."
 
 User.destroy_all
-Restaurant.destroy_all
-Order.destroy_all
 
 puts "Criando usuario teste..."
 teste = User.new(
@@ -13,6 +12,7 @@ teste = User.new(
   phone: "123456",
   birthday: DateTime.now - 10000
 )
+teste.photo.attach(io: File.open('app/assets/images/dwight.jpg'), filename: 'dwight.jpg', content_type: 'image/jpg')
 teste.save!
 
 puts "Criando padoca..."
@@ -23,6 +23,7 @@ padoca = Restaurant.new(
   phone: "123456",
   user_id: teste.id
 )
+padoca.photo.attach(io: File.open('app/assets/images/padaria.png'), filename: 'padaria.png', content_type: 'image/png')
 padoca.save!
 
 puts "Criando pratos..."
@@ -33,6 +34,7 @@ puts "Criando pratos..."
     description: "Lorem ipsum bacon queijo",
     restaurant_id: padoca.id
   )
+  dish.photo.attach(io: File.open('app/assets/images/pao.jpg'), filename: 'pao.jpg', content_type: 'image/jpg')
   dish.save!
   puts "Prato #{dish.id} criado!"
 end
@@ -45,6 +47,7 @@ japones = Restaurant.new(
   phone: "123456",
   user_id: teste.id
 )
+japones.photo.attach(io: File.open('app/assets/images/restaurante-japones.jpg'), filename: 'restaurante-japones.jpg', content_type: 'image/jpg')
 japones.save!
 
 puts "Criando pratos..."
@@ -55,6 +58,7 @@ puts "Criando pratos..."
     description: "Lorem ipsum arroz peixe",
     restaurant_id: japones.id
   )
+  dish.photo.attach(io: File.open('app/assets/images/temaki.jpg'), filename: 'temaki.jpg', content_type: 'image/jpg')
   dish.save!
   puts "Prato #{dish.id} criado!"
 end
@@ -67,6 +71,7 @@ boteco = Restaurant.new(
   phone: "123456",
   user_id: teste.id
 )
+boteco.photo.attach(io: File.open('app/assets/images/logo_lanchonete.jpg'), filename: 'logo_lanchonete.jpg', content_type: 'image/jpg')
 boteco.save!
 
 puts "Criando pratos..."
@@ -77,6 +82,7 @@ puts "Criando pratos..."
     description: "Lorem ipsum podrão duvidoso",
     restaurant_id: boteco.id
   )
+  dish.photo.attach(io: File.open('app/assets/images/marmita.jpg'), filename: 'marmita.jpg', content_type: 'image/jpg')
   dish.save!
   puts "Prato #{dish.id} criado!"
 end
@@ -90,6 +96,8 @@ pizzaria = Restaurant.new(
   phone: "123456",
   user_id: teste.id
 )
+pizzaria.photo.attach(io: File.open('app/assets/images/pizzaria.jpeg'), filename: 'pizzaria.jpeg', content_type: 'image/jpeg')
+
 pizzaria.save!
 
 puts "Criando pratos..."
@@ -100,6 +108,7 @@ puts "Criando pratos..."
     description: "Lorem ipsum massa molho de tomate",
     restaurant_id: pizzaria.id
   )
+  dish.photo.attach(io: File.open('app/assets/images/pizza.jpg'), filename: 'pizza.jpg', content_type: 'image/jpg')
   dish.save!
   puts "Prato #{dish.id} criado!"
 end
@@ -112,6 +121,7 @@ arabe = Restaurant.new(
   phone: "123456",
   user_id: teste.id
 )
+arabe.photo.attach(io: File.open('app/assets/images/rest-arabe.jpg'), filename: 'rest-arabe.jpg', content_type: 'image/jpg')
 arabe.save!
 
 puts "Criando pratos..."
@@ -122,6 +132,7 @@ puts "Criando pratos..."
     description: "Lorem ipsum esfiha aberta",
     restaurant_id: arabe.id
   )
+  dish.photo.attach(io: File.open('app/assets/images/esfiha.jpg'), filename: 'esfiha.jpg', content_type: 'image/jpg')
   dish.save!
   puts "Prato #{dish.id} criado!"
 end
@@ -134,6 +145,7 @@ chines = Restaurant.new(
   phone: "123456",
   user_id: teste.id
 )
+chines.photo.attach(io: File.open('app/assets/images/chines.jpg'), filename: 'chines.jpg', content_type: 'image/jpg')
 chines.save!
 
 puts "Criando pratos..."
@@ -144,6 +156,7 @@ puts "Criando pratos..."
     description: "Lorem ipsum macarrão agridoce",
     restaurant_id: chines.id
   )
+  dish.photo.attach(io: File.open('app/assets/images/chinesa.jpg'), filename: 'chinesa.jpg', content_type: 'image/jpg')
   dish.save!
   puts "Prato #{dish.id} criado!"
 end
