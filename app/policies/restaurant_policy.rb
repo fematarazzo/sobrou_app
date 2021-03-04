@@ -4,6 +4,10 @@ class RestaurantPolicy < ApplicationPolicy
       scope.all
     end
 
+    def dashboard?
+      owner?
+    end
+
     def show?
       true
     end
@@ -19,11 +23,21 @@ class RestaurantPolicy < ApplicationPolicy
     def edit?
       # user ==> current_user
       # record ==> @restaurant
-      if record.user == user
-        true
-      else
-        false
-      end
+      owner?
+    end
+
+    def update?
+      owner?
+    end
+
+    def destroy?
+      owner?
+    end
+
+    private
+
+    def owner?
+      record.user == user
     end
   end
 end

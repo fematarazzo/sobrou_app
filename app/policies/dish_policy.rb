@@ -15,31 +15,25 @@ class DishPolicy < ApplicationPolicy
     def new?
       # @restaurant.id
       # record ==> @dish
-      if record.restaurant_id == @restaurant.id
-        true
-      else
-        false
-      end
+      owner?
     end
 
     def create?
       # @restaurant.id
       # record ==> @dish
-      if record.restaurant_id == @restaurant.id
-        true
-      else
-        false
-      end
+      owner?
     end
 
     def edit?
       # @restaurant.id
       # record ==> @dish
-      if record.restaurant_id == @restaurant.id
-        true
-      else
-        false
-      end
+      owner?
+    end
+
+    private
+
+    def owner?
+      record.user == user
     end
   end
 end

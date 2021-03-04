@@ -5,23 +5,20 @@ class RestaurantsController < ApplicationController
   end
 
   def dashboard
+    authorize @restaurant
     @restaurant = Restaurant.find(params[:restaurant_id])
   end
 
   def show
-    authorize @restaurant
   end
 
   def new
     @restaurant = Restaurant.new
-    authorize @restaurant
   end
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
     @restaurant.user = current_user
-
-    authorize @restaurant
 
     if @restaurant.save
       redirect_to restaurant_path(@restaurant)
@@ -31,7 +28,6 @@ class RestaurantsController < ApplicationController
   end
 
   def edit
-    authorize @restaurant
   end
 
   def update
@@ -46,8 +42,9 @@ class RestaurantsController < ApplicationController
 
   private
 
-  def set_trailer
+  def set_restaurant
     @restaurant = Restaurant.find(params[:id])
+    authorize @restaurant
   end
 
   def restaurant_params
