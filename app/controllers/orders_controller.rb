@@ -12,12 +12,12 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new
-    @dish = Dish.find(params[:id])
+    @dish = Dish.find(params[:dish_id])
     @order.dish = @dish
     @order.user = current_user
     authorize @order
     if @order.save
-      redirect_to order_path(@order)
+      redirect_to dish_order_path(@order)
     else
       render "dishes/show"
     end

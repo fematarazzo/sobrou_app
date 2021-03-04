@@ -1,11 +1,24 @@
 <div class="container mt-4">
-  <h1>Detalhes do pedido:</h1>
-  <p>Confirma abaixo os detalhes deste pedido</p>
+  <p><%= cl_image_tag @order.dish.photo.key, class:"card-img-top mt-2"%>
+</p>
+  <div>
+    <p><strong>O que tenho a chance de salvar?</strong></p>
+    <p><%= @order.dish.description%></p>
+    <p> R$ <%= @order.dish.price %></p>
 
-  <p>Nome do usuário que pediu: <%= @order.user.first_name %> </p>
-  <p>Preço do prato pedido: <%= @order.dish.price %> </p>
-  <p>Descrição do prato pedido: <%= @order.dish.description %> </p>
+    <p>Data:</p>
+    <p>Horário de retirada: </p>
 
-  <p>Avalição deste pedido: <%= @order.rating %> </p>
-  <p>Descrição deste pedido: <%= @order.description_rating %> </p>
+    <p>Atenção: Lembre-se que a variedade dos produtos será preestabelecida pelo colaborador de acordo com a disponibilidade de comida excedente</p>
+    <p>As imagens não correspondem, necessariamente, ao produto fornecido.</p>
+
+    <p><strong><%= @order.dish.restaurant.name %></strong></p>
+
+    <p> <%= @order.rating %></p>
+    <p><%= @order.dish.restaurant.address%></p>
+    <p><%= @order.dish.restaurant.phone%></p>
+  </div>
+  <button type="button" class="btn btn-success">Confirmar pedido</button>
 </div>
+  
+  

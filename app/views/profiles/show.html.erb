@@ -67,9 +67,9 @@
           <% unless @orders.empty? %>
           <% @orders.each do |order| %>
             <div class="card p-3">
-            <p>Nome do Restaurante:<%=order.dish.restaurant.name%> - <%= order.dish.restaurant.category%></p>
-            <p>Endereço:<%=order.dish.restaurant.address%></p>
-            <p>Valor Total do Pedido<%=order.dish.price %></p>
+            <p><strong><%=order.dish.restaurant.name%> - <%= order.dish.restaurant.category%></strong></p>
+            <p><%=order.dish.restaurant.address%></p>
+            <p>R$<%=order.dish.price %></p>
           </div>
           <% end %>
         <% else %>
