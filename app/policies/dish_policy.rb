@@ -12,27 +12,27 @@ class DishPolicy < ApplicationPolicy
   def new?
     # @restaurant.id
     # record ==> @dish
-    owner?
+    true
   end
 
   def create?
     # @restaurant.id
     # record ==> @dish
-    owner?
+    true
   end
 
   def edit?
     # @restaurant.id
     # record ==> @dish
-    owner?
+    true
   end
 
   def update?
-    owner?
+    true
   end
 
   def destroy?
-    owner?
+    true
   end
 
   private
