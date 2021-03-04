@@ -3,45 +3,41 @@ class RestaurantPolicy < ApplicationPolicy
     def resolve
       scope.all
     end
+  end
 
-    def dashboard?
-      owner?
-    end
+  def new?
+    true
+  end
 
-    def index?
-      true
-    end
+  def show?
+    true
+  end
 
-    def show?
-      true
-    end
+  def create?
+    true
+  end
 
-    def new?
-      true
-    end
+  def edit?
+    owner?
+  end
 
-    def create?
-      true
-    end
+  def update?
+    owner?
+  end
 
-    def edit?
-      owner?
-    end
+  def destroy?
+    owner?
+  end
 
-    def update?
-      owner?
-    end
+  def dashboard?
+    owner?
+  end
 
-    def destroy?
-      owner?
-    end
+  private
 
-    private
-
-    def owner?
-      # user ==> current_user
-      # record ==> @restaurant
-      record.user == user
-    end
+  def owner?
+    # user ==> current_user
+    # record ==> @restaurant
+    record.user == user
   end
 end

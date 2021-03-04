@@ -1,14 +1,13 @@
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: %i[show edit update destroy]
-  skip_before_action :authenticate_user!, only: [:new]
+
   def index
-    @restaurants = policy_scope(Restaurant)
-    @restaurants = @restaurants.where(user_id: current_user)
+    @restaurants = policy_scope(Restaurant).where(user_id: current_user)
   end
 
   def dashboard
-    authorize @restaurant
     @restaurant = Restaurant.find(params[:restaurant_id])
+    authorize @restaurant
   end
 
   def show

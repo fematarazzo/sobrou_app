@@ -3,45 +3,41 @@ class DishPolicy < ApplicationPolicy
     def resolve
       scope.all
     end
+  end
 
-    def index?
-      true
-    end
+  def show?
+    true
+  end
 
-    def show?
-      true
-    end
+  def new?
+    # @restaurant.id
+    # record ==> @dish
+    owner?
+  end
 
-    def new?
-      # @restaurant.id
-      # record ==> @dish
-      owner?
-    end
+  def create?
+    # @restaurant.id
+    # record ==> @dish
+    owner?
+  end
 
-    def create?
-      # @restaurant.id
-      # record ==> @dish
-      owner?
-    end
+  def edit?
+    # @restaurant.id
+    # record ==> @dish
+    owner?
+  end
 
-    def edit?
-      # @restaurant.id
-      # record ==> @dish
-      owner?
-    end
+  def update?
+    owner?
+  end
 
-    def update?
-      owner?
-    end
+  def destroy?
+    owner?
+  end
 
-    def destroy?
-      owner?
-    end
+  private
 
-    private
-
-    def owner?
-      record.restaurant_id == @restaurant.id
-    end
+  def owner?
+    record.restaurant.user == user
   end
 end

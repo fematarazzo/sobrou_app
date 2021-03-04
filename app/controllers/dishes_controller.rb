@@ -1,18 +1,37 @@
 class DishesController < ApplicationController
   before_action :set_dish, only: %i[show edit update destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
+    raise
+    skip_policy_scope
+    @change_nav = true
     # @restaurants = Restaurant.all
 
     @restaurants = policy_scope(Restaurant)
 
     @restaurants = @restaurants.near(params[:address], 5) if params[:address].present?
     @restaurants = @restaurants.where(category: params[:category]) if params[:category].present?
+
+    # Sem params address / Sem params category (nenhum checkbox)
+    # @restaurants = policy_scope(Restaurant)
+
+    # # Com params address / Sem params category (nenhum checkbox)
+    # if params[:address].present? && params[:category].blank?
+    #   @restaurants = @restaurants.near(params[:address], 5)
+
+    # Sem params address / Com params category (1 ou mais checkboxes)
+    # elsif params[:address].blank? && params[:category].present?
+    #   @restaurants = @restaurants.where(category: params[:category])
+
+    # Com params address / Com params category (1 ou mais checkboxes)
+    # params[:address].present? && params[:category].present?
+    #   @restaurants = @restaurants.near(params[:address], 5).where(category: params[:category])
+    # end
     @dishes = []
     @restaurants.each do |restaurant|
       restaurant.dishes.each { |dish| @dishes << dish }
     end
-    @dishes
   end
 
   def show
