@@ -3,31 +3,18 @@ class DishesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    raise
     skip_policy_scope
     @change_nav = true
-    # @restaurants = Restaurant.all
 
-    @restaurants = policy_scope(Restaurant)
-
-    @restaurants = @restaurants.near(params[:address], 5) if params[:address].present?
-    @restaurants = @restaurants.where(category: params[:category]) if params[:category].present?
-
-    # Sem params address / Sem params category (nenhum checkbox)
-    # @restaurants = policy_scope(Restaurant)
-
-    # # Com params address / Sem params category (nenhum checkbox)
-    # if params[:address].present? && params[:category].blank?
-    #   @restaurants = @restaurants.near(params[:address], 5)
-
-    # Sem params address / Com params category (1 ou mais checkboxes)
-    # elsif params[:address].blank? && params[:category].present?
-    #   @restaurants = @restaurants.where(category: params[:category])
-
-    # Com params address / Com params category (1 ou mais checkboxes)
-    # params[:address].present? && params[:category].present?
-    #   @restaurants = @restaurants.near(params[:address], 5).where(category: params[:category])
-    # end
+    if params[:search][:address].blank? && params[:search][:category] == [""]
+      @restaurants = policy_scope(Restaurant)
+    elsif !params[:search][:address].blank? && params[:search][:category] == [""]
+      @restaurants = Restaurant.near(params[:search][:address], 5)
+    elsif params[:search][:address].blank? && params[:search][:category].size > 1
+      @restaurants = @restaurants.where(category: params[:search][:category] - [""])
+    else
+      @restaurants = Restaurant.near(params[:search][:address], 5).where(category: params[:search][:category] - [""])
+    end
     @dishes = []
     @restaurants.each do |restaurant|
       restaurant.dishes.each { |dish| @dishes << dish }
