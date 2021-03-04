@@ -1,6 +1,6 @@
 <div class="container mt-4">
   <p><%= cl_image_tag @order.dish.photo.key, class:"card-img-top mt-2"%>
-</p>
+  </p>
   <div>
     <p><strong>O que tenho a chance de salvar?</strong></p>
     <p><%= @order.dish.description%></p>
@@ -18,7 +18,6 @@
     <p><%= @order.dish.restaurant.address%></p>
     <p><%= @order.dish.restaurant.phone%></p>
   </div>
-  <button type="button" class="btn btn-success">Confirmar pedido</button>
+  <%= link_to "Confirmar e voltar para Home", root_path, class:"btn btn-success" %>
 </div>
-  
-  
+

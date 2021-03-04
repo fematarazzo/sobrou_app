@@ -14,12 +14,10 @@
           <p>Preço:</p>
           <p class="ml-2"> <%= @dish.price %> </p>
           <hr>
-          <%= link_to "Reserve este prato aqui", dish_orders_path(@dish), method: :post, class:"btn btn-success ml-5" %>
+          <%= simple_form_for [@dish, @order] do |f| %>
+            <%= f.button :submit, class:"btn btn-flat" %>
+          <% end %>
         </div>
-      </div>
-      <div class="card-model p-3 card-border">
-
-      <%= link_to "Reserve este prato aqui", dish_order_path(@dish), method: :get, class:"btn btn-success" %>
       </div>
     </div>
   </div>

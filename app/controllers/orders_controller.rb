@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
     @order.user = current_user
     authorize @order
     if @order.save
-      redirect_to dish_order_path(@order)
+      redirect_to order_path(@order)
     else
       render "dishes/show"
     end
