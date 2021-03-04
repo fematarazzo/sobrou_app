@@ -1,15 +1,62 @@
-<div class="container mt-4">
+<nav class="navbar fixed-top navbar-expand-sm navbar-light navbar-lewagon">
+  <div class="container-fluid">
+    <%= link_to root_path, class: "navbar-brand" do %>
+        Sobrou
+      <% end %>
 
-  <div class="my-4">
+  <div class="nav-search">
     <%= simple_form_for :search, url: dishes_path, method: :get do |f| %>
-      <div class="search-form-control form-group">
+      <div class="search-form-control-nav form-group">
         <input class="form-control string required" type="text" value="<%= params[:address] %>" name="address" id="search_query" />
-        <button name="button" type="submit" class="btn btn-flat">
-          <i class="fas fa-search"></i> Search
+        <button name="button" type="submit" class="btn btn-flat-nav">
+          <i class="fas fa-search"></i>
         </button>
       </div>
+      <%= f.input :category,
+            as: :check_boxes,
+            label: false,
+            input_html: { class: "tag-selector" },
+            item_wrapper_class: 'tag-item',
+            collection: ["Árabe", "Chinesa", "Japonesa", "Lanche", "Marmita", "Padaria", "Pizza"]
+             %>
     <% end %>
   </div>
+
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <% if user_signed_in? %>
+          <% if current_user.owner? %>
+            <li class="nav-item">
+              <%= link_to "Gerenciar meus restaurantes", restaurants_path, class: "nav-link" %>
+            </li>
+          <% end %>
+          <li class="nav-item dropdown">
+            <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <%= link_to "Meu Perfil", profile_path(current_user), class: "dropdown-item" %>
+              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            </div>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-4">
 
   <div class="list-buttons d-flex justify-content-between mt-5 mb-5">
       <%= link_to "Lanche", dishes_path({category: "Lanche"}), class: "btn btn-flat" %>
@@ -21,31 +68,32 @@
       <%= link_to "Chinesa", dishes_path({category: "Chinesa"}), class: "btn btn-flat" %>
     </div>
   
-  <h1>Pratos disponíveis próximos a você</h1>
-  <p>Aqui embaixo você encontra os pratos disponibilizados por restaurantes próximos a você</p>
-
+  
   <div class="row">
 
     <div class="col-7">
 <!-- # Iteracao sobre cada um dos pratos -->
       <div class="row">
         <% if @dishes.present? %>
+          <h1>Pratos disponíveis próximos a você</h1>
+          <p>Aqui embaixo você encontra os pratos disponibilizados por restaurantes próximos a você</p>
           <% @dishes.each do |dish| %>
             <div class="card m-2 card-main card-border col-5" style="width: 100%">
               <div class="card-image">
-                <%#= cl_image_tag dish.photo.key, class:"card-img-top mt-2"%>
+                <%= cl_image_tag dish.photo.key, class:"card-img-top mt-2" %>
               </div>
   <!--  #corpo com texto do card -->
               <div class="card-body">
                 <%= link_to dish_path(dish), class:"card-link card-title" do %>
                   <h5 class="card-title"> <%= dish.name %></h5>
                 <% end %>
-                <p class="card-text"> R$ <%= dish.price %></p>
+                <p class="card-text"> R$<%= dish.price %></p>
               </div>
             </div>
           <% end %>
         <% else %>
-        <h2>Não temos pratos próximos a você</h2>
+        <hr>
+        <h2>Não temos pratos deste tipo próximos a você</h2>
         <% end %>
       </div>
     </div>
