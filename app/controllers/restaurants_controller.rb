@@ -9,15 +9,20 @@ class RestaurantsController < ApplicationController
   end
 
   def show
+    authorize @restaurant
   end
 
   def new
     @restaurant = Restaurant.new
+    authorize @restaurant
   end
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
     @restaurant.user = current_user
+
+    authorize @restaurant
+
     if @restaurant.save
       redirect_to restaurant_path(@restaurant)
     else
@@ -26,6 +31,7 @@ class RestaurantsController < ApplicationController
   end
 
   def edit
+    authorize @restaurant
   end
 
   def update
