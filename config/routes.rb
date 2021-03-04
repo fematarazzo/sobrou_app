@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
 
   resources :dishes, only: [:index, :show, :edit, :update, :destroy] do
-    resources :orders, only: [:create, :index]
+    resources :orders, only: [:create, :index, :show]
   end
   resources :profiles, only: [:show]
 
