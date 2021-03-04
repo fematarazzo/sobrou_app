@@ -8,3 +8,22 @@
     color: #454851;
 
 }
+
+.nav-search {
+  width: 50%;
+  height: 2.5rem;
+}
+
+.btn-flat-nav {
+  color: white;
+  padding: 4px 12px;
+  border-radius: 4px;
+  background: #95d7ae;
+  transition: background 0.3s ease;
+}
+
+.btn-flat-nav:hover {
+  background: #7bae7f;
+  color: white;
+  text-decoration: none;
+}

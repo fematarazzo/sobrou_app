@@ -1,11 +1,13 @@
 class OrdersController < ApplicationController
   def index
-    #@dish = Dish.find(params[:dish_id])
-    @orders = Order.all
+    @orders = policy_scope(Order)
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @orders = Order.all.select { |order| @restaurant == order.dish.restaurant }
   end
 
   def show
     @order = Order.find(params[:id])
+    authorize @order
   end
 
   def create
@@ -13,6 +15,7 @@ class OrdersController < ApplicationController
     @dish = Dish.find(params[:dish_id])
     @order.dish = @dish
     @order.user = current_user
+    authorize @order
     if @order.save
       redirect_to dish_order_path(@order)
     else
@@ -22,14 +25,17 @@ class OrdersController < ApplicationController
 
   def edit
     @order = Order.find(params[:id])
+    authorize @order
   end
 
   def update
     @dish.update(dish_params)
     redirect_to dish_path(@dish)
+    authorize @order
   end
 
   def destroy
+    authorize @order
   end
 
   private
