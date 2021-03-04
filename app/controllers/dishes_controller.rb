@@ -1,9 +1,20 @@
 class DishesController < ApplicationController
   before_action :set_dish, only: %i[show edit update destroy]
+  skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
-    @restaurants = Restaurant.all
-    @restaurants = @restaurants.near(params[:address], 5) if params[:address].present?
-    @restaurants = @restaurants.where(category: params[:category]) if params[:category].present?
+    skip_policy_scope
+    @change_nav = true
+
+    if params[:search][:address].blank? && params[:search][:category] == [""]
+      @restaurants = policy_scope(Restaurant)
+    elsif !params[:search][:address].blank? && params[:search][:category] == [""]
+      @restaurants = Restaurant.near(params[:search][:address], 5)
+    elsif params[:search][:address].blank? && params[:search][:category].size > 1
+      @restaurants = @restaurants.where(category: params[:search][:category] - [""])
+    else
+      @restaurants = Restaurant.near(params[:search][:address], 5).where(category: params[:search][:category] - [""])
+    end
     @dishes = []
     @restaurants.each do |restaurant|
       restaurant.dishes.each { |dish| @dishes << dish }
@@ -17,12 +28,14 @@ class DishesController < ApplicationController
   def new
     @dish = Dish.new
     @restaurant = Restaurant.find(params[:restaurant_id])
+    authorize @dish
   end
 
   def create
     @dish = Dish.new(dish_params)
     @restaurant = Restaurant.find(params[:restaurant_id])
     @dish.restaurant = @restaurant
+    authorize @dish
     if @dish.save
       redirect_to dish_path(@dish)
     else
@@ -46,7 +59,9 @@ class DishesController < ApplicationController
   private
 
   def set_dish
+    @dish = Dish.find(params[:id])
     @dish = Dish.includes(:restaurant).find(params[:id])
+    authorize @dish
   end
 
   def dish_params
