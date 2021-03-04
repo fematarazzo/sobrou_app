@@ -25,7 +25,7 @@ class RestaurantsController < ApplicationController
     authorize @restaurant
 
     if @restaurant.save
-      redirect_to restaurant_path(@restaurant)
+      redirect_to restaurant_dashboard_path(@restaurant)
     else
       render :new
     end
