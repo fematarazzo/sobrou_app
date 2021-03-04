@@ -67,16 +67,16 @@
       <%= link_to "Árabe", dishes_path({category: "Árabe"}), class: "btn btn-flat" %>
       <%= link_to "Chinesa", dishes_path({category: "Chinesa"}), class: "btn btn-flat" %>
     </div>
-
-  <h1>Pratos disponíveis próximos a você</h1>
-  <p>Aqui embaixo você encontra os pratos disponibilizados por restaurantes próximos a você</p>
-
+  
+  
   <div class="row">
 
     <div class="col-7">
 <!-- # Iteracao sobre cada um dos pratos -->
       <div class="row">
         <% if @dishes.present? %>
+          <h1>Pratos disponíveis próximos a você</h1>
+          <p>Aqui embaixo você encontra os pratos disponibilizados por restaurantes próximos a você</p>
           <% @dishes.each do |dish| %>
             <div class="card m-2 card-main card-border col-5" style="width: 100%">
               <div class="card-image">
@@ -87,12 +87,13 @@
                 <%= link_to dish_path(dish), class:"card-link card-title" do %>
                   <h5 class="card-title"> <%= dish.name %></h5>
                 <% end %>
-                <p class="card-text"> R$ <%= dish.price %></p>
+                <p class="card-text"> R$<%= dish.price %></p>
               </div>
             </div>
           <% end %>
         <% else %>
-        <h2>Não temos pratos próximos a você</h2>
+        <hr>
+        <h2>Não temos pratos deste tipo próximos a você</h2>
         <% end %>
       </div>
     </div>
