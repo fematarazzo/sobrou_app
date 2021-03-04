@@ -42,6 +42,7 @@
   padding:10px 15px;
   display: flex;
   align-items: center;
+  }
 
 .card-dish {
   width: 900px;
@@ -53,6 +54,7 @@
   position: relative;
   padding-right: 15px;
   padding-left: 15px;
+  }
 
 .card-product {
   overflow: hidden;
@@ -85,12 +87,11 @@
 
 .card-product .card-product-infos {
   padding: 16px;
-
+}
 .card-title {
   color: black;
 }
 
 .card-title:hover {
   color: green;
-
 }

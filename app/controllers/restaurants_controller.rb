@@ -19,7 +19,7 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new(restaurant_params)
     @restaurant.user = current_user
     if @restaurant.save
-      redirect_to restaurant_path(@restaurant)
+      redirect_to restaurant_dashboard_path(@restaurant)
     else
       render :new
     end
@@ -40,7 +40,7 @@ class RestaurantsController < ApplicationController
 
   private
 
-  def set_trailer
+  def set_restaurant
     @restaurant = Restaurant.find(params[:id])
   end
 
