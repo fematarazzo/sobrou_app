@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   def index
-    @orders = Order.all
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @orders = Order.all.select { |order| @restaurant == order.dish.restaurant }
   end
 
   def show
