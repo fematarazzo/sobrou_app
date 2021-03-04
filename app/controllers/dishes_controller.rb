@@ -11,6 +11,7 @@ class DishesController < ApplicationController
   end
 
   def show
+    
   end
 
   def new
@@ -45,7 +46,7 @@ class DishesController < ApplicationController
   private
 
   def set_dish
-    @dish = Dish.find(params[:id])
+    @dish = Dish.includes(:restaurant).find(params[:id])
   end
 
   def dish_params
