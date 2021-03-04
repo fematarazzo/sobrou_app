@@ -8,6 +8,10 @@ class RestaurantPolicy < ApplicationPolicy
       owner?
     end
 
+    def index?
+      true
+    end
+
     def show?
       true
     end
@@ -21,8 +25,6 @@ class RestaurantPolicy < ApplicationPolicy
     end
 
     def edit?
-      # user ==> current_user
-      # record ==> @restaurant
       owner?
     end
 
@@ -37,6 +39,8 @@ class RestaurantPolicy < ApplicationPolicy
     private
 
     def owner?
+      # user ==> current_user
+      # record ==> @restaurant
       record.user == user
     end
   end
