@@ -1,13 +1,14 @@
 <div class="container mt-4">
 
   <h1>Lista de pedidos</h1>
-  <p>Confirma a lista de todos os pedidos</p>
 
-  <% @orders.each do |order| %>
+
+    <% @orders.each do |order| %>
     <%= order.user.first_name %>
     <%= order.user.phone %>
     <%= order.dish.price %>
     <%= order.dish.description %>
+
 
   <% end %>
 </div>

@@ -1,6 +1,8 @@
 class OrdersController < ApplicationController
   def index
     @orders = policy_scope(Order)
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @orders = Order.all.select { |order| @restaurant == order.dish.restaurant }
   end
 
   def show
