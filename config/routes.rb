@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :dishes, only: [:new, :create]
     resources :orders, only: [:index]
     get "/dashboard", to: "restaurants#dashboard"
+    get "/index_today", to: "orders#index_today"
   end
 
   resources :dishes, only: [:index, :show, :edit, :update, :destroy] do
