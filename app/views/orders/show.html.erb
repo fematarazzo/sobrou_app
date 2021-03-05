@@ -20,13 +20,11 @@
       <p>As imagens não correspondem, necessariamente, ao produto fornecido.</p>
     </div>
 
-    <div class="card-border ml-2 mt-2 p-1">
+    <div class="card-border ml-2 p-2" >
       <p><strong><%= @order.dish.restaurant.name %></strong></p>
       <p> <%= @order.rating %></p>
       <p><%= @order.dish.restaurant.address%></p>
       <p><%= @order.dish.restaurant.phone%></p>
     </div>
-
-    <div class="text-center">
-      <%= link_to "Voltar para Home", root_path, class:"btn btn-success mt-2" %>
-    </div>
+      <p class="text-center mt-2"><%= link_to "Confirmar e voltar para Home", root_path, class:"btn btn-success" %></p>
+</div>
