@@ -55,6 +55,8 @@
 .card-dish {
   width: 900px;
   background-color: white;
+  margin-top: 1px;
+
 }
 
 .card-space {
@@ -98,13 +100,22 @@
   padding: 16px;
 }
 .card-title {
-  color: black;
+  color: #7bae7f;
 }
 
 .card-title:hover {
   color: green;
 }
 
+
+.card-login {
+  width: 650px;
+  background-color: white;
+  margin: 0 auto;
+}
+.card-border-login { box-shadow: 3px 3px 3px 3px white;
+   border-radius: 20px;
+}
 
 .card-category{
   background-size: cover;
@@ -131,4 +142,3 @@
 .card-show-rest {
   width: 900px;
 }
-

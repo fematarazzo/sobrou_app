@@ -4,7 +4,9 @@ class OrderPolicy < ApplicationPolicy
       scope.all
     end
   end
-
+  def index_today?
+    true
+  end
   def show?
     # Pro usuario que criou ela ou pro restaurante que e dono dessa ordem
     owner?
@@ -36,5 +38,6 @@ class OrderPolicy < ApplicationPolicy
     # user ==> current_user
     # record ==> @restaurant
     record.user == user || record.dish.restaurant.user == user
+
   end
 end

@@ -11,6 +11,8 @@ import { initMapbox } from '../plugins/init_mapbox';
 import { loadDynamicBannerText } from '../components/banner';
 import { initSelect2 } from '../plugins/init_select2';
 import { initSweetalert } from '../plugins/init_sweetalert';
+import { initAutocomplete } from '../plugins/init_autocomplete';
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
@@ -29,9 +31,9 @@ import "bootstrap";
 
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
-  //loadDynamicBannerText();
+  loadDynamicBannerText();
   initSelect2();
-
+  initAutocomplete();
   initSweetalert('#sweet-alert-demo', {
     position: 'top-end',
     icon: 'success',
