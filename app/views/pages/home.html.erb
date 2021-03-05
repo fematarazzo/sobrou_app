@@ -11,24 +11,28 @@
         <div class="search-form-control form-group">
           <%= f.input :category,
                       label: "",
+                      required: false,
                       as: :check_boxes,
                       include_blank: false,
                       input_html: { class: "tag-selector" },
                       item_wrapper_class: 'tag-item',
                       collection: ["Árabe", "Chinesa", "Japonesa", "Lanche", "Marmita", "Padaria", "Pizza"] %>
-          <%= f.input :address, input_html: { class:"form-control string required" }, label: false, placeholder: "Insira um endereço" %>
+          <%= f.input :address, input_html: { class:"form-control string required", id:"busca" }, label: false, placeholder: "Insira um endereço" %>
           <%= f.button :submit, "Buscar", class:"btn btn-flat" %>
         </div>
       <% end %>
     </div>
 
-    <p class="mt-5">Quer ser parceiro Sobrou? <span> <%= link_to "Cadastre seu Restaurante", new_restaurant_path, class:"btn-ghost" %> </span> </p>
+    <p class="mt-5">Quer ser parceiro Sobrou? <span> <%= link_to "Cadastre seu Restaurante", new_restaurant_path, class:"btn-ghost ml-3" %> </span> </p>
     <h1 class= "mt-5">Confira no mapa abaixo os restaurantes cadastrados perto de você:</h1>
   </div>
 </div>
-
-<div id="map"
-   style="width: 100%; height: 600px;"
-   data-markers="<%= @markers.to_json %>"
-   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+<div class="container">
+   <div class="row justify-content-center">
+    <div id="map" class="col-12"
+       style="width: 100%; height: 600px;"
+       data-markers="<%= @markers.to_json %>"
+       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </div>
 </div>

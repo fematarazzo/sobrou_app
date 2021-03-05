@@ -1,5 +1,5 @@
-.card-border { box-shadow: 3px 3px 3px 3px lightgrey;
-   border-radius: 20px;
+.card-border { box-shadow: 1px 1px 2px 1px lightgrey;
+   border-radius: 15px;
  }
 
 .card-model {
@@ -100,19 +100,45 @@
   padding: 16px;
 }
 .card-title {
-  color: black;
+  color: #7bae7f;
 }
 
 .card-title:hover {
   color: green;
 }
 
+
 .card-login {
   width: 650px;
   background-color: white;
   margin: 0 auto;
-
 }
 .card-border-login { box-shadow: 3px 3px 3px 3px white;
    border-radius: 20px;
- }
+}
+
+.card-category{
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.card-fill{
+  color: white;
+  background-color: #95ce95;
+  font-weight: bold;
+  border-radius: 7px;
+}
+
+.card-show-rest {
+  width: 900px;
+}

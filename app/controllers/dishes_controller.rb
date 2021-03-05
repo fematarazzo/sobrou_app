@@ -11,7 +11,9 @@ class DishesController < ApplicationController
     elsif !params[:search][:address].blank? && params[:search][:category] == [""]
       @restaurants = Restaurant.near(params[:search][:address], 5)
     elsif params[:search][:address].blank? && params[:search][:category].size > 1
-      @restaurants = @restaurants.where(category: params[:search][:category] - [""])
+      @restaurants = Restaurant.where(category: params[:search][:category] - [""])
+    elsif !params[:search][:address].blank? && params[:search][:category].nil?
+      @restaurants = Restaurant.near(params[:search][:address], 5)
     else
       @restaurants = Restaurant.near(params[:search][:address], 5).where(category: params[:search][:category] - [""])
     end
