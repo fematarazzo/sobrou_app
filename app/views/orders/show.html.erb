@@ -30,28 +30,3 @@
     <div class="text-center">
       <%= link_to "Voltar para Home", root_path, class:"btn btn-success mt-2" %>
     </div>
-
-  <p><%= cl_image_tag @order.dish.photo.key,class:"card-img-top mt-2"%>
-  </p>
-  <div>
-    <p><strong>O que tenho a chance de salvar?</strong></p>
-    <p><%= @order.dish.description%></p>
-    <p> R$ <%= @order.dish.price %></p>
-
-    <p>Data:</p>
-    <p>Horário de retirada: </p>
-
-    <p>Atenção: Lembre-se que a variedade dos produtos será preestabelecida pelo colaborador de acordo com a disponibilidade de comida excedente</p>
-    <p>As imagens não correspondem, necessariamente, ao produto fornecido.</p>
-
-    <p><strong><%= @order.dish.restaurant.name %></strong></p>
-
-    <p> <%= @order.rating %></p>
-    <p><%= @order.dish.restaurant.address%></p>
-    <p><%= @order.dish.restaurant.phone%></p>
-  </div>
-  <%= link_to "Confirmar e voltar para Home", root_path, class:"btn btn-success" %>
-
-</div>
-
-
