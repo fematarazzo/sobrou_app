@@ -1,7 +1,35 @@
-<h1>Detalhes do <%= @restaurant.name %></h1>
-<p>Veja abaixo: </p>
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <div class="row">
+        <div class="col-6">
+          <h1><strong>Detalhes do <%= @restaurant.name %></strong></h1>
+        </div>
+        <div class="col-6">
+          <%= cl_image_tag @restaurant.photo.key, height: 100, width: 100, crop: :fill %>
+        </div>
+      </div>
+      <h2 class="mb-4">Veja abaixo: </h2>
+      <h4><strong>Nome: </strong><%= @restaurant.name %> </h4>
+      <h4><strong>Endereço: </strong><%= @restaurant.address %> </h4>
+      <h4><strong>Categoria: </strong><%= @restaurant.category %> </h4>
+      <h4><strong>Telefone: </strong><%= @restaurant.phone %> </h4>
 
-<p>Nome: <%= @restaurant.name %> </p>
-<p>Endereço: <%= @restaurant.address %> </p>
-<p>Categoria: <%= @restaurant.category %> </p>
-<p>Telefone: <%= @restaurant.phone %> </p>
+
+
+      <% @restaurant.dishes.each do |dish| %>
+        <div class="card-product my-4 row card-show-rest">
+          <%= cl_image_tag dish.photo.key, crop: :fill %>
+          <div class="card-product-infos col-8">
+            <h2> <%= dish.name %> </h2>
+            <p>R$ <%= dish.price %> </p>
+            <p> <%= dish.description %> </p>
+          </div>
+          <div class="col-2">
+            <%= link_to "Detalhes", dish_path(dish), class:"btn btn-flat" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
