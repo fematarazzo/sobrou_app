@@ -7,7 +7,7 @@
     <%= simple_form_for :search, url: dishes_path, defaults: {label: false}, method: :get do |f| %>
       <div class="search-form-control-nav form-group">
         <div>
-          <%= f.input :address, input_html: { class:"form-control string required" }, label: false, placeholder: "Insira um endereço" %>
+          <%= f.input :address, input_html: { class:"form-control string required"}, label: false, placeholder: "Insira um endereço" %>
           <%= f.button :submit, "Buscar", class:"btn btn-flat-nav" %>
         </div>
       </div>
