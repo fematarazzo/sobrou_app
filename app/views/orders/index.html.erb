@@ -1,61 +1,57 @@
 
+<div class="container-fluid mt-4">
+  <div class="row justify-content-center">
 
-<div class="card-dish m-5 p-3 card-border" style="width: 50%">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse" style="width: 25%">
+      <div class="position-sticky pt-3">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+              Dashboard
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+              Pedidos
+            </a>
+          </li>
 
-  <h1>Lista de pedidos</h1>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              Minha Loja
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              Log out
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+
+<div class="card-dish m-3 p-3 card-border" style="width: 50%">
+
+  <h1>Lista de todos os pedidos</h1>
 </div>
 
 
-<table class="table">
-  <thead>
-    <tr>
-      <th >#</th>
-      <th >Name</th>
-      <th>Contato</th>
-      <th >Refeição</th>
-      <th >Preço</th>
-      <th >Data</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each order}}
-    <tr>
-      <td>{{user_id}}</td>
-        <td>{{created_at}}</td>
-
-
-    </tr>
-    {{/each}}
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-    </tr>
-  </tbody>
-</table>
-
-
-<div class="card-dish m-5 p-3 card-border" style="width: 50%">
 
     <% @orders.each do |order| %>
-   <p> Nome do cliente: <%= order.user.first_name %></p>
-    <p> Contato do cliente: <%= order.user.phone %> </p>
-    <p> Preço da refeição: <%= order.dish.price %></p>
-   <p> Refeição: <%= order.dish.name %></p>
-    <p> Data do pedido: <%= order.dish.created_at %></p>
-
+<div class="card-dish m-1 p-3 card-border" style="width: 50%">
+   <p> <strong>Nome do cliente: </strong><%= order.user.first_name %></p>
+    <p> <strong>Contato do cliente:</strong>  <%= order.user.phone %></p>
+    <p> <strong>Preço da refeição:</strong> R$ <%= order.dish.price %></p>
+   <p> <strong>Refeição: </strong><%= order.dish.name %></p>
+    <p> <strong>Data do pedido: </strong><%= order.dish.created_at %></p>
+  </div>
     <% end %>
   </div>
-  </div>
 </div>
-
-
-
 
 
 
