@@ -3,25 +3,16 @@
     <%= link_to root_path, class: "navbar-brand" do %>
         Sobrou
       <% end %>
-
   <div class="nav-search">
-    <%= simple_form_for :search, url: dishes_path, method: :get do |f| %>
+    <%= simple_form_for :search, url: dishes_path, defaults: {label: false}, method: :get do |f| %>
       <div class="search-form-control-nav form-group">
-        <input class="form-control string required" type="text" value="<%= params[:address] %>" name="address" id="search_query" />
-        <button name="button" type="submit" class="btn btn-flat-nav">
-          <i class="fas fa-search"></i>
-        </button>
+        <div>
+          <%= f.input :address, input_html: { class:"form-control string required" }, label: false, placeholder: "Insira um endereço" %>
+          <%= f.button :submit, "Buscar", class:"btn btn-flat-nav" %>
+        </div>
       </div>
-      <%= f.input :category,
-            as: :check_boxes,
-            label: false,
-            input_html: { class: "tag-selector" },
-            item_wrapper_class: 'tag-item',
-            collection: ["Árabe", "Chinesa", "Japonesa", "Lanche", "Marmita", "Padaria", "Pizza"]
-             %>
     <% end %>
   </div>
-
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -36,13 +27,13 @@
               <%= link_to "Gerenciar meus restaurantes", restaurants_path, class: "nav-link" %>
             </li>
           <% end %>
-          <li class="nav-item dropdown">
-            <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <%= link_to "Meu Perfil", profile_path(current_user), class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-            </div>
-          </li>
+          <li class="nav-item">
+              <%= link_to "Meu Perfil", profile_path(current_user), class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %>
+            </li>
+          <%= cl_image_tag current_user.photo.key, class: "avatar", 'aria-haspopup': true, 'aria-expanded': false %>
         <% else %>
           <li class="nav-item">
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>
@@ -58,17 +49,6 @@
 
 <div class="container mt-4">
 
-  <div class="list-buttons d-flex justify-content-between mt-5 mb-5">
-      <%= link_to "Lanche", dishes_path({category: "Lanche"}), class: "btn btn-flat" %>
-      <%= link_to "Marmita", dishes_path({category: "Marmita"}), class: "btn btn-flat" %>
-      <%= link_to "Japonesa", dishes_path({category: "Japonesa"}), class: "btn btn-flat" %>
-      <%= link_to "Pizza", dishes_path({category: "Pizza"}), class: "btn btn-flat" %>
-      <%= link_to "Padaria", dishes_path({category: "Padaria"}), class: "btn btn-flat" %>
-      <%= link_to "Árabe", dishes_path({category: "Árabe"}), class: "btn btn-flat" %>
-      <%= link_to "Chinesa", dishes_path({category: "Chinesa"}), class: "btn btn-flat" %>
-    </div>
-  
-  
   <div class="row">
 
     <div class="col-7">

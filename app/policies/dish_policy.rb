@@ -24,15 +24,15 @@ class DishPolicy < ApplicationPolicy
   def edit?
     # @restaurant.id
     # record ==> @dish
-    true
+    owner?
   end
 
   def update?
-    true
+    owner?
   end
 
   def destroy?
-    true
+    owner?
   end
 
   private

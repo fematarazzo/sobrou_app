@@ -3,18 +3,14 @@
 }
 
 .search-form-control .btn {
-  position: absolute;
-  top: 93px;
-  bottom: 8px;
-  right: 8px;
-}
-
-.btn-search {
-  height: 3.5rem;
+ float: right;
+ margin-right: 6px;
+ margin-top: -65px;
+ position: relative;
 }
 
 .search-form-control .form-control {
-  height: 4rem;
+  height: 3.5rem;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   border: 1px solid #E7E7E7;
 }
@@ -31,10 +27,10 @@
 }
 
 .search-form-control-nav .btn {
-  position: absolute;
-  top: 5px;
-  bottom: 5px;
-  right: 5px;
+ float: right;
+ margin-right: 5px;
+ margin-top: -54px;
+ position: relative;
 }
 
 .search-form-control-nav .form-control {
