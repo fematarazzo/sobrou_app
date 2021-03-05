@@ -19,7 +19,14 @@
 
 .mb-3 {
   color: #454851;
+  margin: 10px 0;
 }
+
+.mb-3:hover {
+  color: black;
+  text-decoration: none;
+}
+
 
 
 .card-profile-menu{
@@ -98,6 +105,7 @@
   color: green;
 }
 
+
 .card-category{
   background-size: cover;
   background-position: center;
@@ -119,3 +127,8 @@
   font-weight: bold;
   border-radius: 7px;
 }
+
+.card-show-rest {
+  width: 900px;
+}
+
