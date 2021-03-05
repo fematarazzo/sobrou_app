@@ -10,7 +10,7 @@ import "channels"
 import { initMapbox } from '../plugins/init_mapbox';
 import { loadDynamicBannerText } from '../components/banner';
 import { initSelect2 } from '../plugins/init_select2';
-
+import { initSweetalert } from '../plugins/init_sweetalert';
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
@@ -29,6 +29,20 @@ import "bootstrap";
 
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
-  loadDynamicBannerText();
+  //loadDynamicBannerText();
   initSelect2();
+
+  initSweetalert('#sweet-alert-demo', {
+    position: 'top-end',
+    icon: 'success',
+    title: 'Reserva Agendada!',
+    showConfirmButton: false,
+    timer: 1500
+  }, (value) => {
+    if (value) {
+      const link = document.querySelector('#delete-link');
+      link.click();
+    }
+  });
+
 });

@@ -15,7 +15,8 @@
           <p class="ml-2"> <%= @dish.price %> </p>
           <hr>
           <%= simple_form_for [@dish, @order] do |f| %>
-            <%= f.button :submit, class:"btn btn-flat" %>
+            <button id="sweet-alert-demo" class="btn btn-flat">Create Order</button>
+  
           <% end %>
         </div>
       </div>
