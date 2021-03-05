@@ -47,37 +47,31 @@
   </div>
 </nav>
 
-<div class="container mt-4">
-
-  <div class="row">
-
-    <div class="col-7">
-<!-- # Iteracao sobre cada um dos pratos -->
-      <div class="row">
-        <% if @dishes.present? %>
-          <h1>Pratos disponíveis próximos a você</h1>
-          <p>Aqui embaixo você encontra os pratos disponibilizados por restaurantes próximos a você</p>
-          <% @dishes.each do |dish| %>
-            <div class="card m-2 card-main card-border col-5" style="width: 100%">
-              <div class="card-image">
-                <%= cl_image_tag dish.photo.key, class:"card-img-top mt-2" %>
-              </div>
-  <!--  #corpo com texto do card -->
-              <div class="card-body">
-                <%= link_to dish_path(dish), class:"card-link card-title" do %>
-                  <h5 class="card-title"> <%= dish.name %></h5>
-                <% end %>
-                <p class="card-text"> R$<%= dish.price %></p>
-              </div>
+<div class="container mt-5">
+  <h1 class="title-h1">Pratos disponíves próximos a você</h1>
+  <h3>Clique em um dos pratos, faça sua reserva, mate sua fome e ainda ajude o planeta!</h3>
+  <div class="row justify-content-between">
+    <% @dishes.each do |dish| %>
+      <div class="card mb-3" style="max-width: 550px">
+        <div class="row g-0">
+          <div class="col-md-6">
+            <%= cl_image_tag dish.photo.key, width: 300 %>
+          </div>
+          <div class="col-md-6">
+            <div class="card-body">
+              <h4 class="card-title"> <%= dish.name %> </h4>
+              <h5 class="card-text"><strong><%= dish.restaurant.name %></strong> </h5>
+              <p class="card-text">R$ <%= dish.price %> </p>
+              <p class="card-text"><%= dish.description %> </p>
+              <%= link_to "Veja detalhes", dish_path(dish), class:"btn btn-flat" %>
             </div>
-          <% end %>
-        <% else %>
-        <hr>
-        <h2>Não temos pratos deste tipo próximos a você</h2>
-        <% end %>
+          </div>
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
+
+
 </div>
 
 
