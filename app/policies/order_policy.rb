@@ -7,32 +7,27 @@ class OrderPolicy < ApplicationPolicy
 
   def show?
     # Pro usuario que criou ela ou pro restaurante que e dono dessa ordem
-    true
-  end
-
-  def new?
-    # Somente um usuario
-    true
+    owner?
   end
 
   def create?
     # Somente um usuario
-    true
+    owner?
   end
 
   def edit?
     # somente o restaurante
-    true
+    owner?
   end
 
   def update?
     # soemtne o restraurtnte
-    true
+    owner?
   end
 
   def destroy?
     # Pro usuario que criou ela ou pro restaurante que e dono dessa ordem
-    true
+    owner?
   end
 
   private
