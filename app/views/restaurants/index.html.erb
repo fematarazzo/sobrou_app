@@ -4,7 +4,7 @@
   <% @restaurants.each do |restaurant| %>
     <div class="card-product my-4 row">
       <div class="col-2">
-        <%= cl_image_tag restaurant.photo.key, height: 300, width: 300, crop: :fill %>
+        <%= cl_image_tag restaurant.photo.key, height: 300, width: 300, crop: :fill%>
       </div>
       <div class="card-product-infos col-7">
         <h2><%= restaurant.name %></h2>

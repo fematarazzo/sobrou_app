@@ -3,7 +3,7 @@
   <%= f.input :address %>
   <%= f.input :category, collection: ["Árabe", "Chinesa", "Japonesa", "Lanche", "Marmita", "Padaria", "Pizza"]  %>
   <%= f.input :phone %>
-  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+  <%= f.input :photo, as: :file %>
   <%= f.button :submit, class:"btn-dashboard btn-primeiro" %>
 <% end %>
 
