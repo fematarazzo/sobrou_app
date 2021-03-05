@@ -48,6 +48,7 @@
 .card-dish {
   width: 900px;
   background-color: white;
+
 }
 
 .card-space {
@@ -97,3 +98,13 @@
 .card-title:hover {
   color: green;
 }
+
+.card-login {
+  width: 650px;
+  background-color: white;
+  margin: 0 auto;
+
+}
+.card-border-login { box-shadow: 3px 3px 3px 3px white;
+   border-radius: 20px;
+ }

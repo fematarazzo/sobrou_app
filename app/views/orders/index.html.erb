@@ -1,15 +1,63 @@
 
-<div class="container mt-4">
+
+<div class="card-dish m-5 p-3 card-border" style="width: 50%">
 
   <h1>Lista de pedidos</h1>
+</div>
 
+
+<table class="table">
+  <thead>
+    <tr>
+      <th >#</th>
+      <th >Name</th>
+      <th>Contato</th>
+      <th >Refeição</th>
+      <th >Preço</th>
+      <th >Data</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each order}}
+    <tr>
+      <td>{{user_id}}</td>
+        <td>{{created_at}}</td>
+
+
+    </tr>
+    {{/each}}
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2">Larry the Bird</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<div class="card-dish m-5 p-3 card-border" style="width: 50%">
 
     <% @orders.each do |order| %>
-    <%= order.user.first_name %>
-    <%= order.user.phone %>
-    <%= order.dish.price %>
-    <%= order.dish.description %>
+   <p> Nome do cliente: <%= order.user.first_name %></p>
+    <p> Contato do cliente: <%= order.user.phone %> </p>
+    <p> Preço da refeição: <%= order.dish.price %></p>
+   <p> Refeição: <%= order.dish.name %></p>
+    <p> Data do pedido: <%= order.dish.created_at %></p>
 
-
-  <% end %>
+    <% end %>
+  </div>
+  </div>
 </div>
+
+
+
+
+
+
+
+
