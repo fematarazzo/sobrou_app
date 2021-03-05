@@ -1,8 +1,14 @@
 class OrdersController < ApplicationController
   def index
-    @orders = policy_scope(Order)
     @restaurant = Restaurant.find(params[:restaurant_id])
-    @orders = Order.all.select { |order| @restaurant == order.dish.restaurant }
+    @orders = policy_scope(Order).select { |order| @restaurant == order.dish.restaurant }
+  end
+
+  def index_today
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @orders = policy_scope(Order).where( "created_at >= ? AND created_at <= ?", Date.today.beginning_of_day, Date.today.end_of_day)
+    @orders = @orders.select { |order| @restaurant == order.dish.restaurant }
+
   end
 
   def show

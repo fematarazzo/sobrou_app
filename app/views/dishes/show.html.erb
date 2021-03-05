@@ -1,6 +1,6 @@
 <div class="container mt-4">
 
-  <h1><%= @dish.restaurant.name %> - <%= @dish.name %></h1>
+  <h1><b><%= @dish.restaurant.name %></b> - <%= @dish.name %></h1>
 
   <h4><b>Retire seu pedido em:</b> <%= @dish.restaurant.address %></h4>
 
@@ -10,14 +10,18 @@
         <%= cl_image_tag @dish.photo.key, height: 300, width: 400, crop: :fill %>
         <p> <%= @dish.description %> </p>
         <hr>
-        <div class="d-flex justify-content-left">
-          <p>Preço:</p>
-          <p class="ml-2"> <%= @dish.price %> </p>
-          <hr>
+        <div class="d-flex justify-content-between">
+        <ul>
+          <li><b>Preço:</b> <%= @dish.price %></li>
+          <li><b>Tipo:</b> <%= @dish.restaurant.category %></li>
+          <li><b>Retirada até às</b> <%= @dish.pickup %></li>
+        </ul>
           <%= simple_form_for [@dish, @order] do |f| %>
-            <%= f.button :submit, class:"btn btn-flat" %>
+            <button id="sweet-alert-demo" class="btn btn-flat">Create Order</button>
+  
           <% end %>
         </div>
+
       </div>
     </div>
   </div>
