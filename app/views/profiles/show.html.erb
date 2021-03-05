@@ -15,7 +15,7 @@
       </div>
 
       <div class= "d-flex flex-column align-items-center">
-        <h6><%= @orders.size * 2.56 %></h6>
+        <h6><%= @orders.size * 0.46 %></h6>
         <p class="mt-2">Kg salvos</p>
       </div>
     </div>
@@ -71,6 +71,7 @@
           <% @orders.each do |order| %>
             <div class="card p-3">
             <p><strong><%=order.dish.restaurant.name%> - <%= order.dish.restaurant.category%></strong></p>
+            <p><%=order.dish.name%></p>
             <p><%=order.dish.restaurant.address%></p>
             <p>R$<%=order.dish.price %></p>
           </div>
