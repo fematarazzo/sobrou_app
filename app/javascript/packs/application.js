@@ -10,6 +10,7 @@ import "channels"
 import { initMapbox } from '../plugins/init_mapbox';
 import { loadDynamicBannerText } from '../components/banner';
 import { initSelect2 } from '../plugins/init_select2';
+import { initAutocomplete } from '../plugins/init_autocomplete';
 
 Rails.start()
 Turbolinks.start()
@@ -31,4 +32,5 @@ document.addEventListener('turbolinks:load', () => {
   initMapbox();
   loadDynamicBannerText();
   initSelect2();
+  initAutocomplete();
 });
