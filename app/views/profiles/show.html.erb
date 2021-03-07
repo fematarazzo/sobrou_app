@@ -70,10 +70,17 @@
           <% unless @orders.empty? %>
           <% @orders.each do |order| %>
             <div class="card p-3">
-            <h3><strong><%=order.dish.restaurant.name%></strong></h3>
-            <h6><strong>Nome:</strong> <%=order.dish.name%></h6>
-            <h6><strong>Endereço:</strong> <%=order.dish.restaurant.address%></h6>
-            <h6><strong>Preço:</strong> R$<%=order.dish.price %></h6>
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <h3><strong><%=order.dish.restaurant.name%></strong></h3>
+                  <h6><strong>Nome:</strong> <%=order.dish.name%></h6>
+                  <h6><strong>Endereço:</strong> <%=order.dish.restaurant.address%></h6>
+                  <h6><strong>Preço:</strong> R$<%=order.dish.price %></h6>
+                </div>
+                <div>
+                  <%= link_to "Ver pedido", order_path(order), class:"btn btn-flat" %>
+                </div>
+              </div>
           </div>
           <% end %>
         <% else %>
