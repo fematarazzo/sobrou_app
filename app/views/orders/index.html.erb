@@ -39,17 +39,15 @@
   <h1>Lista de todos os pedidos</h1>
 </div>
 
-
-
-    <% @orders.each do |order| %>
-<div class="card-dish m-1 p-3 card-border" style="width: 50%">
-   <p> <strong>Nome do cliente: </strong><%= order.user.first_name %></p>
-    <p> <strong>Contato do cliente:</strong>  <%= order.user.phone %></p>
-    <p> <strong>Preço da refeição:</strong> R$ <%= order.dish.price %></p>
-   <p> <strong>Refeição: </strong><%= order.dish.name %></p>
-    <p> <strong>Data do pedido: </strong><%= order.dish.created_at %></p>
-  </div>
-    <% end %>
+  <% @orders.each do |order| %>
+    <div class="card-dish m-1 p-3 card-border" style="width: 50%">
+      <p> <strong>Nome do cliente: </strong><%= order.user.first_name %></p>
+      <p> <strong>Contato do cliente:</strong>  <%= order.user.phone %></p>
+      <p> <strong>Preço da refeição:</strong> R$ <%= order.dish.price %></p>
+      <p> <strong>Refeição: </strong><%= order.dish.name %></p>
+      <p> <strong>Data do pedido: </strong><%= order.dish.created_at %></p>
+    </div>
+  <% end %>
   </div>
 </div>
 

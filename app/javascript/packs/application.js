@@ -39,7 +39,7 @@ document.addEventListener('turbolinks:load', () => {
     icon: 'success',
     title: 'Reserva Agendada!',
     showConfirmButton: false,
-    timer: 1500
+    timer: 3000
   }, (value) => {
     if (value) {
       const link = document.querySelector('#delete-link');
