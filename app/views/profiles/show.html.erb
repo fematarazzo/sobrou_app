@@ -4,19 +4,19 @@
     <%= cl_image_tag current_user.photo.key, height: 150, width: 150, class:"avatar-profile" %>
     </div>
     <div class="text-center">
-      <h3 class="p-3"><%= current_user.first_name.capitalize %> <%=current_user.last_name.capitalize  %></h3>
-      <h5 class="mt-2">Minhas Contribuições</h5>
+      <h1 class="p-3"><%= current_user.first_name.capitalize %> <%=current_user.last_name.capitalize  %></h1>
+      <h3 class="mt-2">Minhas Contribuições</h3>
     </div>
 
     <div class="d-flex justify-content-around mt-4">
       <div class= "d-flex flex-column align-items-center">
-        <h6><%= @orders.empty? ? "0" : @orders.size%> </h6>
-        <p class="mt-2">Refeições salvas</p>
+        <h5><%= @orders.empty? ? "0" : @orders.size%> </h5>
+        <h5 class="mt-2 pb-3">Refeições salvas</h5>
       </div>
 
       <div class= "d-flex flex-column align-items-center">
-        <h6><%= @orders.size * 0.46 %></h6>
-        <p class="mt-2">Kg salvos</p>
+        <h5><%= @orders.size * 0.46 %></h5>
+        <h5 class="mt-2 pb-3">Kg salvos</h5>
       </div>
     </div>
   </div>
@@ -39,13 +39,13 @@
        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
         <div class="card-body">
           <div class="d-flex flex-column">
-            <h4>Nome:</h4>
+            <h4><strong>Nome:</strong></h4>
             <%= current_user.first_name.capitalize %> <%=  current_user.last_name.capitalize %>
-              <h4 class="mt-4">E-mail:</h4>
+              <h4 class="mt-4"><strong>E-mail:</strong></h4>
               <%=  current_user.email %>
-              <h4 class="mt-4">Telefone:</h4>
+              <h4 class="mt-4"><strong>Telefone:</strong></h4>
               <%=  current_user.phone %>
-              <h4 class="mt-4">Data de Nascimento:</h4>
+              <h4 class="mt-4"><strong>Data de Nascimento:</strong></h4>
               <%=  current_user.birthday %>
               <p> <%= link_to "Editar dados", edit_user_registration_path %></p>
           </div>
@@ -70,10 +70,10 @@
           <% unless @orders.empty? %>
           <% @orders.each do |order| %>
             <div class="card p-3">
-            <p><strong><%=order.dish.restaurant.name%> - <%= order.dish.restaurant.category%></strong></p>
-            <p><%=order.dish.name%></p>
-            <p><%=order.dish.restaurant.address%></p>
-            <p>R$<%=order.dish.price %></p>
+            <h3><strong><%=order.dish.restaurant.name%></strong></h3>
+            <h6><strong>Nome:</strong> <%=order.dish.name%></h6>
+            <h6><strong>Endereço:</strong> <%=order.dish.restaurant.address%></h6>
+            <h6><strong>Preço:</strong> R$<%=order.dish.price %></h6>
           </div>
           <% end %>
         <% else %>

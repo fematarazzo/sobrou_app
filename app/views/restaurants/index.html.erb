@@ -7,8 +7,8 @@
         <%= cl_image_tag restaurant.photo.key, height: 300, width: 300, crop: :fill%>
       </div>
       <div class="card-product-infos col-7">
-        <h2><%= restaurant.name %></h2>
-        <p>Endereço: <%= restaurant.address %> </p>
+        <h3><%= restaurant.name %></h3>
+        <h5><strong>Endereço: </strong><%= restaurant.address %> </h5>
       </div>
       <div class="col-3">
         <%= link_to "Dashboard de #{restaurant.name}", restaurant_dashboard_path(restaurant), class:"btn-flat" %>
