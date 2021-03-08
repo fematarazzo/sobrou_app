@@ -3,4 +3,8 @@ class Dish < ApplicationRecord
   has_many :orders
   validates :price, :description, :quantity, presence: true
   has_one_attached :photo
+
+  def rating
+    self.orders.pluck(:rating).sum / self.orders.count
+  end
 end

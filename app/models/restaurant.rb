@@ -10,6 +10,10 @@ class Restaurant < ApplicationRecord
 
   after_create :update_owner
 
+  def rating
+    self.dishes.pluck(:rating).sum / self.dishes.count
+  end
+
   private
 
   def update_owner
