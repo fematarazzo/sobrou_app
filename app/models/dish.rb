@@ -5,6 +5,8 @@ class Dish < ApplicationRecord
   has_one_attached :photo
 
   def rating
+    return 0 unless orders.pluck(:rating)
+
     self.orders.pluck(:rating).sum / self.orders.count
   end
 end

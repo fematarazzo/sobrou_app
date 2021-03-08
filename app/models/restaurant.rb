@@ -11,7 +11,9 @@ class Restaurant < ApplicationRecord
   after_create :update_owner
 
   def rating
-    self.dishes.pluck(:rating).sum / self.dishes.count
+    return 0 unless orders.pluck(:rating)
+
+    self.orders.pluck(:rating).sum / self.orders.count
   end
 
   private

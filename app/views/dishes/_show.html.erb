@@ -16,7 +16,9 @@
       <div class="card-body">
         <h4> <%= link_to "Veja todos os pratos de #{dish.restaurant.name}", restaurant_path(dish.restaurant),  class:"card-title" %> </h4>
         <h5 class="card-title"> <%="Avaliação de #{dish.restaurant.name}:"%>
-            <i class="fas fa-star"></i>
+            <% dish.restaurant.rating.times do %>
+              <i class="fas fa-star"></i>
+            <% end %>
         </h5>
         <hr>
         <h5 class="card-text"> <%= dish.description %> </h5>
