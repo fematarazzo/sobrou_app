@@ -4,6 +4,11 @@
       <div class="row">
         <div class="col-6">
           <h1><strong>Detalhes do <%= @restaurant.name %></strong></h1>
+          <h2>
+            <% @restaurant.rating.times do %>
+              <i class="fas fa-star"></i>
+            <% end %>
+          </h2>
         </div>
         <div class="col-6">
           <%= cl_image_tag @restaurant.photo.key, height: 100, width: 100, crop: :fill %>
@@ -21,12 +26,13 @@
         <div class="card-product my-4 row card-show-rest">
           <%= cl_image_tag dish.photo.key, crop: :fill %>
           <div class="card-product-infos col-8">
-            <h2> <%= dish.name %> </h2>
+            <h2 class="card-title"><%= dish.name %>
+              <% dish.rating.times do %>
+                <i class="fas fa-star"></i>
+              <% end %>
+            </h2>
             <p>R$ <%= dish.price %> </p>
             <p> <%= dish.description %> </p>
-          </div>
-          <div class="col-2">
-            <%= link_to "Detalhes", dish_path(dish), class:"btn btn-flat" %>
           </div>
         </div>
       <% end %>

@@ -38,8 +38,8 @@ class OrdersController < ApplicationController
   end
 
   def update
-    @dish.update(dish_params)
-    redirect_to dish_path(@dish)
+    @order.update(order_params)
+    redirect_to root_path
   end
 
   def destroy

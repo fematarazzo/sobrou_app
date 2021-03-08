@@ -7,7 +7,7 @@
     <%= simple_form_for :search, url: dishes_path, defaults: {label: false}, method: :get do |f| %>
       <div class="search-form-control-nav form-group">
         <div>
-          <%= f.input :address, input_html: { class:"form-control string required"}, label: false, placeholder: "Insira um endereço" %>
+          <%= f.input :address, input_html: { class:"form-control string required"}, label: false, placeholder: "Insira seu endereço de retirada" %>
           <%= f.button :submit, "Buscar", class:"btn btn-flat-nav" %>
         </div>
       </div>
@@ -58,18 +58,25 @@
   <div class="row justify-content-between">
     <% @dishes.each do |dish| %>
       <% if dish.quantity > 0 %>
-        <div class="card mb-3" style="max-width: 550px">
-          <div class="row g-0">
-            <div class="col-md-6">
-              <%= cl_image_tag dish.photo.key, width: 300 %>
+        <div class="card mb-3 rounded" style="max-width: 560px">
+          <div class="row g-0 align-items-center rounded">
+            <div class="col-md-6 ">
+              <%= cl_image_tag dish.photo.key, width: 300, class:"rounded" %>
             </div>
             <div class="col-md-6">
               <div class="card-body">
-                <h4 class="card-title"> <%= dish.name %> </h4>
+                <h4 class="card-title">
+                  <%= dish.name %>
+                  <h5 class="card-title">
+                    <% dish.rating.times do %>
+                      <i class="fas fa-star"></i>
+                    <% end %>
+                  </h5>
+                </h4>
                 <h5 class="card-text"><strong><%= dish.restaurant.name %></strong> </h5>
                 <p class="card-text">R$ <%= dish.price %> </p>
                 <p class="card-text"><%= dish.description %> </p>
-
+                <hr>
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-flat" data-toggle="modal" data-target=<%="#dish-#{dish.id}"%>>
                   Veja detalhes
