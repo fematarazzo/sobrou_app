@@ -17,15 +17,20 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new
     @dish = Dish.find(params[:dish_id])
+    @restaurant = @dish.restaurant
     @order.dish = @dish
     @order.user = current_user
     authorize @order
-    if @order.save
-      @dish.quantity = @dish.quantity - 1
-      @dish.save
-      redirect_to order_path(@order)
+    if @order.user.owner
+      redirect_to restaurant_orders_path(@restaurant)
     else
-      render "dishes/show"
+      if @order.save
+        @dish.quantity = @dish.quantity - 1
+        @dish.save
+        redirect_to order_path(@order)
+      else
+        render "dishes/show"
+      end
     end
   end
 
@@ -33,8 +38,8 @@ class OrdersController < ApplicationController
   end
 
   def update
-    @dish.update(dish_params)
-    redirect_to dish_path(@dish)
+    @order.update(order_params)
+    redirect_to root_path
   end
 
   def destroy

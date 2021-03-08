@@ -105,6 +105,7 @@
 
 .card-title:hover {
   color: green;
+  text-decoration: none;
 }
 
 
@@ -141,4 +142,10 @@
 
 .card-show-rest {
   width: 900px;
+}
+
+.bcolor {
+  color: white;
+  font-weight: bold;
+  padding:8px
 }

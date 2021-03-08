@@ -22,17 +22,12 @@ class DishesController < ApplicationController
     @restaurants.each do |restaurant|
       restaurant.dishes.each { |dish| @dishes << dish }
     end
+    @order = Order.new
   end
 
   def index_owner
     @restaurant = Restaurant.find(params[:restaurant_id])
     @dishes = policy_scope(Dish).select { |dish| @restaurant == dish.restaurant }
-
-  end
-
-
-  def show
-    @order = Order.new
   end
 
   def new
@@ -75,6 +70,6 @@ class DishesController < ApplicationController
   end
 
   def dish_params
-    params.require(:dish).permit(:name, :price, :description, :quantity, :photo)
+    params.require(:dish).permit(:name, :price, :description, :quantity, :photo, :start_time, :end_time, :date)
   end
 end
