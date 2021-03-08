@@ -26,5 +26,13 @@
       <p><%= @order.dish.restaurant.address%></p>
       <p><%= @order.dish.restaurant.phone%></p>
     </div>
+
+    <div class="card-border ml-2 p-3" >
+      <%= simple_form_for @order do |f| %>
+        <%= f.input :rating, label: "Avalie seu pedido (0 - 5)" %>
+        <%= f.button :submit, "Enviar e voltar para home", class:"btn btn-flat" %>
+      <% end %>
+    </div>
+
       <p class="text-center mt-2"><%= link_to "Voltar para Home", root_path, class:"btn btn-flat" %></p>
 </div>

@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:create, :index]
   end
   resources :profiles, only: [:show]
-  resources :orders, only: [:show]
+  resources :orders, only: [:show, :update]
 
   root to: 'pages#home'
 end
