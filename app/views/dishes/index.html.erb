@@ -52,26 +52,26 @@
   <h3>Clique em um dos pratos, faça sua reserva, mate sua fome e ainda ajude o planeta!</h3>
   <div class="row justify-content-between">
     <% @dishes.each do |dish| %>
-      <div class="card mb-3" style="max-width: 550px">
-        <div class="row g-0">
-          <div class="col-md-6">
-            <%= cl_image_tag dish.photo.key, width: 300 %>
-          </div>
-          <div class="col-md-6">
-            <div class="card-body">
-              <h4 class="card-title"> <%= dish.name %> </h4>
-              <h5 class="card-text"><strong><%= dish.restaurant.name %></strong> </h5>
-              <p class="card-text">R$ <%= dish.price %> </p>
-              <p class="card-text"><%= dish.description %> </p>
-              <%= link_to "Veja detalhes", dish_path(dish), class:"btn btn-flat" %>
+      <% if dish.quantity > 0 %>
+        <div class="card mb-3" style="max-width: 550px">
+          <div class="row g-0">
+            <div class="col-md-6">
+              <%= cl_image_tag dish.photo.key, width: 300 %>
+            </div>
+            <div class="col-md-6">
+              <div class="card-body">
+                <h4 class="card-title"> <%= dish.name %> </h4>
+                <h5 class="card-text"><strong><%= dish.restaurant.name %></strong> </h5>
+                <p class="card-text">R$ <%= dish.price %> </p>
+                <p class="card-text"><%= dish.description %> </p>
+                <%= link_to "Veja detalhes", dish_path(dish), class:"btn btn-flat" %>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
-
-
 </div>
 
 

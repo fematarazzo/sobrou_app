@@ -21,6 +21,8 @@ class OrdersController < ApplicationController
     @order.user = current_user
     authorize @order
     if @order.save
+      @dish.quantity = @dish.quantity - 1
+      @dish.save
       redirect_to order_path(@order)
     else
       render "dishes/show"

@@ -32,7 +32,8 @@ puts "Criando pratos..."
     name: ["Misto quente", "Empadinha", "Beirute", "Pão na chapa", "Bolovo", "Enroladinho"].sample,
     price: rand(5..20),
     description: "Lorem ipsum bacon queijo",
-    restaurant_id: padoca.id
+    restaurant_id: padoca.id,
+    quantity: 3
   )
   dish.photo.attach(io: File.open('app/assets/images/pao.jpg'), filename: 'pao.jpg', content_type: 'image/jpg')
   dish.save!
@@ -56,7 +57,8 @@ puts "Criando pratos..."
     name: ["Temaki", "Sushi", "Hossomaki", "Tempurá", "Lamen", "Gyoza"].sample,
     price: rand(5..20),
     description: "Lorem ipsum arroz peixe",
-    restaurant_id: japones.id
+    restaurant_id: japones.id,
+    quantity: 3
   )
   dish.photo.attach(io: File.open('app/assets/images/temaki.jpg'), filename: 'temaki.jpg', content_type: 'image/jpg')
   dish.save!
@@ -80,7 +82,8 @@ puts "Criando pratos..."
     name: ["Feijoada", "PF com ovo", "Bife com batata frita", "X-Canaleta", "Salada duvidosa", "Arroz e feijão"].sample,
     price: rand(5..20),
     description: "Lorem ipsum podrão duvidoso",
-    restaurant_id: boteco.id
+    restaurant_id: boteco.id,
+    quantity: 3
   )
   dish.photo.attach(io: File.open('app/assets/images/marmita.jpg'), filename: 'marmita.jpg', content_type: 'image/jpg')
   dish.save!
@@ -106,7 +109,8 @@ puts "Criando pratos..."
     name: ["Margherita", "Mussarela", "Pepperoni", "Portuguesa", "Catupiry", "Quatro queijos"].sample,
     price: rand(5..20),
     description: "Lorem ipsum massa molho de tomate",
-    restaurant_id: pizzaria.id
+    restaurant_id: pizzaria.id,
+    quantity: 3
   )
   dish.photo.attach(io: File.open('app/assets/images/pizza.jpg'), filename: 'pizza.jpg', content_type: 'image/jpg')
   dish.save!
@@ -130,7 +134,8 @@ puts "Criando pratos..."
     name: ["Kebab", "Esfiha", "Kibe", "Homus", "Kafta", "Babaganush"].sample,
     price: rand(5..20),
     description: "Lorem ipsum esfiha aberta",
-    restaurant_id: arabe.id
+    restaurant_id: arabe.id,
+    quantity: 3
   )
   dish.photo.attach(io: File.open('app/assets/images/esfiha.jpg'), filename: 'esfiha.jpg', content_type: 'image/jpg')
   dish.save!
@@ -154,7 +159,8 @@ puts "Criando pratos..."
     name: ["Yakissoba", "Arroz chop suey", "Frango Xadrez", "Dumpling", "Bolinho de carne", "Arroz frito"].sample,
     price: rand(5..20),
     description: "Lorem ipsum macarrão agridoce",
-    restaurant_id: chines.id
+    restaurant_id: chines.id,
+    quantity: 3
   )
   dish.photo.attach(io: File.open('app/assets/images/chinesa.jpg'), filename: 'chinesa.jpg', content_type: 'image/jpg')
   dish.save!
