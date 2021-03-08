@@ -21,11 +21,12 @@ class DishesController < ApplicationController
     @restaurants.each do |restaurant|
       restaurant.dishes.each { |dish| @dishes << dish }
     end
-  end
-
-  def show
     @order = Order.new
   end
+
+  # def show
+
+  # end
 
   def new
     @dish = Dish.new

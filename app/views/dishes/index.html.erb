@@ -48,6 +48,7 @@
 </nav>
 
 <div class="container mt-5">
+
   <h1 class="title-h1">Pratos disponíves próximos a você</h1>
   <h3>Clique em um dos pratos, faça sua reserva, mate sua fome e ainda ajude o planeta!</h3>
   <div class="row justify-content-between">
@@ -64,7 +65,20 @@
                 <h5 class="card-text"><strong><%= dish.restaurant.name %></strong> </h5>
                 <p class="card-text">R$ <%= dish.price %> </p>
                 <p class="card-text"><%= dish.description %> </p>
-                <%= link_to "Veja detalhes", dish_path(dish), class:"btn btn-flat" %>
+
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-flat" data-toggle="modal" data-target=<%="#dish-#{dish.id}"%>>
+                  Veja detalhes
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id=<%="dish-#{dish.id}"%> tabindex="-1" aria-labelledby=<%="#dish-#{dish.id}Label"%> aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content p-3">
+                      <%= render 'show', dish: dish, order: @order %>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

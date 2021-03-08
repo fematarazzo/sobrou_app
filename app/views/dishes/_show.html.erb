@@ -1,0 +1,25 @@
+<div class="row no-gutters align-items-center">
+  <div class="col-md-6">
+    <%= cl_image_tag dish.photo.key, height: 300, width: 400, crop: :fill %>
+  </div>
+  <div class="col-md-6">
+    <div class="card-body">
+      <h1 class="card-title"><%= dish.name %></h5>
+      <h4> <%= link_to "Veja todos os pratos de #{dish.restaurant.name}", restaurant_path(dish.restaurant),  class:"card-title" %> </h4>
+      <hr>
+      <h4 class="card-text"> <%= dish.description %> </h4>
+      <h4 class="card-text"><b>Preço:</b> <%= dish.price %></h4>
+      <hr>
+      <h4 class="card-text"> <b>Retire seu pedido em:</b> <%= dish.restaurant.address %></h4>
+      <h4 class="card-text"><b>Retirada até às</b> <%= dish.pickup %></h4>
+    </div>
+    <div class="ml-3">
+      <%= simple_form_for [dish, order] do |f| %>
+        <button id="sweet-alert-demo" class="btn btn-flat">Reserve já!</button>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
