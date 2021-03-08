@@ -50,7 +50,6 @@ ActiveRecord::Schema.define(version: 2021_03_08_194308) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
-    t.string "pickup"
     t.integer "quantity"
     t.time "start_time"
     t.time "end_time"

@@ -33,7 +33,9 @@ puts "Criando pratos..."
     price: rand(5..20),
     description: "Lorem ipsum bacon queijo",
     restaurant_id: padoca.id,
-    quantity: 3
+    quantity: 3,
+    start_time: Time.now,
+    end_time: Time.now + 30000
   )
   dish.photo.attach(io: File.open('app/assets/images/pao.jpg'), filename: 'pao.jpg', content_type: 'image/jpg')
   dish.save!
@@ -79,7 +81,9 @@ puts "Criando pratos..."
     price: rand(5..20),
     description: "Lorem ipsum arroz peixe",
     restaurant_id: japones.id,
-    quantity: 3
+    quantity: 3,
+    start_time: Time.now,
+    end_time: Time.now + 30000
   )
   dish.photo.attach(io: File.open('app/assets/images/temaki.jpg'), filename: 'temaki.jpg', content_type: 'image/jpg')
   dish.save!
@@ -124,7 +128,9 @@ puts "Criando pratos..."
     price: rand(5..20),
     description: "Lorem ipsum podrão duvidoso",
     restaurant_id: boteco.id,
-    quantity: 3
+    quantity: 3,
+    start_time: Time.now,
+    end_time: Time.now + 30000
   )
   dish.photo.attach(io: File.open('app/assets/images/marmita.jpg'), filename: 'marmita.jpg', content_type: 'image/jpg')
   dish.save!
@@ -171,7 +177,9 @@ puts "Criando pratos..."
     price: rand(5..20),
     description: "Lorem ipsum massa molho de tomate",
     restaurant_id: pizzaria.id,
-    quantity: 3
+    quantity: 3,
+    start_time: Time.now,
+    end_time: Time.now + 30000
   )
   dish.photo.attach(io: File.open('app/assets/images/pizza.jpg'), filename: 'pizza.jpg', content_type: 'image/jpg')
   dish.save!
@@ -216,7 +224,9 @@ puts "Criando pratos..."
     price: rand(5..20),
     description: "Lorem ipsum esfiha aberta",
     restaurant_id: arabe.id,
-    quantity: 3
+    quantity: 3,
+    start_time: Time.now,
+    end_time: Time.now + 30000
   )
   dish.photo.attach(io: File.open('app/assets/images/esfiha.jpg'), filename: 'esfiha.jpg', content_type: 'image/jpg')
   dish.save!
@@ -261,7 +271,9 @@ puts "Criando pratos..."
     price: rand(5..20),
     description: "Lorem ipsum macarrão agridoce",
     restaurant_id: chines.id,
-    quantity: 3
+    quantity: 3,
+    start_time: Time.now,
+    end_time: Time.now + 30000
   )
   dish.photo.attach(io: File.open('app/assets/images/chinesa.jpg'), filename: 'chinesa.jpg', content_type: 'image/jpg')
   dish.save!
