@@ -4,7 +4,10 @@
     <%= f.input :name, label: "Nome" %>
     <%= f.input :price, label: "Preço (R$)" %>
     <%= f.input :description, label: "Descrição do prato" %>
-    <%= f.input :pickup, label: "Horário de retirada" %>
+    <%= f.date_field :date, min: Date.today %>
+    <br>
+    <%= f.time_field :start_time %>
+    <%= f.time_field :end_time %>
     <%= f.input :quantity, label: "Quantidade de pratos" %>
     <%= f.input :photo, as: :file, label: "Insira uma foto" %>
     <%= f.button :submit, "Criar prato", class:"btn-dashboard btn-segundo"%>
