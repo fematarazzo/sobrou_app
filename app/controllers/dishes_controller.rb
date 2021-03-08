@@ -1,6 +1,7 @@
 class DishesController < ApplicationController
   before_action :set_dish, only: %i[show edit update destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_after_action :verify_authorized, only: [:index_owner]
 
   def index
     skip_policy_scope
@@ -22,6 +23,13 @@ class DishesController < ApplicationController
       restaurant.dishes.each { |dish| @dishes << dish }
     end
   end
+
+  def index_owner
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @dishes = policy_scope(Dish).select { |dish| @restaurant == dish.restaurant }
+
+  end
+
 
   def show
     @order = Order.new
@@ -55,7 +63,7 @@ class DishesController < ApplicationController
 
   def destroy
     @dish.destroy
-    redirect_to dishs_path
+    redirect_to restaurant_index_owner_path(@dish.restaurant)
   end
 
   private

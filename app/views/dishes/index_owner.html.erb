@@ -10,31 +10,57 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">
+             <%= link_to restaurant_dashboard_path(@restaurant), class: "nav-link" do %>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
               Dashboard
-            </a>
+          <% end %>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <%= link_to restaurant_orders_path(@restaurant), class: "nav-link" do %>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
               Pedidos
-            </a>
+            <% end  %>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <%= link_to restaurant_index_owner_path(@restaurant), class: "nav-link" do %>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
               Refeições
+              <% end %>
             </a>
           </li>
 
         </ul>
       </div>
     </nav>
-<div class="card-dish m-5 p-3 card-border-login" style="width: 50%">
-      <h1>Edite o seu prato aqui:</h1>
 
-<%= render 'form', dish: @dish, restaurant: @restaurant %>
+<div class="card-dish m-2 p-3 ml-5 card-border" style="width: 60%">
+
+  <h1>Refeições Disponíveis</h1>
 </div>
-</div>
-</div>
+
+
+  <div class="card-dish m-2 p-3 ml-5 card-border" style="width: 60%">
+    <% @dishes.each do |dish| %>
+      <% if dish.quantity > 0 %>
+        <div class="card mb-3 m-5 p-3" style="max-width: 650px">
+          <div class="row g-0">
+            <div class="col-md-6">
+              <%= cl_image_tag dish.photo.key, width: 300 %>
+            </div>
+            <div class="col-md-6">
+              <div class="card-body">
+                <h4 class="card-title"> <%= dish.name %> </h4>
+                <h5 class="card-text"><strong><%= dish.restaurant.name %></strong> </h5>
+                <p class="card-text">R$ <%= dish.price %> </p>
+                <p class="card-text"><%= dish.description %> </p>
+                <%= link_to "Editar", edit_dish_path(dish), class:"btn btn-flat" %>
+                <%= link_to "Excluir", dish_path(dish), method: :delete, data: { confirm: "Você tem certeza?" }, class:"btn btn-flat" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+

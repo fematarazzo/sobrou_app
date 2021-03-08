@@ -5,6 +5,10 @@ class DishPolicy < ApplicationPolicy
     end
   end
 
+  def index_owner?
+    true
+  end
+
   def show?
     true
   end
@@ -39,5 +43,6 @@ class DishPolicy < ApplicationPolicy
 
   def owner?
     record.restaurant.user == user
+
   end
 end
