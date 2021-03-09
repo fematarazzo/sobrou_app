@@ -25,7 +25,7 @@
         <h5 class="card-text"><b>Preço:</b> R$ <%= dish.price %></h5>
         <hr>
         <h5 class="card-text"> <b>Retire seu pedido em:</b> <%= dish.restaurant.address %></h5>
-        <h5 class="card-text"><b>Retirada entre às</b> <%= dish.start_time.to_formatted_s(:time) %> e <%= dish.end_time.to_formatted_s(:time) %></h5>
+        <h5 class="card-text"><b>Retirada entre às</b> <%= dish.start_time&.to_formatted_s(:time) %> e <%= dish.end_time&.to_formatted_s(:time) %></h5>
       </div>
       <div class="ml-3">
         <%= simple_form_for [dish, order] do |f| %>
