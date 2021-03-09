@@ -1,6 +1,6 @@
 class Dish < ApplicationRecord
   belongs_to :restaurant
-  has_many :orders
+  has_many :orders, dependent: :destroy
   validates :price, :description, :quantity, presence: true
   has_one_attached :photo
 
