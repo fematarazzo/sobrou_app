@@ -11,19 +11,15 @@ class Restaurant < ApplicationRecord
   after_create :update_owner
 
   def rating
-    # notas = self.orders.pluck(:rating)
-    # notas.each do |nota|
-    #   if nota.nil?
-    #     nota.pop
-    #   end
-    # end
-    notas = []
-
-    self.orders.pluck(:rating).each do |rating|
-      notas.append(rating) unless rating.nil?
+    if self.orders.empty?
+      0
+    else
+      notas = []
+      self.orders.pluck(:rating).each do |rating|
+        notas.append(rating) unless rating.nil?
+      end
+      notas.sum / notas.count
     end
-
-    notas.sum / notas.count
   end
 
   private

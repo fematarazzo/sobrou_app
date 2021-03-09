@@ -1,65 +1,31 @@
-
 <div class="container-fluid mt-4">
   <div class="row justify-content-center">
-
-    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse" style="width: 25%">
-      <div class="position-sticky pt-3">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <%= link_to restaurant_dashboard_path(@restaurant), class: "nav-link" do %>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-              Dashboard
-            <% end  %>
-          </li>
-          <li class="nav-item">
-            <%= link_to restaurant_orders_path(@restaurant), class: "nav-link" do %>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
-              Pedidos
-            <% end %>
-          </li>
-
-          <li class="nav-item">
-            <%= link_to restaurant_index_owner_path(@restaurant), class: "nav-link" do %>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-              Refeições
-            <% end %>
-          </li>
-
-        </ul>
-      </div>
-    </nav>
-
-
-<div class="card-dish m-2 p-3 card-border" style="width: 60%">
-
-  <h1>Lista de pedidos de hoje</h1>
-</div>
-
-<table class="table table-success table-striped" style="width: 60%">
-  <thead>
-    <tr>
-      <th scope="col">Nome do cliente: </th>
-      <th scope="col">Contato: </th>
-      <th scope="col">Refeição: </th>
-      <th scope="col">Preço: </th>
-      <th scope="col">Data: </th>
-    </tr>
-  </thead>
-  <tbody>
-   <% @orders.each do |order| %>
-    <tr>
-
-      <td><%= "#{order.user.first_name} #{order.user.last_name}" %></td>
-      <td><%= order.user.phone %></td>
-      <td><%= order.dish.name %></td>
-      <td><%= order.dish.price %></td>
-      <td><%= order.dish.created_at %></td>
-
-    </tr>
-    <% end %>
-
-
-
-
+  <%= render 'restaurants/sidebar', restaurant: @restaurant %>
+  <div class="card-dish m-3 p-3 card-border" style="width: 60%">
+    <h1>Lista de todos os pedidos</h1>
+  </div>
+  <table class="table table-success table-striped" style="width: 60%">
+    <thead>
+      <tr>
+        <th scope="col">Nome do cliente: </th>
+        <th scope="col">Contato: </th>
+        <th scope="col">Refeição: </th>
+        <th scope="col">Preço: </th>
+        <th scope="col">Data: </th>
+      </tr>
+    </thead>
+    <tbody>
+     <% @orders.each do |order| %>
+      <tr>
+        <td><%= "#{order.user.first_name} #{order.user.last_name}" %></td>
+        <td><%= order.user.phone %></td>
+        <td><%= order.dish.name %></td>
+        <td>R$ <%= order.dish.price %></td>
+        <td><%= order.dish.created_at.to_formatted_s(:short) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
   </div>
 </div>
+

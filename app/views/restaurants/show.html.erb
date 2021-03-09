@@ -1,5 +1,8 @@
 <div class="container mt-4">
   <div class="row justify-content-center">
+    <% if current_user.owner? %>
+      <%= render 'sidebar' %>
+    <% end %>
     <div class="col-10">
       <div class="row">
         <div class="col-6">
@@ -10,18 +13,20 @@
             <% end %>
           </h2>
         </div>
-        <div class="col-6">
+        <div class="col-3">
           <%= cl_image_tag @restaurant.photo.key, height: 100, width: 100, crop: :fill %>
         </div>
+        <% if current_user.owner? %>
+          <div class="col-3">
+            <%= link_to "Editar restaurante", edit_restaurant_path(@restaurant), class:"btn btn-flat" %>
+          </div>
+        <% end %>
       </div>
       <h2 class="mb-4">Veja abaixo: </h2>
       <h4><strong>Nome: </strong><%= @restaurant.name %> </h4>
       <h4><strong>Endereço: </strong><%= @restaurant.address %> </h4>
       <h4><strong>Categoria: </strong><%= @restaurant.category %> </h4>
       <h4><strong>Telefone: </strong><%= @restaurant.phone %> </h4>
-
-
-
       <% @restaurant.dishes.each do |dish| %>
         <div class="card-product my-4 row card-show-rest">
           <%= cl_image_tag dish.photo.key, crop: :fill %>

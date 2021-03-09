@@ -1,0 +1,30 @@
+<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse" style="width: 25%">
+  <div class="position-sticky pt-3">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <%= link_to restaurant_dashboard_path(@restaurant), class: "nav-link" do %>
+          <i class="fas fa-home"></i>
+          <%="Dashboard de #{@restaurant.name}"%>
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to restaurant_orders_path(@restaurant), class: "nav-link" do %>
+          <i class="fas fa-tasks"></i>
+          Pedidos
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%=link_to restaurant_index_owner_path(@restaurant), class: "nav-link" do %>
+          <i class="fas fa-utensils"></i>
+          Refeições
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%=link_to restaurant_path(@restaurant), class: "nav-link" do %>
+          <i class="fas fa-store"></i>
+          <%= "Perfil de #{@restaurant.name}" %>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</nav>
