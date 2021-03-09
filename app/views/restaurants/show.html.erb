@@ -5,32 +5,42 @@
     <% end %>
     <div class="col-10">
       <div class="row">
-        <div class="col-6">
-          <h1><strong>Detalhes do <%= @restaurant.name %></strong></h1>
-          <h2>
-            <% @restaurant.rating.times do %>
-              <i class="fas fa-star"></i>
-            <% end %>
-          </h2>
-        </div>
-        <div class="col-3">
-          <%= cl_image_tag @restaurant.photo.key, height: 100, width: 100, crop: :fill %>
-        </div>
-        <% if current_user.owner? %>
-          <div class="col-3">
-            <%= link_to "Editar restaurante", edit_restaurant_path(@restaurant), class:"btn btn-flat" %>
+        <div class="d-flex justify-content-between">
+          <div class="col-9">
+            <div class="d-flex justify-content-between">
+              <div class="col-8">
+                <h1><strong>Detalhes do <%= @restaurant.name %></strong></h1>
+                <h2>
+                  <% @restaurant.rating.times do %>
+                    <i class="fas fa-star"></i>
+                  <% end %>
+                </h2>
+                <h2 class="mb-4">Veja abaixo: </h2>
+                <h4><strong>Nome: </strong><%= @restaurant.name %> </h4>
+                <h4><strong>Endereço: </strong><%= @restaurant.address %> </h4>
+                <h4><strong>Categoria: </strong><%= @restaurant.category %> </h4>
+                <h4><strong>Telefone: </strong><%= @restaurant.phone %> </h4>
+              </div>
+              <% if current_user.owner? %>
+                <div class="col-4 mt-1">
+                  <%= link_to "Editar restaurante", edit_restaurant_path(@restaurant), class:"btn btn-flat" %>
+                </div>
+              <% end %>
+            </div>
           </div>
-        <% end %>
+          <div class="col-3">
+            <%= cl_image_tag @restaurant.photo.key, height: 200, width: 200, crop: :fill %>
+          </div>
+        </div>
       </div>
-      <h2 class="mb-4">Veja abaixo: </h2>
-      <h4><strong>Nome: </strong><%= @restaurant.name %> </h4>
-      <h4><strong>Endereço: </strong><%= @restaurant.address %> </h4>
-      <h4><strong>Categoria: </strong><%= @restaurant.category %> </h4>
-      <h4><strong>Telefone: </strong><%= @restaurant.phone %> </h4>
+
+
       <% @restaurant.dishes.each do |dish| %>
-        <div class="card-product my-4 row card-show-rest">
-          <%= cl_image_tag dish.photo.key, crop: :fill %>
-          <div class="card-product-infos col-8">
+        <div class="card-product my-4 row w-100">
+          <div class="col-2">
+            <%= cl_image_tag dish.photo.key, crop: :fill %>
+          </div>
+          <div class="card-product-infos col-7">
             <h2 class="card-title"><%= dish.name %>
               <% dish.rating.times do %>
                 <i class="fas fa-star"></i>
@@ -39,6 +49,11 @@
             <p>R$ <%= dish.price %> </p>
             <p> <%= dish.description %> </p>
           </div>
+          <% if current_user.owner? %>
+            <div class="col-3">
+              <%= link_to "Editar prato", edit_dish_path(dish), class:"btn btn-flat" %>
+            </div>
+          <% end %>
         </div>
       <% end %>
     </div>

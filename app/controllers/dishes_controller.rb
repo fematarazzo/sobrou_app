@@ -43,11 +43,12 @@ class DishesController < ApplicationController
   end
 
   def edit
+    @restaurant = @dish.restaurant
   end
 
   def update
     @dish.update(dish_params)
-    redirect_to dish_path(@dish)
+    redirect_to restaurant_index_owner_path(@dish.restaurant)
   end
 
   def destroy

@@ -1,31 +1,39 @@
 <div class="container-fluid mt-4">
   <div class="row justify-content-center">
-    <%= render 'restaurants/sidebar' %>
+    <%= render 'restaurants/sidebar', restaurant: @restaurant %>
   <div class="card-dish m-2 p-3 ml-5 card-border" style="width: 60%">
     <h1>Refeições Disponíveis</h1>
   </div>
   <div class="card-dish m-2 p-3 ml-5 card-border" style="width: 60%">
     <% @dishes.each do |dish| %>
       <% if dish.quantity > 0 %>
-        <div class="card mb-3 m-5 p-3" style="max-width: 650px">
-          <div class="row g-0">
-            <div class="col-md-6">
-              <%= cl_image_tag dish.photo.key, width: 300 %>
+        <div class="row align-items-center">
+          <div class="col-md-5">
+            <%= cl_image_tag dish.photo.key, height: 250, width: 350, crop: :fill, class:"rounded mb-3"%>
+          </div>
+          <div class="col-md-7 mb-4">
+            <div class="card-body">
+              <h5 class="card-title"> <%= dish.name %>
+                <% dish.rating.times do %>
+                  <i class="fas fa-star"></i>
+                <% end %>
+              </h5>
+              <hr>
+              <h6 class="card-text"> <%= dish.description %> </h6>
+              <h6 class="card-text"><b>Preço:</b> R$ <%= dish.price %></h6>
+              <hr>
+              <h6 class="card-text"> <b>Retire seu pedido em:</b> <%= dish.restaurant.address %></h6>
+              <h6 class="card-text"><b>Retirada entre às</b> <%= dish.start_time&.to_formatted_s(:time) %> e <%= dish.end_time&.to_formatted_s(:time) %></h6>
             </div>
-            <div class="col-md-6">
-              <div class="card-body">
-                <h4 class="card-title"> <%= dish.name %> </h4>
-                <h5 class="card-text"><strong><%= dish.restaurant.name %></strong> </h5>
-                <p class="card-text">R$ <%= dish.price %> </p>
-                <p class="card-text"><%= dish.description %> </p>
-                <%= link_to "Editar", edit_dish_path(dish), class:"btn btn-flat" %>
-                <%= link_to "Excluir", dish_path(dish), method: :delete, data: { confirm: "Você tem certeza?" }, class:"btn btn-flat" %>
-              </div>
+            <div class="ml-3 d-flex justify-content-between">
+              <%= link_to "Editar", edit_dish_path(dish), class:"btn btn-flat btn-edit" %>
+              <%= link_to "Excluir", dish_path(dish), method: :delete, data: { confirm: "Você tem certeza?" }, class:"btn btn-flat btn-delete" %>
             </div>
           </div>
         </div>
       <% end %>
     <% end %>
   </div>
+</div>
 
 
