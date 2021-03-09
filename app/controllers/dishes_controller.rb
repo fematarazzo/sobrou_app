@@ -30,21 +30,15 @@ class DishesController < ApplicationController
     @dishes = policy_scope(Dish).select { |dish| @restaurant == dish.restaurant }
   end
 
-  def new
-    @dish = Dish.new
-    @restaurant = Restaurant.find(params[:restaurant_id])
-    authorize @dish
-  end
-
   def create
     @dish = Dish.new(dish_params)
     @restaurant = Restaurant.find(params[:restaurant_id])
     @dish.restaurant = @restaurant
     authorize @dish
     if @dish.save
-      redirect_to dish_path(@dish)
+      redirect_to restaurant_index_owner_path(@restaurant)
     else
-      render :new
+      redirect_to restaurant_dashboard_path(@restaurant) and return
     end
   end
 

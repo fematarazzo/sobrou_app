@@ -6,23 +6,17 @@ class DishPolicy < ApplicationPolicy
   end
 
   def index_owner?
-    true
+    owner?
   end
 
   def show?
     true
   end
 
-  def new?
-    # @restaurant.id
-    # record ==> @dish
-    true
-  end
-
   def create?
     # @restaurant.id
     # record ==> @dish
-    true
+    owner?
   end
 
   def edit?
@@ -43,6 +37,5 @@ class DishPolicy < ApplicationPolicy
 
   def owner?
     record.restaurant.user == user
-
   end
 end
