@@ -58,7 +58,7 @@
       <td><%= "#{order.user.first_name} #{order.user.last_name}" %></td>
       <td><%= order.user.phone %></td>
       <td><%= order.dish.name %></td>
-      <td><%= order.dish.price %></td>
+      <td>R$ <%= order.dish.price %></td>
       <td><%= order.dish.created_at.to_formatted_s(:short) %></td>
     </tr>
     <% end %>
