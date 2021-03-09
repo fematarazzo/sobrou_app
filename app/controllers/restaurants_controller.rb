@@ -8,6 +8,7 @@ class RestaurantsController < ApplicationController
   def dashboard
     @restaurant = Restaurant.find(params[:restaurant_id])
     authorize @restaurant
+    @dish = Dish.new
   end
 
   def show

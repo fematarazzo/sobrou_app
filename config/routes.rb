@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :restaurants do
-    resources :dishes, only: [:new, :create]
+    resources :dishes, only: [:create]
     resources :orders, only: [:index]
     get "/dashboard", to: "restaurants#dashboard"
     get "/index_today", to: "orders#index_today"
@@ -12,8 +12,6 @@ Rails.application.routes.draw do
 
   resources :dishes, only: [:index, :edit, :update, :destroy] do
     resources :orders, only: [:create, :index]
-
-
   end
   resources :profiles, only: [:show]
   resources :orders, only: [:show, :update]
