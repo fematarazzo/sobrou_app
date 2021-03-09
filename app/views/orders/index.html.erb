@@ -30,20 +30,49 @@
     </nav>
 
 
-<div class="card-dish m-3 p-3 card-border" style="width: 50%">
+<div class="card-dish m-3 p-3 card-border" style="width: 60%">
 
   <h1>Lista de todos os pedidos</h1>
 </div>
 
-  <% @orders.each do |order| %>
-    <div class="card-dish m-1 p-3 card-border" style="width: 50%">
-      <p> <strong>Nome do cliente: </strong><%= order.user.first_name %></p>
-      <p> <strong>Contato do cliente:</strong>  <%= order.user.phone %></p>
-      <p> <strong>Preço da refeição:</strong> R$ <%= order.dish.price %></p>
-      <p> <strong>Refeição: </strong><%= order.dish.name %></p>
-      <p> <strong>Data do pedido: </strong><%= order.dish.created_at %></p>
-    </div>
-  <% end %>
+
+
+<table class="table table-success table-striped" style="width: 60%">
+  <thead>
+    <tr>
+      <th scope="col">Nome do cliente: </th>
+      <th scope="col">Contato: </th>
+      <th scope="col">Refeição: </th>
+      <th scope="col">Preço: </th>
+      <th scope="col">Data: </th>
+    </tr>
+  </thead>
+  <tbody>
+   <% @orders.each do |order| %>
+    <tr>
+
+      <td><%= "#{order.user.first_name} #{order.user.last_name}" %></td>
+      <td><%= order.user.phone %></td>
+      <td><%= order.dish.name %></td>
+      <td><%= order.dish.price %></td>
+      <td><%= order.dish.created_at %></td>
+    </tr>
+    <% end %>
+    <!-- <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2">Larry the Bird</td>
+      <td>@twitter</td>
+    </tr> -->
+  </tbody>
+</table>
+
+
   </div>
 </div>
 
