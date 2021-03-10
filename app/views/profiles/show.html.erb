@@ -73,6 +73,9 @@
                       <h6><strong>Preço:</strong> R$<%=order.dish.price %></h6>
                     </div>
                     <div>
+                      <%= link_to "Chat do pedido", chatroom_path, class:"btn btn-flat btn-chat" %>
+                    </div>
+                    <div>
 
                       <!-- Button trigger modal -->
                       <button type="button" class="btn btn-flat btn-edit" data-toggle="modal" data-target=<%="#dish-#{order.dish.id}"%>>

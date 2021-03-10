@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   end
   resources :profiles, only: [:show]
   resources :orders, only: [:show, :update]
+  resources :chatrooms, only: :show do
+    resources :messages, only: :create
+  end
 
   patch ":id/claim", to: "orders#claim", as: :claim
   root to: 'pages#home'
