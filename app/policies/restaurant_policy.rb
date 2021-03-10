@@ -33,6 +33,10 @@ class RestaurantPolicy < ApplicationPolicy
     owner?
   end
 
+  def index_today?
+    owner?
+  end
+
   private
 
   def owner?

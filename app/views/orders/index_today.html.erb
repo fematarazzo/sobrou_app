@@ -2,9 +2,9 @@
   <div class="row justify-content-center">
   <%= render 'restaurants/sidebar', restaurant: @restaurant %>
   <div class="card-dish m-3 p-3 card-border" style="width: 60%">
-    <h1>Lista de todos os pedidos</h1>
+    <h1>Lista de pedidos de hoje</h1>
   </div>
-  <table class="table table-success table-striped" style="width: 60%">
+   <table class="table table-success table-striped" style="width: 60%">
     <thead>
       <tr>
         <th scope="col">Nome do cliente: </th>
@@ -12,6 +12,7 @@
         <th scope="col">Refeição: </th>
         <th scope="col">Preço: </th>
         <th scope="col">Data: </th>
+        <th scope="col">Refeição Recolhida? </th>
       </tr>
     </thead>
     <tbody>
@@ -22,10 +23,22 @@
         <td><%= order.dish.name %></td>
         <td>R$ <%= order.dish.price %></td>
         <td><%= order.dish.created_at.to_formatted_s(:short) %></td>
+        <td>
+          <% if order.recolhida %>
+          Sim
+          <% else  %>
+          <%= button_to "Ainda Não", claim_path(order), method: :patch %>
+
+          <% end %>
+          <%#= simple_form_for [@orders, @restaurant] do |f| %>
+          <%#= f.input :recolhida, label: "Refeição Recolhida", as: :boolean %>
+
+        <%# end %>
       </tr>
       <% end %>
     </tbody>
   </table>
+  <%#= render 'form' %>
   </div>
 </div>
 

@@ -7,11 +7,19 @@ class OrdersController < ApplicationController
 
   def index_today
     @restaurant = Restaurant.find(params[:restaurant_id])
+    authorize @restaurant
     @orders = policy_scope(Order).where( "created_at >= ? AND created_at <= ?", Date.today.beginning_of_day, Date.today.end_of_day)
     @orders = @orders.select { |order| @restaurant == order.dish.restaurant }
   end
 
   def show
+  end
+
+  def claim
+    @order = Order.find(params[:id])
+    authorize @order
+    @order.update(recolhida: true)
+    redirect_to restaurant_index_today_path(@order.dish.restaurant)
   end
 
   def create
