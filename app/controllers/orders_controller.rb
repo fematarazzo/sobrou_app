@@ -21,13 +21,14 @@ class OrdersController < ApplicationController
     @order.dish = @dish
     @order.user = current_user
     authorize @order
-    if @order.user.owner
+    if @order.user.owner == current_user
       redirect_to restaurant_orders_path(@restaurant)
     else
       if @order.save
         @dish.quantity = @dish.quantity - 1
         @dish.save
-        redirect_to order_path(@order)
+        sweetalert_success('Confira agora os detalhes do seu pedido', 'Reserva agendada!', persistent: 'Vamos nessa!')
+        redirect_to order_path(@order), notice: "Reserva agendada!"
       else
         render "dishes/show"
       end
@@ -39,7 +40,8 @@ class OrdersController < ApplicationController
 
   def update
     @order.update(order_params)
-    redirect_to root_path
+    sweetalert_info('Não se esqueça de avaliar seu prato! Acesse Meu Perfil e avalie', 'Tudo Pronto! Que tal avaliar o prato depois?', persistent: 'Vamos nessa!')
+    redirect_to root_path, notice: "Não se esqueça de avaliar seu prato! Acesse Meu Perfil e avalie"
   end
 
   def destroy

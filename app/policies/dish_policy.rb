@@ -26,7 +26,7 @@ class DishPolicy < ApplicationPolicy
   end
 
   def update?
-    owner?
+    true
   end
 
   def destroy?

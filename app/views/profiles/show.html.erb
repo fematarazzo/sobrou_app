@@ -38,7 +38,7 @@
             <h4><strong>Nome:</strong> <%= current_user.first_name.capitalize %> <%=  current_user.last_name.capitalize %></h4>
             <h4 class="mt-4"><strong>E-mail:</strong> <%=  current_user.email %></h4>
             <h4 class="mt-4"><strong>Telefone:</strong> <%=  current_user.phone %></h4>
-            <h4 class="mt-4"><strong>Data de Nascimento:</strong> <%=  current_user.birthday %></h4>
+            <h4 class="mt-4"><strong>Data de Nascimento:</strong> <%=  current_user.birthday.strftime("%d/%m/%Y") %></h4>
             <%= link_to "Editar meus dados", edit_user_registration_path(current_user), class:"btn btn-flat btn-edit mt-3" %></p>
           </div>
         </div>
@@ -58,17 +58,46 @@
             <div class="d-flex flex-column">
               <% unless @orders.empty? %>
                 <% @orders.each do |order| %>
-                <div class="card p-3 w-100">
+                <div class="card p-3 w-100 mb-3">
                   <div class="d-flex justify-content-between align-items-center">
                     <div>
                       <h3 class="card-title"><%= order.dish.name %>
-                        <% order.dish.rating.times do %>
-                          <i class="fas fa-star"></i>
+                        <% if !order.dish.rating.nil? %>
+                          <% order.dish.rating.times do %>
+                            <i class="fas fa-star"></i>
+                          <% end %>
                         <% end %>
                       </h3>
-                      <h6><strong>Nome:</strong> <%=order.dish.name%></h6>
+                      <h6><strong>Nome do restaurante:</strong> <%=order.dish.restaurant.name%></h6>
                       <h6><strong>Endereço:</strong> <%=order.dish.restaurant.address%></h6>
                       <h6><strong>Preço:</strong> R$<%=order.dish.price %></h6>
+                    </div>
+                    <div>
+
+                      <!-- Button trigger modal -->
+                      <button type="button" class="btn btn-flat btn-edit" data-toggle="modal" data-target=<%="#dish-#{order.dish.id}"%>>
+                        Avalie o prato
+                      </button>
+
+                      <!-- Modal -->
+                      <div class="modal fade rounded" id=<%="dish-#{order.dish.id}"%> tabindex="-1" aria-labelledby=<%="#dish-#{order.dish.id}Label"%> aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered rounded">
+                          <div class="modal-content p-3 rounded">
+                            <%= simple_form_for order.dish do |f| %>
+                              <p>O que você achou do seu prato? Dê uma nota de abaixo:</p>
+                                <%= f.input :rating,
+                                            label: "",
+                                            required: false,
+                                            as: :radio_buttons,
+                                            include_blank: false,
+                                            input_html: { class: "tag-selector" },
+                                            item_wrapper_class: 'tag-item',
+                                            collection: ["1", "2", "3", "4", "5"] %>
+                                <%= f.button :submit, "Enviar", class:"btn btn-flat" %>
+                            <% end %>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                     <div>
                       <%= link_to "Ver pedido", order_path(order), class:"btn btn-flat" %>
