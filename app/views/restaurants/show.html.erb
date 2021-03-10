@@ -1,6 +1,6 @@
 <div class="container mt-4">
   <div class="row justify-content-center">
-    <% if current_user.owner? %>
+    <% if !current_user.nil? && current_user.owner? %>
       <%= render 'sidebar' %>
     <% end %>
     <div class="col-10">
@@ -21,7 +21,7 @@
                 <h4><strong>Categoria: </strong><%= @restaurant.category %> </h4>
                 <h4><strong>Telefone: </strong><%= @restaurant.phone %> </h4>
               </div>
-              <% if current_user.owner? %>
+              <% if !current_user.nil? && current_user.owner? %>
                 <div class="col-4 mt-1">
                   <%= link_to "Editar restaurante", edit_restaurant_path(@restaurant), class:"btn btn-flat" %>
                 </div>
@@ -49,9 +49,25 @@
             <p>R$ <%= dish.price %> </p>
             <p> <%= dish.description %> </p>
           </div>
-          <% if current_user.owner? %>
+          <% if !current_user.nil? && current_user.owner? %>
             <div class="col-3">
               <%= link_to "Editar prato", edit_dish_path(dish), class:"btn btn-flat" %>
+            </div>
+            <% else %>
+            <div class="col-3">
+              <!-- Button trigger modal -->
+                <button type="button" class="btn btn-flat" data-toggle="modal" data-target=<%="#dish-#{dish.id}"%>>
+                  Veja detalhes
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade rounded" id=<%="dish-#{dish.id}"%> tabindex="-1" aria-labelledby=<%="#dish-#{dish.id}Label"%> aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered modal-lg rounded">
+                    <div class="modal-content p-3 rounded">
+                      <%= render 'dishes/show', dish: dish, order: @order %>
+                    </div>
+                  </div>
+                </div>
             </div>
           <% end %>
         </div>
