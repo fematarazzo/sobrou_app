@@ -5,7 +5,7 @@ class OrderPolicy < ApplicationPolicy
     end
   end
   def index_today?
-    true
+    owner?
   end
   def show?
     # Pro usuario que criou ela ou pro restaurante que e dono dessa ordem
@@ -28,6 +28,11 @@ class OrderPolicy < ApplicationPolicy
   end
 
   def destroy?
+    # Pro usuario que criou ela ou pro restaurante que e dono dessa ordem
+    owner?
+  end
+
+  def claim?
     # Pro usuario que criou ela ou pro restaurante que e dono dessa ordem
     owner?
   end

@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 2021_03_10_121756) do
     t.bigint "dish_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "recolhida"
     t.index ["dish_id"], name: "index_orders_on_dish_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end

@@ -12,9 +12,12 @@ Rails.application.routes.draw do
 
   resources :dishes, only: [:index, :edit, :update, :destroy] do
     resources :orders, only: [:create, :index]
+
+
   end
   resources :profiles, only: [:show]
   resources :orders, only: [:show, :update]
 
+  patch ":id/claim", to: "orders#claim", as: :claim
   root to: 'pages#home'
 end
