@@ -38,7 +38,7 @@ class DishesController < ApplicationController
     if @dish.save
       redirect_to restaurant_index_owner_path(@restaurant)
     else
-      redirect_to restaurant_dashboard_path(@restaurant) and return
+      redirect_to restaurant_dashboard_path(@restaurant)
     end
   end
 
@@ -48,7 +48,11 @@ class DishesController < ApplicationController
 
   def update
     @dish.update(dish_params)
-    redirect_to restaurant_index_owner_path(@dish.restaurant)
+    if current_user.owner?
+      redirect_to restaurant_index_owner_path(@dish.restaurant)
+    else
+      redirect_to profile_path(current_user)
+    end
   end
 
   def destroy

@@ -1,6 +1,6 @@
 <div class="container mt-4">
   <div class="row justify-content-center">
-    <% if !current_user.nil? && current_user.owner? %>
+    <% if !current_user.nil? && @restaurant.user == current_user %>
       <%= render 'sidebar' %>
     <% end %>
     <div class="col-10">
@@ -21,7 +21,7 @@
                 <h4><strong>Categoria: </strong><%= @restaurant.category %> </h4>
                 <h4><strong>Telefone: </strong><%= @restaurant.phone %> </h4>
               </div>
-              <% if !current_user.nil? && current_user.owner? %>
+              <% if !current_user.nil? && @restaurant.user == current_user %>
                 <div class="col-4 mt-1">
                   <%= link_to "Editar restaurante", edit_restaurant_path(@restaurant), class:"btn btn-flat" %>
                 </div>
@@ -42,14 +42,16 @@
           </div>
           <div class="card-product-infos col-7">
             <h2 class="card-title"><%= dish.name %>
-              <% dish.rating.times do %>
-                <i class="fas fa-star"></i>
+              <% if dish.rating.present? %>
+                <% dish.rating.times do %>
+                  <i class="fas fa-star"></i>
+                <% end %>
               <% end %>
             </h2>
             <p>R$ <%= dish.price %> </p>
             <p> <%= dish.description %> </p>
           </div>
-          <% if !current_user.nil? && current_user.owner? %>
+          <% if !current_user.nil? && @restaurant.user == current_user %>
             <div class="col-3">
               <%= link_to "Editar prato", edit_dish_path(dish), class:"btn btn-flat" %>
             </div>

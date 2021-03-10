@@ -14,8 +14,10 @@
           <div class="col-md-7 mb-4">
             <div class="card-body">
               <h5 class="card-title"> <%= dish.name %>
-                <% dish.rating.times do %>
-                  <i class="fas fa-star"></i>
+                <% if !dish.rating.nil? %>
+                  <% dish.rating.times do %>
+                    <i class="fas fa-star"></i>
+                  <% end %>
                 <% end %>
               </h5>
               <hr>

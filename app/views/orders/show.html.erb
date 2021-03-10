@@ -8,7 +8,7 @@
     <h3><strong>Detalhes da reserva</strong></h3>
     <p><strong>Descrição: </strong><%= @order.dish.description%></p>
     <p><strong>Preço: </strong>R$ <%= @order.dish.price %></p>
-    <p><strong>Horário de retirada: </strong>Entre às</b> <%= @order.dish.start_time.to_formatted_s(:time) %> e <%= @order.dish.end_time.to_formatted_s(:time) %></p>
+    <p><strong>Horário de retirada: </strong>Entre às</b> <%= @order.dish.start_time&.to_formatted_s(:time) %> e <%= @order.dish.end_time&.to_formatted_s(:time) %></p>
   </div>
   <div class="card-border ml-2 p-3">
     <p><strong>Atenção</strong> Lembre-se que a variedade dos produtos será preestabelecida pelo colaborador de acordo com a disponibilidade de comida excedente.</p>
