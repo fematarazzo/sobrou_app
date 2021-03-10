@@ -11,11 +11,11 @@ class Restaurant < ApplicationRecord
   after_create :update_owner
 
   def rating
-    if self.orders.empty?
+    if self.orders.empty? || self.dishes.empty?
       0
     else
       notas = []
-      self.orders.pluck(:rating).each do |rating|
+      self.dishes.pluck(:rating).each do |rating|
         notas.append(rating) unless rating.nil?
       end
       notas.sum / notas.count
