@@ -12,8 +12,6 @@
     "mapbox-gl": "^2.1.1",
     "places.js": "^1.19.0",
     "popper.js": "^1.16.1",
-    "select2": "^4.1.0-rc.0",
-    "sweetalert": "^2.1.2",
     "turbolinks": "^5.2.0",
     "typed.js": "^2.0.11"
   },

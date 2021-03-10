@@ -1,1 +1,1 @@
-Sweetify.sweetalert_library = 'sweetalert'
+Sweetify.sweetalert_library = 'sweetalert2'
