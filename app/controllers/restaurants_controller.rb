@@ -1,5 +1,6 @@
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: %i[show edit update destroy]
+  skip_before_action :authenticate_user!, only: [:show]
 
   def index
     @restaurants = policy_scope(Restaurant).where(user_id: current_user)
@@ -12,6 +13,7 @@ class RestaurantsController < ApplicationController
   end
 
   def show
+    @order = Order.new
   end
 
   def new

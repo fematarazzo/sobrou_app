@@ -114,7 +114,7 @@ puts "Criando boteco..."
 boteco = Restaurant.new(
   name: "Boteco",
   address: "Avenida Brigadeiro Luís Antônio, 2642, São Paulo",
-  category: "Marmita",
+  category: "Brasileira",
   phone: "123456",
   user_id: teste.id
 )
@@ -300,3 +300,49 @@ puts "Criando pratos..."
   puts "Salvando ordem do prato #{order.dish.id}"
 end
 
+puts "Criando italiano..."
+italiano = Restaurant.new(
+  name: "Cantina de La Nonna",
+  address: "Rua Manoel Dutra, 208, São Paulo",
+  category: "Italiana",
+  phone: "123456",
+  user_id: teste.id
+)
+italiano.photo.attach(io: File.open('app/assets/images/italiano.png'), filename: 'italiano.png', content_type: 'image/png')
+italiano.save!
+
+puts "Criando pratos..."
+5.times do
+  dish = Dish.new(
+    name: ["Espaguete à Bolonhesa ", "Penne ao Limone", "Tagliarini ao Sugo", "Espaguete com Almôndegas"].sample,
+    price: rand(5..20),
+    description: "Lorem ipsum macarrão com tomate",
+    restaurant_id: italiano.id,
+    quantity: 3,
+    start_time: Time.now,
+    end_time: Time.now + 30000
+  )
+  dish.photo.attach(io: File.open('app/assets/images/italianoa.jpg'), filename: 'italianoa.jpg', content_type: 'image/jpg')
+  dish.save!
+  puts "Prato #{dish.id} criado!"
+
+  order = Order.new(
+    rating: rand(1..5),
+    user_id: teste.id,
+    dish_id: dish.id
+  )
+
+  if order.rating == 1
+    order.rating_description = "Jamais pediria novamente. Comida horrível. Não peçam!"
+  elsif order.rating == 2
+    order.rating_description = "Bem fraco, não gostei. Melhoraria a embalagem da entrega"
+  elsif order.rating == 3
+    order.rating_description = "Gostoso! Recomendo o prato! Podem pedir sem medo"
+  elsif order.rating <= 5
+    order.rating_description = "Prato sensacional, recomendo para todos! Peçam sempre que disponível"
+  end
+
+  order.save!
+
+  puts "Salvando ordem do prato #{order.dish.id}"
+end

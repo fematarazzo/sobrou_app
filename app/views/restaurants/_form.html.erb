@@ -1,7 +1,7 @@
 <%= simple_form_for restaurant do |f| %>
   <%= f.input :name, label: "Nome do Restaurante" %>
   <%= f.input :address, label: "Endereço" %>
-  <%= f.input :category, label: "Categoria", collection: ["Árabe", "Chinesa", "Japonesa", "Lanche", "Marmita", "Padaria", "Pizza"]  %>
+  <%= f.input :category, label: "Categoria", collection: ["Árabe", "Brasileira", "Chinesa", "Italiana", "Japonesa", "Lanche", "Padaria", "Pizza"]  %>
   <%= f.input :phone, label: "Telefone" %>
   <%= f.input :photo, label: "Insira uma foto", as: :file %>
   <%= f.button :submit, "Crie seu restaurante", class:"btn btn-flat w-100" %>
