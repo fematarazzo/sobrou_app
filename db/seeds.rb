@@ -35,7 +35,8 @@ puts "Criando pratos..."
     restaurant_id: padoca.id,
     quantity: 3,
     start_time: Time.now,
-    end_time: Time.now + 30000
+    end_time: Time.now + 30000,
+    rating: rand(1..5)
   )
   dish.photo.attach(io: File.open('app/assets/images/pao.jpg'), filename: 'pao.jpg', content_type: 'image/jpg')
   dish.save!
@@ -83,7 +84,8 @@ puts "Criando pratos..."
     restaurant_id: japones.id,
     quantity: 3,
     start_time: Time.now,
-    end_time: Time.now + 30000
+    end_time: Time.now + 30000,
+    rating: rand(1..5)
   )
   dish.photo.attach(io: File.open('app/assets/images/temaki.jpg'), filename: 'temaki.jpg', content_type: 'image/jpg')
   dish.save!
@@ -130,7 +132,8 @@ puts "Criando pratos..."
     restaurant_id: boteco.id,
     quantity: 3,
     start_time: Time.now,
-    end_time: Time.now + 30000
+    end_time: Time.now + 30000,
+    rating: rand(1..5)
   )
   dish.photo.attach(io: File.open('app/assets/images/marmita.jpg'), filename: 'marmita.jpg', content_type: 'image/jpg')
   dish.save!
@@ -179,7 +182,8 @@ puts "Criando pratos..."
     restaurant_id: pizzaria.id,
     quantity: 3,
     start_time: Time.now,
-    end_time: Time.now + 30000
+    end_time: Time.now + 30000,
+    rating: rand(1..5)
   )
   dish.photo.attach(io: File.open('app/assets/images/pizza.jpg'), filename: 'pizza.jpg', content_type: 'image/jpg')
   dish.save!
@@ -226,7 +230,8 @@ puts "Criando pratos..."
     restaurant_id: arabe.id,
     quantity: 3,
     start_time: Time.now,
-    end_time: Time.now + 30000
+    end_time: Time.now + 30000,
+    rating: rand(1..5)
   )
   dish.photo.attach(io: File.open('app/assets/images/esfiha.jpg'), filename: 'esfiha.jpg', content_type: 'image/jpg')
   dish.save!
@@ -273,7 +278,8 @@ puts "Criando pratos..."
     restaurant_id: chines.id,
     quantity: 3,
     start_time: Time.now,
-    end_time: Time.now + 30000
+    end_time: Time.now + 30000,
+    rating: rand(1..5)
   )
   dish.photo.attach(io: File.open('app/assets/images/chinesa.jpg'), filename: 'chinesa.jpg', content_type: 'image/jpg')
   dish.save!
@@ -320,7 +326,8 @@ puts "Criando pratos..."
     restaurant_id: italiano.id,
     quantity: 3,
     start_time: Time.now,
-    end_time: Time.now + 30000
+    end_time: Time.now + 30000,
+    rating: rand(1..5)
   )
   dish.photo.attach(io: File.open('app/assets/images/italianoa.jpg'), filename: 'italianoa.jpg', content_type: 'image/jpg')
   dish.save!

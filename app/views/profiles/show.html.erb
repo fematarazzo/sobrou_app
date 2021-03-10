@@ -1,7 +1,7 @@
 <div class="container mt-4">
   <div class="card-border-profile">
     <div class="position-absolute top-50 start-0 translate-middle-y mt-4 ml-3">
-    <%= cl_image_tag current_user.photo.key, height: 150, width: 150, class:"avatar-profile" %>
+      <%= cl_image_tag current_user.photo.key, height: 150, width: 150, class:"avatar-profile" %>
     </div>
     <div class="text-center">
       <h1 class="p-3"><%= current_user.first_name.capitalize %> <%=current_user.last_name.capitalize  %></h1>
@@ -20,76 +20,71 @@
       </div>
     </div>
   </div>
+    <div id="accordion">
+      <div>
+        <div class="accordion-card mb-2" id="headingOne">
+          <h5 class="mb-0">
+          <button class="btn btn-link m-0 decoration-none" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Meus dados
+          </button>
+          </h5>
+          <i class="fas fa-sliders-h" style="margin-left:83%"></i>
+        </div>
+      <div>
 
-
-    <div>
-
-      <div id="accordion">
-        <div>
-          <div class="accordion-card mb-2" id="headingOne">
-            <h5 class="mb-0">
-            <button class="btn btn-link m-0 decoration-none" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              Meus dados
-            </button>
-            </h5>
-            <i class="fas fa-sliders-h" style="margin-left:83%"></i>
-          </div>
-       <div>
-
-       <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
         <div class="card-body">
           <div class="d-flex flex-column">
-            <h4><strong>Nome:</strong></h4>
-            <%= current_user.first_name.capitalize %> <%=  current_user.last_name.capitalize %>
-              <h4 class="mt-4"><strong>E-mail:</strong></h4>
-              <%=  current_user.email %>
-              <h4 class="mt-4"><strong>Telefone:</strong></h4>
-              <%=  current_user.phone %>
-              <h4 class="mt-4"><strong>Data de Nascimento:</strong></h4>
-              <%=  current_user.birthday %>
-              <p> <%= link_to "Editar dados", edit_user_registration_path %></p>
+            <h4><strong>Nome:</strong> <%= current_user.first_name.capitalize %> <%=  current_user.last_name.capitalize %></h4>
+            <h4 class="mt-4"><strong>E-mail:</strong> <%=  current_user.email %></h4>
+            <h4 class="mt-4"><strong>Telefone:</strong> <%=  current_user.phone %></h4>
+            <h4 class="mt-4"><strong>Data de Nascimento:</strong> <%=  current_user.birthday %></h4>
+            <%= link_to "Editar meus dados", edit_user_registration_path(current_user), class:"btn btn-flat btn-edit mt-3" %></p>
           </div>
         </div>
       </div>
 
       <div id="accordion">
-        <div>
-          <div class="accordion-card" id="headingTwo">
-            <h5 class="mb-0">
-            <button class="btn btn-link m-0 decoration-none" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-              Meus Pedidos
-            </button>
-            </h5>
-            <i class="fas fa-utensils" style="margin-left:82%"></i>
-          </div>
-       <div>
-
-       <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
-        <div class="card-body">
-          <div class="d-flex flex-column">
-          <% unless @orders.empty? %>
-          <% @orders.each do |order| %>
-            <div class="card p-3">
-              <div class="d-flex justify-content-between align-items-center">
-                <div>
-                  <h3><strong><%=order.dish.restaurant.name%></strong></h3>
-                  <h6><strong>Nome:</strong> <%=order.dish.name%></h6>
-                  <h6><strong>Endereço:</strong> <%=order.dish.restaurant.address%></h6>
-                  <h6><strong>Preço:</strong> R$<%=order.dish.price %></h6>
+        <div class="accordion-card" id="headingTwo">
+          <h5 class="mb-0">
+          <button class="btn btn-link m-0 decoration-none" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+            Meus Pedidos
+          </button>
+          </h5>
+          <i class="fas fa-utensils" style="margin-left:82%"></i>
+        </div>
+        <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
+          <div class="card-body">
+            <div class="d-flex flex-column">
+              <% unless @orders.empty? %>
+                <% @orders.each do |order| %>
+                <div class="card p-3 w-100">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                      <h3 class="card-title"><%= order.dish.name %>
+                        <% order.dish.rating.times do %>
+                          <i class="fas fa-star"></i>
+                        <% end %>
+                      </h3>
+                      <h6><strong>Nome:</strong> <%=order.dish.name%></h6>
+                      <h6><strong>Endereço:</strong> <%=order.dish.restaurant.address%></h6>
+                      <h6><strong>Preço:</strong> R$<%=order.dish.price %></h6>
+                    </div>
+                    <div>
+                      <%= link_to "Ver pedido", order_path(order), class:"btn btn-flat" %>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <%= link_to "Ver pedido", order_path(order), class:"btn btn-flat" %>
-                </div>
-              </div>
-          </div>
-          <% end %>
-        <% else %>
-        <p>Não há pedidos ainda</p>
-        <% end %>
+                <% end %>
+              <% else %>
+                <p>Não há pedidos ainda</p>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
-
-
+    </div>
+  </div>
+</div>
 
 

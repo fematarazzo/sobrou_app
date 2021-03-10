@@ -20,9 +20,9 @@
     <p><%= @order.dish.restaurant.address%></p>
     <p><%= @order.dish.restaurant.phone%></p>
   </div>
-  <div class="card-border ml-2 p-3" >
+  <div class="card-border ml-2 p-3 mb-3" >
     <%= simple_form_for @order do |f| %>
-    <p>Avalie seu pedido:</p>
+    <p>O que você achou do seu pedido? Dê uma nota de abaixo:</p>
       <%= f.input :rating,
                   label: "",
                   required: false,
