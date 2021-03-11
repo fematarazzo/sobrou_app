@@ -5,11 +5,11 @@ User.destroy_all
 
 puts "Criando usuario teste..."
 teste = User.new(
-  first_name: "Teste",
-  last_name: "Teste",
-  email: "teste@teste.com",
+  first_name: "Marcelo",
+  last_name: "Restaurante",
+  email: "marcelo@restaurante.com",
   password: "123123",
-  phone: "123456",
+  phone: "(11)99995-1561",
   birthday: DateTime.now - 10000
 )
 teste.photo.attach(io: File.open('app/assets/images/dwight.jpg'), filename: 'dwight.jpg', content_type: 'image/jpg')
@@ -68,7 +68,7 @@ padoca = Restaurant.new(
   name: "Padoca",
   address: "Avenida Paulista 1000, São Paulo",
   category: "Padaria",
-  phone: "123456",
+  phone: "(11)3031-4772",
   user_id: teste.id
 )
 padoca.photo.attach(io: File.open('app/assets/images/padaria.png'), filename: 'padaria.png', content_type: 'image/png')
@@ -121,7 +121,7 @@ japones = Restaurant.new(
   name: "Japonês",
   address: "Alameda Franca 241, São Paulo",
   category: "Japonesa",
-  phone: "123456",
+  phone: "(11)3021-8912",
   user_id: teste.id
 )
 japones.photo.attach(io: File.open('app/assets/images/restaurante-japones.jpg'), filename: 'restaurante-japones.jpg', content_type: 'image/jpg')
@@ -169,7 +169,7 @@ boteco = Restaurant.new(
   name: "Boteco",
   address: "Avenida Brigadeiro Luís Antônio, 2642, São Paulo",
   category: "Brasileira",
-  phone: "123456",
+  phone: "(11)3345-4702",
   user_id: teste.id
 )
 boteco.photo.attach(io: File.open('app/assets/images/logo_lanchonete.jpg'), filename: 'logo_lanchonete.jpg', content_type: 'image/jpg')
@@ -218,7 +218,7 @@ pizzaria = Restaurant.new(
   name: "Pizzaria",
   address: "Rua Arthur Prado, 394, São Paulo",
   category: "Pizza",
-  phone: "123456",
+  phone: "(11)3201-4772",
   user_id: teste.id
 )
 pizzaria.photo.attach(io: File.open('app/assets/images/pizzaria.jpeg'), filename: 'pizzaria.jpeg', content_type: 'image/jpeg')
@@ -267,7 +267,7 @@ arabe = Restaurant.new(
   name: "Arebaba",
   address: "Rua Antônio Carlos, 282, São Paulo",
   category: "Árabe",
-  phone: "123456",
+  phone: "(11)3568-4452",
   user_id: teste.id
 )
 arabe.photo.attach(io: File.open('app/assets/images/rest-arabe.jpg'), filename: 'rest-arabe.jpg', content_type: 'image/jpg')
@@ -315,7 +315,7 @@ chines = Restaurant.new(
   name: "Chinchin",
   address: "Alameda Itu, 1048, São Paulo",
   category: "Chinesa",
-  phone: "123456",
+  phone: "(11)3902-4375",
   user_id: teste.id
 )
 chines.photo.attach(io: File.open('app/assets/images/chines.jpg'), filename: 'chines.jpg', content_type: 'image/jpg')
@@ -363,7 +363,7 @@ italiano = Restaurant.new(
   name: "Cantina de La Nonna",
   address: "Rua Manoel Dutra, 208, São Paulo",
   category: "Italiana",
-  phone: "123456",
+  phone: "(11)3551-8765",
   user_id: teste.id
 )
 italiano.photo.attach(io: File.open('app/assets/images/italiano.png'), filename: 'italiano.png', content_type: 'image/png')
