@@ -1,7 +1,7 @@
 <nav class="navbar fixed-top navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand" do %>
-        Sobrou
+        <%= image_tag "sobrou.png", alt: "Sobrou App"%>
       <% end %>
   <div class="nav-search">
     <%= simple_form_for :search, url: dishes_path, defaults: {label: false}, method: :get do |f| %>
