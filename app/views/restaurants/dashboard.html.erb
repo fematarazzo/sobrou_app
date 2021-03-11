@@ -3,18 +3,47 @@
     <%= render 'sidebar' %>
     <div class="container">
         <div class= "row d-flex justify-content-center">
-          <div class="card-dish m-3 p-3 card-border" style="width: 70%">
-            <h1>Seja Bem-vindo!</h1>
-            <p> Nesta página você encontra tudo sobre os seus dados cadastrados, seus pratos disponíveis, pedidos e pagamentos.</p>
-            <p> Obrigado por fazer parte desta revolução :) </p>
+
+
+
+          <div class="rounded bg-gradient-4 text-white shadow p-5 text-center mb-3 col-4 mr-3  " >
+            <h5 style="font-family:Open Sans" class="mb-5"><%= @restaurant.orders.empty? ? "0" : @restaurant.orders.size%> Refeições salvas </h5>
+            <!-- <h5 class=" pb-3">Refeições salvas</h5> -->
           </div>
+          <div class="rounded bg-gradient-4 text-white shadow p-5 text-center mb-3 col-4 ml-3 " >
+            <h5 style="font-family:Open Sans" class="mb-5"><%= @restaurant.orders.size * 0.46.round(1) %> Kg salvos</h5>
+            <!-- <h5 class=" pb-3">Kg salvos</h5></p> -->
+          </div>
+
+
+
+
+          <div class="card-dish m-3 p-3 card-border" style="width: 70%">
+            <h1 style="font-family:Open Sans">Olá!</h1>
+            <p style="font-family:Open Sans"> Nesta página você encontra tudo sobre os seus dados cadastrados, seus pratos disponíveis e pedidos.</p>
+            <p style="font-family:Open Sans"> Obrigado por fazer parte desta revolução :) </p>
+          </div>
+
+
+          <!-- <div class="d-flex justify-content-around mt-4">
+      <div class= "d-flex flex-column align-items-center">
+        <h5><%= @restaurant.orders.empty? ? "0" : @restaurant.orders.size%> </h5>
+        <h5 class="mt-2 pb-3">Refeições salvas</h5>
+      </div>
+
+      <div class= "d-flex flex-column align-items-center">
+        <h5><%= @restaurant.orders.size * 0.46 %></h5>
+        <h5 class="mt-2 pb-3">Kg salvos</h5>
+      </div>
+    </div> -->
+
             <div class= "row d-flex justify-content-center">
             <div class="card-dish m-3 p-3 card-border" style="width: 70%">
               <div class="row d-flex justify-content-center">
                 <div class="card mx-3 p-3 card-main card-border col-12 col-lg-5 flex-column">
-                  <h1>Adicione a refeição que sobrou aqui:</h1>
-                  <p>Conte-nos um pouco sobre a comida que você oferecerá em suas bolsas mágicas e prepare-se para começar a economizar seu excedente de comida.</p>
-                  <button type="button" class="btn btn-flat" data-toggle="modal" data-target="#exampleModal">
+                  <h1 style="font-family:Open Sans">Adicione a refeição que sobrou aqui:</h1>
+                  <p >Conte-nos um pouco sobre a comida que você oferecerá em suas bolsas mágicas e prepare-se para começar a economizar seu excedente de comida.</p>
+                  <button type="button" class="btn btn-bg" data-toggle="modal" data-target="#exampleModal">
                     Adicione o prato
                   </button>
                   <div class="modal fade rounded" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -26,14 +55,15 @@
                   </div>
                 </div>
                 <div class="card mx-3 p-3 card-main card-border col-12 col-lg-5 flex-column">
-                  <h1>Acompanhe os pedidos de hoje:</h1>
+                  <h1 style="font-family:Open Sans">Acompanhe os pedidos de hoje:</h1>
                   <p> Aqui você pode acompanhar quais pedidos você têm em andamento, qual é o horário de coleta, tipo de refeição e o nome do cliente que irá recolher.</p>
-                  <%= link_to "Seus pedidos", restaurant_index_today_path(@restaurant), class:"btn btn-flat mt-auto"%>
+                  <%= link_to "Seus pedidos", restaurant_index_today_path(@restaurant), class:"btn btn-bg mt-auto"%>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
     </div>
 </div>

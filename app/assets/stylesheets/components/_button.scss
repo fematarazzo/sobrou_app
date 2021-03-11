@@ -108,6 +108,16 @@
 }
 
 
+.btn-bg {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: #95d7ae;
+  background: -webkit-linear-gradient(to right, #007991, #95d7ae);
+  background: linear-gradient(to right, #007991, #95d7ae);
+  transition: background 0.3s ease;
+}
+
 .btn-chat {
   width: 200px;
   background-color: #bfd5e3;
