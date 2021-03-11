@@ -22,6 +22,8 @@
                     <h4><strong>Endereço: </strong><%= @restaurant.address %> </h4>
                     <h4><strong>Categoria: </strong><%= @restaurant.category %> </h4>
                     <h4><strong>Telefone: </strong><%= @restaurant.phone %> </h4>
+                    <h4><strong>Refeições salvas: </strong><%= @restaurant.orders.empty? ? "0" : @restaurant.orders.size%> </h4>
+                    <h4><strong>Kgs de comida salvos: </strong><%= @restaurant.orders.size * 0.46.round(1) %> Kg salvos </h4>
                   </div>
                   <div class="col-3 mt-5">
                   <%= cl_image_tag @restaurant.photo.key, height: 200, width: 200, crop: :fill %>

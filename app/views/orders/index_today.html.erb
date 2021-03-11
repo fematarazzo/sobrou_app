@@ -31,10 +31,10 @@
         </td>
         <td style="white-space: nowrap;">
           <% if order.recolhida %>
-            <i class="far fa-check-square"></i>
+            <i class="far fa-check-square" style="white-space: nowrap;"></i>
           <% else  %>
             <%= link_to claim_path(order), method: :patch do%>
-              <i class="far fa-square" ></i>
+              <i class="far fa-square" style="white-space: nowrap;" ></i>
             <% end %>
           <% end %>
         </td>
