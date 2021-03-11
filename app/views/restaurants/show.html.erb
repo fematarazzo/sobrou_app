@@ -8,7 +8,7 @@
         <div class="d-flex justify-content-between">
           <div class="col-9">
             <div class="d-flex justify-content-between">
-              <div class="col-8">
+              <div class="col-12">
                 <h1><strong>Detalhes do <%= @restaurant.name %></strong></h1>
                 <h2>
                   <% @restaurant.rating.times do %>
@@ -29,17 +29,17 @@
                 </div>
               </div>
               <% if !current_user.nil? && @restaurant.user == current_user %>
-                <div class="column">
+                <div class="col-8">
                   <div class="mt-1">
                     <%= link_to "Editar restaurante", edit_restaurant_path(@restaurant), class:"btn btn-flat" %>
                   </div>
                   <div class="mt-4">
                     <%= link_to "Excluir restaurante", restaurant_path(@restaurant), method: :delete, data: { confirm: "Você tem certeza que deseja excluir #{@restaurant.name}?" }, class:"btn btn-flat" %>
-                  </div> 
-                </div>             
+                  </div>
+                </div>
               <% end %>
             </div>
-          </div>          
+          </div>
         </div>
       </div>
 
