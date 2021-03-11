@@ -15,6 +15,54 @@ teste = User.new(
 teste.photo.attach(io: File.open('app/assets/images/dwight.jpg'), filename: 'dwight.jpg', content_type: 'image/jpg')
 teste.save!
 
+puts "Criando usuario Felipe..."
+felipe = User.new(
+  first_name: "Felipe",
+  last_name: "Matarazzo",
+  email: "felipemps@protonmail.com",
+  password: "123123",
+  phone: "(11)98266-1193",
+  birthday: DateTime.new(1993,1,2)
+)
+felipe.photo.attach(io: File.open('app/assets/images/eu.jpg'), filename: 'eu.jpg', content_type: 'image/jpg')
+felipe.save!
+
+puts "Criando usuario Gabriel..."
+gabriel = User.new(
+  first_name: "Gabriel",
+  last_name: "Dal-Ri",
+  email: "ghdalri@gmail.com",
+  password: "123123",
+  phone: "(47)98484-3661",
+  birthday: DateTime.new(1996,10,1)
+)
+gabriel.photo.attach(io: File.open('app/assets/images/gabriel.png'), filename: 'gabriel.png', content_type: 'image/png')
+gabriel.save!
+
+puts "Criando usuario Marcelo..."
+marcelo = User.new(
+  first_name: "Marcelo",
+  last_name: "Oliveira",
+  email: "mfoliveira88@gmail.com",
+  password: "123123",
+  phone: "(11)99995-1561",
+  birthday: DateTime.new(1988,2,19)
+)
+marcelo.photo.attach(io: File.open('app/assets/images/marcelo.jpeg'), filename: 'marcelo.jpeg', content_type: 'image/jpeg')
+marcelo.save!
+
+puts "Criando usuario Victor..."
+victor = User.new(
+  first_name: "Victor",
+  last_name: "Castro",
+  email: "victormbc16@fmail.com",
+  password: "123123",
+  phone: "(11)96469-9191",
+  birthday: DateTime.new(1997,7,16)
+)
+victor.photo.attach(io: File.open('app/assets/images/victor.jpeg'), filename: 'victor.jpeg', content_type: 'image/jpeg')
+victor.save!
+
 puts "Criando padoca..."
 padoca = Restaurant.new(
   name: "Padoca",
@@ -44,7 +92,7 @@ puts "Criando pratos..."
 
   order = Order.new(
     rating: rand(1..5),
-    user_id: teste.id,
+    user_id: marcelo.id,
     dish_id: dish.id
   )
 
@@ -97,7 +145,7 @@ puts "Criando pratos..."
 
   order = Order.new(
     rating: rand(1..5),
-    user_id: teste.id,
+    user_id: felipe.id,
     dish_id: dish.id
   )
 
@@ -145,7 +193,7 @@ puts "Criando pratos..."
 
   order = Order.new(
     rating: rand(1..5),
-    user_id: teste.id,
+    user_id: victor.id,
     dish_id: dish.id
   )
 
@@ -195,7 +243,7 @@ puts "Criando pratos..."
 
 order = Order.new(
     rating: rand(1..5),
-    user_id: teste.id,
+    user_id: gabriel.id,
     dish_id: dish.id
   )
 
@@ -243,7 +291,7 @@ puts "Criando pratos..."
 
   order = Order.new(
     rating: rand(1..5),
-    user_id: teste.id,
+    user_id: felipe.id,
     dish_id: dish.id
   )
 
@@ -291,7 +339,7 @@ puts "Criando pratos..."
 
   order = Order.new(
     rating: rand(1..5),
-    user_id: teste.id,
+    user_id: marcelo.id,
     dish_id: dish.id
   )
 
@@ -339,7 +387,7 @@ puts "Criando pratos..."
 
   order = Order.new(
     rating: rand(1..5),
-    user_id: teste.id,
+    user_id: victor.id,
     dish_id: dish.id
   )
 
