@@ -25,6 +25,13 @@
           <%= "Perfil de #{@restaurant.name}" %>
         <% end %>
       </li>
+      <li class="nav-item">
+        <%= mail_to "sobrouapp@gmail.com", class: "nav-link" do %>
+          <i class="fas fa-question"></i>
+          <%= "Dúvidas" %>
+          <i class="fas fa-question"></i>
+        <% end %>
+      </li>
     </ul>
   </div>
 </nav>
