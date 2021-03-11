@@ -1,26 +1,24 @@
-<div class="banner-g" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://images.squarespace-cdn.com/content/v1/5616ae99e4b03dd528e477db/1452867212711-Y4RX5LUZJ0TJVA8J24N0/ke17ZwdGBToddI8pDm48kFWxnDtCdRm2WA9rXcwtIYR7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UcTSrQkGwCGRqSxozz07hWZrYGYYH8sg4qn8Lpf9k1pYMHPsat2_S1jaQY3SwdyaXg/BlazingHearthPizza_121215_-2184V2.jpg?format=1500w');">
-<div class="container mt-4">
-<div class="card-login m-10 p-3 card-border-login align-center">
-  <h2>Log in</h2>
-
-  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="form-inputs">
-      <%= f.input :email,
-                  required: false,
-                  autofocus: true,
-                  input_html: { autocomplete: "email" } %>
-      <%= f.input :password,
-                  required: false,
-                  input_html: { autocomplete: "current-password" } %>
-      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+<div class="banner-g" style="height: 100%; background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://images.squarespace-cdn.com/content/v1/5616ae99e4b03dd528e477db/1452867212711-Y4RX5LUZJ0TJVA8J24N0/ke17ZwdGBToddI8pDm48kFWxnDtCdRm2WA9rXcwtIYR7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UcTSrQkGwCGRqSxozz07hWZrYGYYH8sg4qn8Lpf9k1pYMHPsat2_S1jaQY3SwdyaXg/BlazingHearthPizza_121215_-2184V2.jpg?format=1500w');">
+  <div class="container mt-4">
+    <div class="card-login m-10 p-3 card-border-login align-center">
+      <h2>Log in</h2>
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="form-inputs">
+          <%= f.input :email,
+                      required: false,
+                      autofocus: true,
+                      input_html: { autocomplete: "email" } %>
+          <%= f.input :password,
+                      label: "Senha",
+                      required: false,
+                      input_html: { autocomplete: "current-password" } %>
+          <%= f.input :remember_me, label: "Manter logado", as: :boolean if devise_mapping.rememberable? %>
+        </div>
+        <div class="form-actions">
+          <%= f.button :submit, "Log in", class:"btn btn-flat" %>
+        </div>
+      <% end %>
+      <%= render "devise/shared/links" %>
     </div>
-
-    <div class="form-actions">
-      <%= f.button :submit, "Log in", class:"btn btn-flat" %>
-    </div>
-  <% end %>
-
-  <%= render "devise/shared/links" %>
-</div>
-</div>
+  </div>
 </div>

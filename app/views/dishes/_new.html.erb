@@ -3,9 +3,9 @@
   <p>Conte-nos um pouco sobre a comida que você oferecerá em suas bolsas mágicas.</p>
   <div class="container mt-4">
     <%= simple_form_for [@restaurant, @dish] do |f| %>
-      <%= f.input :name, label: "Nome" %>
+      <%= f.input :name, label: "Nome", input_html: { maxlength: '22' } %>
       <%= f.input :price, label: "Preço (R$)", input_html: { min: '0', step: 'any' }  %>
-      <%= f.input :description, label: "Descrição do prato" %>
+      <%= f.input :description, label: "Descrição do prato", input_html: { maxlength: '47' } %>
       <%= f.label :data_de_retirada %>
       <%= f.date_field :date, min: Date.today %>
       <br>

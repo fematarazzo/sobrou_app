@@ -2,14 +2,16 @@
   <div class="row">
     <div class="col-12">
       <h1 class="card-title"><%= dish.name %>
-        <% dish.rating.times do %>
-          <i class="fas fa-star"></i>
+        <% if !dish.rating.nil? %>
+          <% dish.rating.times do %>
+            <i class="fas fa-star"></i>
+          <% end %>
         <% end %>
       </h1>
     </div>
   </div>
   <div class="row align-items-center">
-    <div class="col-md-6 mb-3">
+    <div class="col-6 mb-3">
       <%= cl_image_tag dish.photo.key, height: 300, width: 400, crop: :fill, class:"rounded mb-3"%>
     </div>
     <div class="col-md-6">
@@ -28,8 +30,14 @@
         <h5 class="card-text"><b>Retirada entre às</b> <%= dish.start_time&.to_formatted_s(:time) %> e <%= dish.end_time&.to_formatted_s(:time) %></h5>
       </div>
       <div class="ml-3">
-        <%= simple_form_for [dish, order] do |f| %>
-          <button id="sweet-alert-demo" class="btn btn-flat">Reserve já!</button>
+        <% if current_user.nil? %>
+          <%= link_to "Faça seu login para reservar", new_user_session_path, class:"btn btn-flat" %>
+        <% elsif dish.restaurant.user == current_user %>
+          <%= link_to "Veja meus pedidos", restaurant_orders_path(dish.restaurant), class:"btn btn-flat" %>
+        <% else %>
+          <%= simple_form_for [dish, order] do |f| %>
+            <button id="sweet-alert-demo" class="btn btn-flat">Reserve já!</button>
+          <% end %>
         <% end %>
       </div>
     </div>

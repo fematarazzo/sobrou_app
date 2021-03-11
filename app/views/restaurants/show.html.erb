@@ -1,6 +1,6 @@
 <div class="container mt-4">
   <div class="row justify-content-center">
-    <% if !current_user.nil? && current_user.owner? %>
+    <% if !current_user.nil? && @restaurant.user == current_user %>
       <%= render 'sidebar' %>
     <% end %>
     <div class="col-10">
@@ -8,28 +8,37 @@
         <div class="d-flex justify-content-between">
           <div class="col-9">
             <div class="d-flex justify-content-between">
-              <div class="col-8">
+              <div class="col-12">
                 <h1><strong>Detalhes do <%= @restaurant.name %></strong></h1>
                 <h2>
                   <% @restaurant.rating.times do %>
                     <i class="fas fa-star"></i>
                   <% end %>
                 </h2>
-                <h2 class="mb-4">Veja abaixo: </h2>
-                <h4><strong>Nome: </strong><%= @restaurant.name %> </h4>
-                <h4><strong>Endereço: </strong><%= @restaurant.address %> </h4>
-                <h4><strong>Categoria: </strong><%= @restaurant.category %> </h4>
-                <h4><strong>Telefone: </strong><%= @restaurant.phone %> </h4>
+                <div class="d-flex space-between">
+                  <div>
+                    <h2 class="mb-4">Veja abaixo: </h2>
+                    <h4><strong>Nome: </strong><%= @restaurant.name %> </h4>
+                    <h4><strong>Endereço: </strong><%= @restaurant.address %> </h4>
+                    <h4><strong>Categoria: </strong><%= @restaurant.category %> </h4>
+                    <h4><strong>Telefone: </strong><%= @restaurant.phone %> </h4>
+                  </div>
+                  <div class="col-3 mt-5">
+                  <%= cl_image_tag @restaurant.photo.key, height: 200, width: 200, crop: :fill %>
+                  </div>
+                </div>
               </div>
-              <% if !current_user.nil? && current_user.owner? %>
-                <div class="col-4 mt-1">
-                  <%= link_to "Editar restaurante", edit_restaurant_path(@restaurant), class:"btn btn-flat" %>
+              <% if !current_user.nil? && @restaurant.user == current_user %>
+                <div class="col-8">
+                  <div class="mt-1">
+                    <%= link_to "Editar restaurante", edit_restaurant_path(@restaurant), class:"btn btn-flat" %>
+                  </div>
+                  <div class="mt-4">
+                    <%= link_to "Excluir restaurante", restaurant_path(@restaurant), method: :delete, data: { confirm: "Você tem certeza que deseja excluir #{@restaurant.name}?" }, class:"btn btn-flat" %>
+                  </div>
                 </div>
               <% end %>
             </div>
-          </div>
-          <div class="col-3">
-            <%= cl_image_tag @restaurant.photo.key, height: 200, width: 200, crop: :fill %>
           </div>
         </div>
       </div>
@@ -42,14 +51,16 @@
           </div>
           <div class="card-product-infos col-7">
             <h2 class="card-title"><%= dish.name %>
-              <% dish.rating.times do %>
-                <i class="fas fa-star"></i>
+              <% if dish.rating.present? %>
+                <% dish.rating.times do %>
+                  <i class="fas fa-star"></i>
+                <% end %>
               <% end %>
             </h2>
             <p>R$ <%= dish.price %> </p>
             <p> <%= dish.description %> </p>
           </div>
-          <% if !current_user.nil? && current_user.owner? %>
+          <% if !current_user.nil? && @restaurant.user == current_user %>
             <div class="col-3">
               <%= link_to "Editar prato", edit_dish_path(dish), class:"btn btn-flat" %>
             </div>

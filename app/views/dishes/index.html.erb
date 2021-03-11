@@ -39,7 +39,7 @@
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
+            <%= link_to "Cadastre aqui", new_user_registration_path, class: "nav-link" %>
           </li>
         <% end %>
       </ul>
@@ -68,8 +68,10 @@
                 <h4 class="card-title">
                   <%= dish.name %>
                   <h5 class="card-title">
-                    <% dish.rating.times do %>
-                      <i class="fas fa-star"></i>
+                    <% if !dish.rating.nil? %>
+                      <% dish.rating.times do %>
+                        <i class="fas fa-star"></i>
+                      <% end %>
                     <% end %>
                   </h5>
                 </h4>

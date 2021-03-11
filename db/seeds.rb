@@ -15,6 +15,54 @@ teste = User.new(
 teste.photo.attach(io: File.open('app/assets/images/dwight.jpg'), filename: 'dwight.jpg', content_type: 'image/jpg')
 teste.save!
 
+puts "Criando usuario Felipe..."
+felipe = User.new(
+  first_name: "Felipe",
+  last_name: "Matarazzo",
+  email: "felipemps@protonmail.com",
+  password: "123123",
+  phone: "(11)98266-1193",
+  birthday: DateTime.new(1993,1,2)
+)
+felipe.photo.attach(io: File.open('app/assets/images/eu.jpg'), filename: 'eu.jpg', content_type: 'image/jpg')
+felipe.save!
+
+puts "Criando usuario Gabriel..."
+gabriel = User.new(
+  first_name: "Gabriel",
+  last_name: "Dal-Ri",
+  email: "ghdalri@gmail.com",
+  password: "123123",
+  phone: "(47)98484-3661",
+  birthday: DateTime.new(1996,10,1)
+)
+gabriel.photo.attach(io: File.open('app/assets/images/gabriel.png'), filename: 'gabriel.png', content_type: 'image/png')
+gabriel.save!
+
+puts "Criando usuario Marcelo..."
+marcelo = User.new(
+  first_name: "Marcelo",
+  last_name: "Oliveira",
+  email: "mfoliveira88@gmail.com",
+  password: "123123",
+  phone: "(11)99995-1561",
+  birthday: DateTime.new(1988,2,19)
+)
+marcelo.photo.attach(io: File.open('app/assets/images/marcelo.jpeg'), filename: 'marcelo.jpeg', content_type: 'image/jpeg')
+marcelo.save!
+
+puts "Criando usuario Victor..."
+victor = User.new(
+  first_name: "Victor",
+  last_name: "Castro",
+  email: "victormbc16@fmail.com",
+  password: "123123",
+  phone: "(11)96469-9191",
+  birthday: DateTime.new(1997,7,16)
+)
+victor.photo.attach(io: File.open('app/assets/images/victor.jpeg'), filename: 'victor.jpeg', content_type: 'image/jpeg')
+victor.save!
+
 puts "Criando padoca..."
 padoca = Restaurant.new(
   name: "Padoca",
@@ -34,8 +82,8 @@ puts "Criando pratos..."
     description: "Lorem ipsum bacon queijo",
     restaurant_id: padoca.id,
     quantity: 3,
-    start_time: Time.now,
-    end_time: Time.now + 30000,
+    start_time: Time.now + 50000,
+    end_time: Time.now + 100000,
     rating: rand(1..5)
   )
   dish.photo.attach(io: File.open('app/assets/images/pao.jpg'), filename: 'pao.jpg', content_type: 'image/jpg')
@@ -44,7 +92,7 @@ puts "Criando pratos..."
 
   order = Order.new(
     rating: rand(1..5),
-    user_id: teste.id,
+    user_id: marcelo.id,
     dish_id: dish.id
   )
 
@@ -61,6 +109,10 @@ puts "Criando pratos..."
   order.save!
 
   puts "Salvando ordem do prato #{order.dish.id}"
+
+  chatroom = Chatroom.new(id: order.id.to_s)
+  chatroom.order_code = order.id
+  chatroom.save!
 
 end
 
@@ -83,8 +135,8 @@ puts "Criando pratos..."
     description: "Lorem ipsum arroz peixe",
     restaurant_id: japones.id,
     quantity: 3,
-    start_time: Time.now,
-    end_time: Time.now + 30000,
+    start_time: Time.now + 200000,
+    end_time: Time.now + 300000,
     rating: rand(1..5)
   )
   dish.photo.attach(io: File.open('app/assets/images/temaki.jpg'), filename: 'temaki.jpg', content_type: 'image/jpg')
@@ -93,7 +145,7 @@ puts "Criando pratos..."
 
   order = Order.new(
     rating: rand(1..5),
-    user_id: teste.id,
+    user_id: felipe.id,
     dish_id: dish.id
   )
 
@@ -131,8 +183,8 @@ puts "Criando pratos..."
     description: "Lorem ipsum podrão duvidoso",
     restaurant_id: boteco.id,
     quantity: 3,
-    start_time: Time.now,
-    end_time: Time.now + 30000,
+    start_time: Time.now + 400000,
+    end_time: Time.now + 500000,
     rating: rand(1..5)
   )
   dish.photo.attach(io: File.open('app/assets/images/marmita.jpg'), filename: 'marmita.jpg', content_type: 'image/jpg')
@@ -141,7 +193,7 @@ puts "Criando pratos..."
 
   order = Order.new(
     rating: rand(1..5),
-    user_id: teste.id,
+    user_id: victor.id,
     dish_id: dish.id
   )
 
@@ -181,8 +233,8 @@ puts "Criando pratos..."
     description: "Lorem ipsum massa molho de tomate",
     restaurant_id: pizzaria.id,
     quantity: 3,
-    start_time: Time.now,
-    end_time: Time.now + 30000,
+    start_time: Time.now + 600000,
+    end_time: Time.now + 700000,
     rating: rand(1..5)
   )
   dish.photo.attach(io: File.open('app/assets/images/pizza.jpg'), filename: 'pizza.jpg', content_type: 'image/jpg')
@@ -191,7 +243,7 @@ puts "Criando pratos..."
 
 order = Order.new(
     rating: rand(1..5),
-    user_id: teste.id,
+    user_id: gabriel.id,
     dish_id: dish.id
   )
 
@@ -229,8 +281,8 @@ puts "Criando pratos..."
     description: "Lorem ipsum esfiha aberta",
     restaurant_id: arabe.id,
     quantity: 3,
-    start_time: Time.now,
-    end_time: Time.now + 30000,
+    start_time: Time.now + 800000,
+    end_time: Time.now + 900000,
     rating: rand(1..5)
   )
   dish.photo.attach(io: File.open('app/assets/images/esfiha.jpg'), filename: 'esfiha.jpg', content_type: 'image/jpg')
@@ -239,7 +291,7 @@ puts "Criando pratos..."
 
   order = Order.new(
     rating: rand(1..5),
-    user_id: teste.id,
+    user_id: felipe.id,
     dish_id: dish.id
   )
 
@@ -277,8 +329,8 @@ puts "Criando pratos..."
     description: "Lorem ipsum macarrão agridoce",
     restaurant_id: chines.id,
     quantity: 3,
-    start_time: Time.now,
-    end_time: Time.now + 30000,
+    start_time: Time.now + 1000000,
+    end_time: Time.now + 1100000,
     rating: rand(1..5)
   )
   dish.photo.attach(io: File.open('app/assets/images/chinesa.jpg'), filename: 'chinesa.jpg', content_type: 'image/jpg')
@@ -287,7 +339,7 @@ puts "Criando pratos..."
 
   order = Order.new(
     rating: rand(1..5),
-    user_id: teste.id,
+    user_id: marcelo.id,
     dish_id: dish.id
   )
 
@@ -325,8 +377,8 @@ puts "Criando pratos..."
     description: "Lorem ipsum macarrão com tomate",
     restaurant_id: italiano.id,
     quantity: 3,
-    start_time: Time.now,
-    end_time: Time.now + 30000,
+    start_time: Time.now + 1200000,
+    end_time: Time.now + 1300000,
     rating: rand(1..5)
   )
   dish.photo.attach(io: File.open('app/assets/images/italianoa.jpg'), filename: 'italianoa.jpg', content_type: 'image/jpg')
@@ -335,7 +387,7 @@ puts "Criando pratos..."
 
   order = Order.new(
     rating: rand(1..5),
-    user_id: teste.id,
+    user_id: victor.id,
     dish_id: dish.id
   )
 

@@ -1,0 +1,13 @@
+<div class="container mt-4">
+  <h1>Converse com o restaurante! Seu pedido é número <%= @chatroom.id %></h1>
+  <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
+    <% @chatroom.messages.each do |message| %>
+      <%= render 'messages/message', message: message %>
+    <% end %>
+  </div>
+
+  <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
+    <%#= f.input :order_code %>
+    <%= f.input :content, label: false, placeholder: "Digite sua mensagem e aperte Enter para enviar" %>
+  <% end %>
+</div>

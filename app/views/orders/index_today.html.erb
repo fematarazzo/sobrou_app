@@ -7,40 +7,41 @@
    <table class="table table-success table-striped" style="width: 60%">
     <thead>
       <tr>
-        <th scope="col">Nome do cliente: </th>
-        <th scope="col">Contato: </th>
-        <th scope="col">Refeição: </th>
-        <th scope="col">Preço: </th>
-        <th scope="col">Data: </th>
-        <th scope="col">Refeição Recolhida: </th>
+        <th scope="col" style="white-space: nowrap;">Nome do cliente: </th>
+        <th scope="col" style="white-space: nowrap;">Contato: </th>
+        <th scope="col" style="white-space: nowrap;">Refeição: </th>
+        <th scope="col" style="white-space: nowrap;">Preço: </th>
+        <th scope="col" style="white-space: nowrap;">Data: </th>
+        <th scope="col" style="white-space: nowrap;">Chatroom: </th>
+        <th scope="col" style="white-space: nowrap;">Refeição Recolhida? </th>
       </tr>
     </thead>
     <tbody>
      <% @orders.each do |order| %>
       <tr>
-        <td><%= "#{order.user.first_name} #{order.user.last_name}" %></td>
-        <td><%= order.user.phone %></td>
-        <td><%= order.dish.name %></td>
-        <td>R$ <%= order.dish.price %></td>
-        <td><%= order.dish.created_at.to_formatted_s(:short) %></td>
-        <td>
-          <% if order.recolhida %>
-          <i class="far fa-check-square"></i>
-          <% else  %>
-          <%= link_to claim_path(order), method: :patch do %>
-          <i class="far fa-square" ></i>
-          <% end  %>
-
+        <td style="white-space: nowrap;"><%= "#{order.user.first_name} #{order.user.last_name}" %></td>
+        <td style="white-space: nowrap;"><%= order.user.phone %></td>
+        <td style="white-space: nowrap;"><%= order.dish.name %></td>
+        <td style="white-space: nowrap;">R$ <%= order.dish.price %></td>
+        <td style="white-space: nowrap;"><%= order.dish.created_at.to_formatted_s(:short) %></td>
+        <td style="white-space: nowrap;">
+          <%= link_to chatroom_path(order.id) do %>
+            <i class="far fa-comments"></i>
           <% end %>
-          <%#= simple_form_for [@orders, @restaurant] do |f| %>
-          <%#= f.input :recolhida, label: "Refeição Recolhida", as: :boolean %>
-
-        <%# end %>
+        </td>
+        <td style="white-space: nowrap;">
+          <% if order.recolhida %>
+            <i class="far fa-check-square"></i>
+          <% else  %>
+            <%= link_to claim_path(order), method: :patch do%>
+              <i class="far fa-square" ></i>
+            <% end %>
+          <% end %>
+        </td>
       </tr>
       <% end %>
     </tbody>
   </table>
-  <%#= render 'form' %>
   </div>
 </div>
 
