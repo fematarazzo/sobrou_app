@@ -25,7 +25,7 @@
         <td>R$ <%= order.dish.price %></td>
         <td><%= order.dish.created_at.to_formatted_s(:short) %></td>
         <td>
-          <%= link_to chatroom_path(order.dish.restaurant.name) do %>
+          <%= link_to chatroom_path(order.id) do %>
             <i class="far fa-comments"></i>
           <% end %>
         </td>

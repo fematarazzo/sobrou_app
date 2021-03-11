@@ -73,7 +73,7 @@
                       <h6><strong>Preço:</strong> R$<%=order.dish.price %></h6>
                     </div>
                     <div>
-                      <%= link_to "Chat do pedido", chatroom_path, class:"btn btn-flat btn-chat" %>
+                      <%= link_to "Chat do pedido", chatroom_path(order.id), class:"btn btn-flat btn-chat" %>
                     </div>
                     <div>
 

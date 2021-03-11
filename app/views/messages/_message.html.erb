@@ -1,7 +1,7 @@
 <div class="message-container" id="message-<%= message.id %>">
   <% if message.user.owner? %>
     <i class="author">
-      <span><%= message.user.restaurants.first.name %></span>
+      <span>Pedido número: <%= message.chatroom.order_code %></span>
       <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
     </i>
   <% else %>
