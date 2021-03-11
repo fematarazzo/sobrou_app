@@ -51,7 +51,7 @@ class OrdersController < ApplicationController
 
   def update
     @order.update(order_params)
-    sweetalert_info('Não se esqueça de avaliar seu prato! Acesse Meu Perfil e avalie', 'Tudo Pronto! Que tal avaliar o prato depois?', persistent: 'Vamos nessa!')
+    sweetalert_info('Não se esqueça de avaliar seu prato! Acesse Meu Perfil', 'Tudo Pronto! Que tal avaliar o prato depois?', persistent: 'Ok, obrigado!')
     redirect_to root_path
   end
 
