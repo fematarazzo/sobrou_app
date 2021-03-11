@@ -12,6 +12,7 @@
         <th scope="col">Refeição: </th>
         <th scope="col">Preço: </th>
         <th scope="col">Data: </th>
+        <th scope="col">Chatroom: </th>
         <th scope="col">Refeição Recolhida? </th>
       </tr>
     </thead>
@@ -24,6 +25,11 @@
         <td>R$ <%= order.dish.price %></td>
         <td><%= order.dish.created_at.to_formatted_s(:short) %></td>
         <td>
+          <%= link_to chatroom_path(order.id) do %>
+            <i class="far fa-comments"></i>
+          <% end %>
+        </td>
+        <td>
           <% if order.recolhida %>
             <i class="far fa-check-square"></i>
           <% else  %>
@@ -31,6 +37,7 @@
               <i class="far fa-square" ></i>
             <% end %>
           <% end %>
+        </td>
       </tr>
       <% end %>
     </tbody>

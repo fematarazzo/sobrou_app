@@ -33,10 +33,13 @@ class OrdersController < ApplicationController
       redirect_to restaurant_orders_path(@restaurant)
     else
       if @order.save
+        @chatroom = Chatroom.new(id: @order.id.to_s)
+        @chatroom.order_code = @order.id
+        @chatroom.save
         @dish.quantity = @dish.quantity - 1
         @dish.save
         sweetalert_success('Confira agora os detalhes do seu pedido', 'Reserva agendada!', persistent: 'Vamos nessa!')
-        redirect_to order_path(@order), notice: "Reserva agendada!"
+        redirect_to order_path(@order)
       else
         render "dishes/show"
       end
@@ -49,7 +52,7 @@ class OrdersController < ApplicationController
   def update
     @order.update(order_params)
     sweetalert_info('Não se esqueça de avaliar seu prato! Acesse Meu Perfil e avalie', 'Tudo Pronto! Que tal avaliar o prato depois?', persistent: 'Vamos nessa!')
-    redirect_to root_path, notice: "Não se esqueça de avaliar seu prato! Acesse Meu Perfil e avalie"
+    redirect_to root_path
   end
 
   def destroy

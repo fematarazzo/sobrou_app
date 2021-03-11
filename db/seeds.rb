@@ -62,6 +62,10 @@ puts "Criando pratos..."
 
   puts "Salvando ordem do prato #{order.dish.id}"
 
+  chatroom = Chatroom.new(id: order.id.to_s)
+  chatroom.order_code = order.id
+  chatroom.save!
+
 end
 
 puts "Criando japones..."
