@@ -24,13 +24,7 @@
           <i class="fas fa-store"></i>
           <%= "Perfil de #{@restaurant.name}" %>
         <% end %>
-      </li>
-      <li class="nav-item">
-        <%=link_to restaurant_path(@restaurant), method: :delete, data: { confirm: "Você tem certeza?" }, class: "nav-link" do %>
-          <i class="fas fa-minus-circle"></i>
-          Excluir meu restaurante
-        <% end %>
-      </li>
+      </li>      
     </ul>
   </div>
 </nav>
