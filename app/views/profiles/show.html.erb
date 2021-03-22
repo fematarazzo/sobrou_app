@@ -1,122 +1,250 @@
 <div class="container mt-4">
-  <div class="card-border-profile">
-    <div class="position-absolute top-50 start-0 translate-middle-y mt-4 ml-3">
-      <%= cl_image_tag current_user.photo.key, height: 150, width: 150, class:"avatar-profile" %>
-    </div>
-    <div class="text-center">
-      <h1 class="p-3"><%= current_user.first_name.capitalize %> <%=current_user.last_name.capitalize  %></h1>
-      <h3 class="mt-2">Minhas Contribuições</h3>
-    </div>
-
-    <div class="d-flex justify-content-around mt-4">
-      <div class= "d-flex flex-column align-items-center">
-        <h5><%= @orders.empty? ? "0" : @orders.size%> </h5>
-        <h5 class="mt-2 pb-3">Refeições salvas</h5>
-      </div>
-
-      <div class= "d-flex flex-column align-items-center">
-        <h5><%= @orders.size * 0.46.round(1) %></h5>
-        <h5 class="mt-2 pb-3">Kg salvos</h5>
-      </div>
-    </div>
-  </div>
-    <div id="accordion">
-      <div>
-        <div class="accordion-card mb-2" id="headingOne">
-          <h5 class="mb-0">
-          <button class="btn btn-link m-0 decoration-none" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            Meus dados
-          </button>
-          </h5>
-          <i class="fas fa-sliders-h" style="margin-left:83%"></i>
+  <% if mobile_device == "mobile" %>
+    <div>
+      <div class="col-12 mb-3 card-border-profile-mobile row align-items-center justify-content-around">
+        <div class="mt-2">
+          <%= cl_image_tag current_user.photo.key, height: 80, width: 80, class:"avatar-profile" %>
         </div>
-      <div>
 
-      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-        <div class="card-body">
-          <div class="d-flex flex-column">
-            <h4><strong>Nome:</strong> <%= current_user.first_name.capitalize %> <%=  current_user.last_name.capitalize %></h4>
-            <h4 class="mt-4"><strong>E-mail:</strong> <%=  current_user.email %></h4>
-            <h4 class="mt-4"><strong>Telefone:</strong> <%=  current_user.phone %></h4>
-            <h4 class="mt-4"><strong>Data de Nascimento:</strong> <%=  current_user.birthday.strftime("%d/%m/%Y") %></h4>
-            <%= link_to "Editar meus dados", edit_user_registration_path(current_user), class:"btn btn-flat btn-edit mt-3" %></p>
+        <div class="col-12">
+          <div class="text-center">
+            <h2 class="p-3"><%= current_user.first_name.capitalize %> <%=current_user.last_name.capitalize  %></h2>
+            <h4>Minhas Contribuições</h4>
+          </div>
+
+          <div class="d-flex justify-content-between">
+            <div class= "d-flex flex-column align-items-center">
+              <h5><%= @orders.empty? ? "0" : @orders.size%> </h5>
+              <h5 class="pb-3">Refeições salvas</h5>
+            </div>
+
+            <div class= "d-flex flex-column align-items-center">
+              <h5><%= @orders.size * 0.46.round(1) %></h5>
+              <h5 class="pb-3">Kg salvos</h5>
+            </div>
           </div>
         </div>
       </div>
+        <div id="accordion">
+          <div>
+            <div class="accordion-card-mobile mb-2" id="headingOne">
+              <h5>
+                <button class="mt-2 btn btn-link decoration-none" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Meus dados
+                </button>
+              </h5>
+            </div>
+          <div>
 
-      <div id="accordion">
-        <div class="accordion-card" id="headingTwo">
-          <h5 class="mb-0">
-          <button class="btn btn-link m-0 decoration-none" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-            Meus Pedidos
-          </button>
-          </h5>
-          <i class="fas fa-utensils" style="margin-left:82%"></i>
-        </div>
-        <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
-          <div class="card-body">
-            <div class="d-flex flex-column">
-              <% unless @orders.empty? %>
-                <% @orders.each do |order| %>
-                <div class="card p-3 w-100 mb-3">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                      <h3 class="card-title"><%= order.dish.name %>
-                        <% if !order.dish.rating.nil? %>
-                          <% order.dish.rating.times do %>
-                            <i class="fas fa-star"></i>
-                          <% end %>
-                        <% end %>
-                      </h3>
-                      <h6><strong>Nome do restaurante:</strong> <%=order.dish.restaurant.name%></h6>
-                      <h6><strong>Endereço:</strong> <%=order.dish.restaurant.address%></h6>
-                      <h6><strong>Preço:</strong> R$<%=order.dish.price %></h6>
-                    </div>
-                    <div>
-                      <%= link_to "Chat do pedido", chatroom_path(order.id), class:"btn btn-flat btn-chat" %>
-                    </div>
-                    <div>
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+              <div class="d-flex flex-column">
+                <h6><strong>Nome:</strong> <%= current_user.first_name.capitalize %> <%=  current_user.last_name.capitalize %></h6>
+                <h6 class="mt-2"><strong>E-mail:</strong> <%=  current_user.email %></h6>
+                <h6 class="mt-2"><strong>Telefone:</strong> <%=  current_user.phone %></h6>
+                <h6 class="mt-2"><strong>Data de Nascimento:</strong> <%=  current_user.birthday.strftime("%d/%m/%Y") %></h6>
+                <%= link_to "Editar meus dados", edit_user_registration_path(current_user), class:"btn btn-flat btn-edit mt-3" %></p>
+              </div>
+            </div>
+          </div>
 
-                      <!-- Button trigger modal -->
-                      <button type="button" class="btn btn-flat btn-edit" data-toggle="modal" data-target=<%="#dish-#{order.dish.id}"%>>
-                        Avalie o prato
-                      </button>
-
-                      <!-- Modal -->
-                      <div class="modal fade rounded" id=<%="dish-#{order.dish.id}"%> tabindex="-1" aria-labelledby=<%="#dish-#{order.dish.id}Label"%> aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered rounded">
-                          <div class="modal-content p-3 rounded">
-                            <%= simple_form_for order.dish do |f| %>
-                              <p>O que você achou do seu prato? Dê uma nota abaixo:</p>
-                                <%= f.input :rating,
-                                            label: "",
-                                            required: false,
-                                            as: :radio_buttons,
-                                            include_blank: false,
-                                            input_html: { class: "tag-selector" },
-                                            item_wrapper_class: 'tag-item',
-                                            collection: ["1", "2", "3", "4", "5"] %>
-                                <%= f.button :submit, "Enviar", class:"btn btn-flat" %>
+          <div id="accordion">
+            <div class="accordion-card-mobile" id="headingTwo">
+              <h5>
+                <button class="btn btn-link decoration-none" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                  Meus Pedidos
+                </button>
+              </h5>
+            </div>
+            <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
+              <div class="card-body">
+                <div class="d-flex flex-column row">
+                  <% unless @orders.empty? %>
+                    <% @orders.each do |order| %>
+                    <div class="card p-3 mb-3 col-12 card-profile-items-mobile">
+                          <h6 class="card-title"><%= order.dish.name %>
+                            <% if !order.dish.rating.nil? %>
+                              <% order.dish.rating.times do %>
+                                <i class="fas fa-star"></i>
+                              <% end %>
                             <% end %>
+                          </h6>
+                      <div class="d-flex justify-content-around align-items-center row">
+                        <div>
+                          <h6><strong>Nome do restaurante:</strong> <%=order.dish.restaurant.name%></h6>
+                          <h6><strong>Endereço:</strong> <%=order.dish.restaurant.address%></h6>
+                          <h6><strong>Preço:</strong> R$<%=order.dish.price %></h6>
+                        </div>
+                        <div>
+                          <div>
+                            <%= link_to "Chat", chatroom_path(order.id), class:"btn btn-flat btn-chat btn-mobile" %>
                           </div>
+                          <div>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-flat btn-edit btn-mobile" data-toggle="modal" data-target=<%="#dish-#{order.dish.id}"%>>
+                              Avaliação
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade rounded" id=<%="dish-#{order.dish.id}"%> tabindex="-1" aria-labelledby=<%="#dish-#{order.dish.id}Label"%> aria-hidden="true">
+                              <div class="modal-dialog modal-dialog-centered rounded">
+                                <div class="modal-content p-3 rounded">
+                                  <%= simple_form_for order.dish do |f| %>
+                                    <p>O que você achou do seu prato? Dê uma nota abaixo:</p>
+                                      <%= f.input :rating,
+                                                  label: "",
+                                                  required: false,
+                                                  as: :radio_buttons,
+                                                  include_blank: false,
+                                                  input_html: { class: "tag-selector" },
+                                                  item_wrapper_class: 'tag-item',
+                                                  collection: ["1", "2", "3", "4", "5"] %>
+                                      <%= f.button :submit, "Enviar", class:"btn btn-flat" %>
+                                  <% end %>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <%= link_to "Pedido", order_path(order), class:"btn btn-flat btn-mobile w-100" %>
                         </div>
                       </div>
                     </div>
-                    <div>
-                      <%= link_to "Ver pedido", order_path(order), class:"btn btn-flat" %>
-                    </div>
-                  </div>
+                    <% end %>
+                  <% else %>
+                    <p>Não há pedidos ainda</p>
+                  <% end %>
                 </div>
-                <% end %>
-              <% else %>
-                <p>Não há pedidos ainda</p>
-              <% end %>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  <% else %>
+  <div class="row justify-content-center">
+    <div class="col-12 mb-3 card-border-profile row align-items-center justify-content-around">
+
+      <div class="col-1">
+        <%= cl_image_tag current_user.photo.key, height: 150, width: 150, class:"avatar-profile" %>
+      </div>
+
+      <div class="col-11">
+        <div class="text-center">
+          <h1 class="p-3"><%= current_user.first_name.capitalize %> <%=current_user.last_name.capitalize  %></h1>
+          <h3>Minhas Contribuições</h3>
+        </div>
+
+        <div class="d-flex justify-content-around">
+          <div class= "d-flex flex-column align-items-center">
+            <h5><%= @orders.empty? ? "0" : @orders.size%> </h5>
+            <h5 class="pb-3">Refeições salvas</h5>
+          </div>
+
+          <div class= "d-flex flex-column align-items-center">
+            <h5><%= @orders.size * 0.46.round(1) %></h5>
+            <h5 class="pb-3">Kg salvos</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="col-12" id="accordion">
+        <div>
+          <div class="accordion-card mb-2" id="headingOne">
+            <h5 class="mb-0">
+            <button class="btn btn-link m-0 decoration-none" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              Meus dados
+            </button>
+            </h5>
+            <i class="fas fa-sliders-h" style="margin-left:83%"></i>
+          </div>
+        <div>
+
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+          <div class="card-body">
+            <div class="d-flex flex-column">
+              <h4><strong>Nome:</strong> <%= current_user.first_name.capitalize %> <%=  current_user.last_name.capitalize %></h4>
+              <h4 class="mt-4"><strong>E-mail:</strong> <%=  current_user.email %></h4>
+              <h4 class="mt-4"><strong>Telefone:</strong> <%=  current_user.phone %></h4>
+              <h4 class="mt-4"><strong>Data de Nascimento:</strong> <%=  current_user.birthday.strftime("%d/%m/%Y") %></h4>
+              <%= link_to "Editar meus dados", edit_user_registration_path(current_user), class:"btn btn-flat btn-edit mt-3" %></p>
+            </div>
+          </div>
+        </div>
+
+        <div id="accordion">
+          <div class="accordion-card" id="headingTwo">
+            <h5 class="mb-0">
+            <button class="btn btn-link m-0 decoration-none" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+              Meus Pedidos
+            </button>
+            </h5>
+            <i class="fas fa-utensils" style="margin-left:82%"></i>
+          </div>
+          <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div class="card-body">
+              <div class="d-flex flex-column row">
+                <% unless @orders.empty? %>
+                  <% @orders.each do |order| %>
+                  <div class="card p-3 mb-3 col-12 card-profile-items">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div>
+                        <h3 class="card-title"><%= order.dish.name %>
+                          <% if !order.dish.rating.nil? %>
+                            <% order.dish.rating.times do %>
+                              <i class="fas fa-star"></i>
+                            <% end %>
+                          <% end %>
+                        </h3>
+                        <h6><strong>Nome do restaurante:</strong> <%=order.dish.restaurant.name%></h6>
+                        <h6><strong>Endereço:</strong> <%=order.dish.restaurant.address%></h6>
+                        <h6><strong>Preço:</strong> R$<%=order.dish.price %></h6>
+                      </div>
+                      <div>
+                        <%= link_to "Chat do pedido", chatroom_path(order.id), class:"btn btn-flat btn-chat" %>
+                      </div>
+                      <div>
+
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-flat btn-edit" data-toggle="modal" data-target=<%="#dish-#{order.dish.id}"%>>
+                          Avalie o prato
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade rounded" id=<%="dish-#{order.dish.id}"%> tabindex="-1" aria-labelledby=<%="#dish-#{order.dish.id}Label"%> aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered rounded">
+                            <div class="modal-content p-3 rounded">
+                              <%= simple_form_for order.dish do |f| %>
+                                <p>O que você achou do seu prato? Dê uma nota abaixo:</p>
+                                  <%= f.input :rating,
+                                              label: "",
+                                              required: false,
+                                              as: :radio_buttons,
+                                              include_blank: false,
+                                              input_html: { class: "tag-selector" },
+                                              item_wrapper_class: 'tag-item',
+                                              collection: ["1", "2", "3", "4", "5"] %>
+                                  <%= f.button :submit, "Enviar", class:"btn btn-flat" %>
+                              <% end %>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <%= link_to "Ver pedido", order_path(order), class:"btn btn-flat" %>
+                      </div>
+                    </div>
+                  </div>
+                  <% end %>
+                <% else %>
+                  <p>Não há pedidos ainda</p>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
 
 

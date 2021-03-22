@@ -5,11 +5,11 @@
     </h1>
     <h1>Pra quem quer pagar <strong>pouco e ajudar o planeta</strong></h1>
 
-    <h1>Busque aqui o endereço para encontrar sua próxima refeição:</h1>
+    <h1>Busque aqui e encontre sua próxima refeição:</h1>
     <div class="my-4">
       <%= simple_form_for :search, url: dishes_path, defaults: {label: false}, method: :get do |f| %>
         <div class="search-form-control form-group">
-          <%= f.input :address, input_html: { class:"form-control string required", id:"busca" }, label: false, placeholder: "Insira um endereço de referência para retirar seu prato" %>
+          <%= f.input :address, input_html: { class:"form-control string required", id:"busca" }, label: false, placeholder: "Insira o endereço de retirada" %>
           <%= f.button :submit, "Buscar", class:"btn btn-flat" %>
           <p>Selecione os filtros desejados:</p>
           <%= f.input :category,
@@ -23,9 +23,13 @@
         </div>
       <% end %>
     </div>
-
-    <p class="mt-5 text-white">Quer ser parceiro Sobrou? <span> <%= link_to "Cadastre seu Restaurante", new_restaurant_path, class:"btn-ghost ml-3 text-white" %> </span> </p>
-    <h1 class= "mt-5">Confira no mapa abaixo os restaurantes cadastrados perto de você:</h1>
+    <div class="banner-registration">
+      <div class="d-flex flex-row justify-content-left align-items-center">
+        <p class="mt-2 text-white">Seja parceiro: </p>
+        <%= link_to "Cadastre seu restaurante", new_restaurant_path, class:"btn-ghost text-white ml-1" %>
+      </div>
+    </div>
+    <h1 class= "mt-5">Confira no mapa os restaurantes parceiros:</h1>
   </div>
 </div>
 <div class="container">
