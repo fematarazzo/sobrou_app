@@ -9,10 +9,10 @@
   <div class="row justify-content-between">
     <% @dishes.each do |dish| %>
       <% if dish.quantity > 0 %>
-        <div class="card mb-3 rounded" style="max-width: 560px">
+        <div class="card mb-3 rounded" style="max-width: 540px">
           <div class="row g-0 align-items-center rounded">
             <div class="col-6 col-lg-6">
-              <%= cl_image_tag dish.photo.key, width: 300, class:"rounded" %>
+              <%= cl_image_tag dish.photo.key, width: 250, height: 250, crop: :fill, class:"rounded ml-3" %>
             </div>
             <div class="col-6 col-lg-6">
               <div class="card-body">
