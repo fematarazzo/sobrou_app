@@ -5,7 +5,6 @@ class DishesController < ApplicationController
 
   def index
     skip_policy_scope
-    @change_nav = true
 
     if params[:search][:address].blank? && params[:search][:category] == [""]
       @restaurants = policy_scope(Restaurant)
