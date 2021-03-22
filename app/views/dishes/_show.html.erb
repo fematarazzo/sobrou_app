@@ -1,18 +1,33 @@
 <div class="row no-gutters justify-content-center rounded">
   <div class="row">
     <div class="col-12">
-      <h1 class="card-title"><%= dish.name %>
-        <% if !dish.rating.nil? %>
-          <% dish.rating.times do %>
-            <i class="fas fa-star"></i>
+      <% if mobile_device == "mobile" %>
+        <h1 class="card-title"><%= dish.name %></h1>
+        <h1 class="card-title">
+          <% if !dish.rating.nil? %>
+            <% dish.rating.times do %>
+              <i class="fas fa-star"></i>
+            <% end %>
           <% end %>
-        <% end %>
-      </h1>
+        </h1>
+      <% else %>
+        <h1 class="card-title"><%= dish.name %>
+          <% if !dish.rating.nil? %>
+            <% dish.rating.times do %>
+              <i class="fas fa-star"></i>
+            <% end %>
+          <% end %>
+        </h1>
+      <% end %>
     </div>
   </div>
   <div class="row align-items-center">
-    <div class="col-6 mb-3">
-      <%= cl_image_tag dish.photo.key, height: 300, width: 400, crop: :fill, class:"rounded mb-3"%>
+    <div class="col-12 col-lg-6 mb-3">
+      <% if mobile_device == "mobile" %>
+        <%= cl_image_tag dish.photo.key, height: 200, width: 250, crop: :fill, class:"rounded ml-5"%>
+      <% else %>
+        <%= cl_image_tag dish.photo.key, height: 300, width: 400, crop: :fill, class:"rounded mb-3"%>
+      <% end %>
     </div>
     <div class="col-md-6">
       <div class="card-body">
