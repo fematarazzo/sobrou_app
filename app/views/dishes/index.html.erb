@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <% if @dishes.count.positive? %>
     <h1 class="title-h1">Confira os pratos disponíveis</h1>
-    <h3>Faça sua reserva, mate sua fome e ainda ajude o planeta!</h3>
+    <h3>Mate sua fome e ainda ajude o planeta!</h3>
   <% else %>
     <h1 class="title-h1">Oops, não temos restaurantes próximos por aqui hoje 😫</h1>
     <p class="text-center mt-5"><%= link_to "Ver outros endereços", root_path, class: "bcolor btn btn-flat" %> </p>
@@ -9,12 +9,16 @@
   <div class="row justify-content-between">
     <% @dishes.each do |dish| %>
       <% if dish.quantity > 0 %>
-        <div class="card mb-3 rounded" style="max-width: 540px">
-          <div class="row g-0 align-items-center rounded">
-            <div class="col-6 col-lg-6">
-              <%= cl_image_tag dish.photo.key, width: 250, height: 250, crop: :fill, class:"rounded ml-3" %>
+        <div class="card mb-3 rounded col-12 col-lg-6">
+          <div class="row justify-content-between flex-wrap align-items-center rounded">
+            <div class="col-5 col-lg-5">
+              <% if mobile_device == "mobile" %>
+                <%= cl_image_tag dish.photo.key, width: 150, height: 150, crop: :fill, class:"rounded" %>
+              <% else %>
+                <%= cl_image_tag dish.photo.key, width: 220, height: 220, crop: :fill, class:"rounded ml-2" %>
+              <% end %>
             </div>
-            <div class="col-6 col-lg-6">
+            <div class="col-7 col-lg-7">
               <div class="card-body">
                 <h4 class="card-title">
                   <%= dish.name %>
@@ -30,11 +34,15 @@
                 <p class="card-text">R$ <%= dish.price %> </p>
                 <p class="card-text"><%= dish.description %> </p>
                 <hr>
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-flat" data-toggle="modal" data-target=<%="#dish-#{dish.id}"%>>
-                  Veja detalhes
-                </button>
-
+                <% if mobile_device == "mobile" %>
+                   <button type="button" class="btn btn-flat" data-toggle="modal" data-target=<%="#dish-#{dish.id}"%>>
+                    Detalhes
+                  </button>
+                <% else %>
+                  <button type="button" class="btn btn-flat" data-toggle="modal" data-target=<%="#dish-#{dish.id}"%>>
+                    Veja detalhes
+                  </button>
+                <% end %>
                 <!-- Modal -->
                 <div class="modal fade rounded" id=<%="dish-#{dish.id}"%> tabindex="-1" aria-labelledby=<%="#dish-#{dish.id}Label"%> aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered modal-lg rounded">
