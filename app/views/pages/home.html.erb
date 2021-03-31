@@ -1,11 +1,11 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://nutriconsultoria.net/wp-content/uploads/2016/09/prato-saud-vel.jpg');">
   <div class="container">
-    <h1>
+    <h2>
       <span id="banner-typed-text" class="banner-area"></span>
-    </h1>
-    <h1>Pra quem quer pagar <strong>pouco e ajudar o planeta</strong></h1>
+    </h2>
+    <h2>Pra quem quer pagar <strong>pouco e ajudar o planeta</strong></h2>
 
-    <h1>Busque aqui e encontre sua próxima refeição:</h1>
+    <h2>Busque aqui e encontre sua próxima refeição:</h2>
     <div class="my-4">
       <%= simple_form_for :search, url: dishes_path, defaults: {label: false}, method: :get do |f| %>
         <div class="search-form-control form-group">
@@ -29,7 +29,7 @@
         <%= link_to "Cadastre seu restaurante", new_restaurant_path, class:"btn-ghost text-white ml-1" %>
       </div>
     </div>
-    <h1 class= "mt-5">Confira no mapa os restaurantes parceiros:</h1>
+    <h2 class= "mt-5">Confira no mapa os restaurantes parceiros:</h2>
   </div>
 </div>
 <div class="container">
