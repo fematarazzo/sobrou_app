@@ -1,47 +1,47 @@
 <div class="container-fluid mt-4">
   <div class="row justify-content-center">
-  <%= render 'restaurants/sidebar', restaurant: @restaurant %>
-  <div class="card-dish m-3 p-3 card-border" style="width: 60%">
-    <h1 style="font-family:Open Sans">Lista de pedidos de hoje</h1>
-  </div>
-   <table class="table table-success table-striped" style="width: 60%">
-    <thead>
-      <tr>
-        <th scope="col" style="white-space: nowrap;">Nome do cliente: </th>
-        <th scope="col" style="white-space: nowrap;">Contato: </th>
-        <th scope="col" style="white-space: nowrap;">Refeição: </th>
-        <th scope="col" style="white-space: nowrap;">Preço: </th>
-        <th scope="col" style="white-space: nowrap;">Data: </th>
-        <th scope="col" style="white-space: nowrap;">Chatroom: </th>
-        <th scope="col" style="white-space: nowrap;">Refeição Recolhida? </th>
-      </tr>
-    </thead>
-    <tbody>
-     <% @orders.each do |order| %>
-      <tr>
-        <td style="white-space: nowrap;"><%= "#{order.user.first_name} #{order.user.last_name}" %></td>
-        <td style="white-space: nowrap;"><%= order.user.phone %></td>
-        <td style="white-space: nowrap;"><%= order.dish.name %></td>
-        <td style="white-space: nowrap;">R$ <%= order.dish.price %></td>
-        <td style="white-space: nowrap;"><%= order.dish.created_at.to_formatted_s(:short) %></td>
-        <td style="white-space: nowrap;">
-          <%= link_to chatroom_path(order.id) do %>
-            <i class="far fa-comments"></i>
-          <% end %>
-        </td>
-        <td style="white-space: nowrap;">
-          <% if order.recolhida %>
-            <i class="far fa-check-square" style="white-space: nowrap;"></i>
-          <% else  %>
-            <%= link_to claim_path(order), method: :patch do%>
-              <i class="far fa-square" style="white-space: nowrap;" ></i>
-            <% end %>
-          <% end %>
-        </td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+    <%= render 'restaurants/sidebar', restaurant: @restaurant %>
+    <div class="card-dish m-3 p-3 card-border" style="width: 60%">
+      <h1 style="font-family:Open Sans">Lista de pedidos de hoje</h1>
+    </div>
+    <table class="table table-success table-striped" style="width: 60%">
+      <thead>
+        <tr>
+          <th scope="col" style="white-space: nowrap;">Nome do cliente: </th>
+          <th scope="col" style="white-space: nowrap;">Contato: </th>
+          <th scope="col" style="white-space: nowrap;">Refeição: </th>
+          <th scope="col" style="white-space: nowrap;">Preço: </th>
+          <th scope="col" style="white-space: nowrap;">Data: </th>
+          <th scope="col" style="white-space: nowrap;">Chatroom: </th>
+          <th scope="col" style="white-space: nowrap;">Refeição Recolhida? </th>
+        </tr>
+      </thead>
+      <tbody>
+       <% @orders.each do |order| %>
+          <tr>
+            <td style="white-space: nowrap;"><%= "#{order.user.first_name} #{order.user.last_name}" %></td>
+            <td style="white-space: nowrap;"><%= order.user.phone %></td>
+            <td style="white-space: nowrap;"><%= order.dish.name %></td>
+            <td style="white-space: nowrap;">R$ <%= order.dish.price %></td>
+            <td style="white-space: nowrap;"><%= order.dish.created_at.to_formatted_s(:short) %></td>
+            <td style="white-space: nowrap;">
+              <%= link_to chatroom_path(order.id) do %>
+                <i class="far fa-comments"></i>
+              <% end %>
+            </td>
+            <td style="white-space: nowrap;">
+              <% if order.recolhida %>
+                <i class="far fa-check-square" style="white-space: nowrap;"></i>
+              <% else  %>
+                <%= link_to claim_path(order), method: :patch do%>
+                  <i class="far fa-square" style="white-space: nowrap;" ></i>
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
 

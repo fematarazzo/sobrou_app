@@ -1,5 +1,6 @@
 import Typed from 'typed.js';
 
+// Typed JS that's being display on banner @root
 const loadDynamicBannerText = () => {
   if (document.getElementById("banner-typed-text")){
     new Typed('#banner-typed-text', {

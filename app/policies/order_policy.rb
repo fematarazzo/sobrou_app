@@ -23,7 +23,7 @@ class OrderPolicy < ApplicationPolicy
   end
 
   def update?
-    # soemtne o restraurtnte
+    # somente o restraurtnte
     owner?
   end
 
