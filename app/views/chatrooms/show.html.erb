@@ -7,7 +7,6 @@
   </div>
 
   <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
-    <%#= f.input :order_code %>
     <%= f.input :content, label: false, placeholder: "Digite sua mensagem e aperte Enter para enviar" %>
   <% end %>
 </div>

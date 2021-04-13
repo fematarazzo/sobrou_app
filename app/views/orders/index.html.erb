@@ -1,33 +1,31 @@
 <div class="container-fluid mt-4">
   <div class="row justify-content-center">
-  <%= render 'restaurants/sidebar', restaurant: @restaurant %>
-  <div class="card-dish m-3 p-3 card-border" style="width: 60%">
-    <h1 style="font-family:Open Sans">Lista de todos os pedidos</h1>
-  </div>
-  <table class="table table-success table-striped" style="width: 60%">
-    <thead>
-      <tr>
-        <th scope="col" style="white-space: nowrap;">Nome do cliente: </th>
-        <th scope="col" style="white-space: nowrap;"> Telefone de Contato: </th>
-        <th scope="col" style="white-space: nowrap;">Refeição: </th>
-        <th scope="col" style="white-space: nowrap;">Preço: </th>
-        <th scope="col" style="white-space: nowrap;">Data: </th>
-      </tr>
-    </thead>
-    <tbody>
-     <% @orders.each do |order| %>
-      <tr>
-        <td style="white-space: nowrap;"><%= "#{order.user.first_name} #{order.user.last_name}" %></td>
-        <td style="white-space: nowrap;"><%= order.user.phone %></td>
-        <td style="white-space: nowrap;"><%= order.dish.name %></td>
-        <td style="white-space: nowrap;">R$ <%= order.dish.price %></td>
-        <td style="white-space: nowrap;"><%= order.dish.created_at.to_formatted_s(:short) %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-
+    <%= render 'restaurants/sidebar', restaurant: @restaurant %>
+    <div class="card-dish m-3 p-3 card-border" style="width: 60%">
+      <h1 style="font-family:Open Sans">Lista de todos os pedidos</h1>
+    </div>
+    <table class="table table-success table-striped" style="width: 60%">
+      <thead>
+        <tr>
+          <th scope="col" style="white-space: nowrap;">Nome do cliente: </th>
+          <th scope="col" style="white-space: nowrap;"> Telefone de Contato: </th>
+          <th scope="col" style="white-space: nowrap;">Refeição: </th>
+          <th scope="col" style="white-space: nowrap;">Preço: </th>
+          <th scope="col" style="white-space: nowrap;">Data: </th>
+        </tr>
+      </thead>
+      <tbody>
+       <% @orders.each do |order| %>
+        <tr>
+          <td style="white-space: nowrap;"><%= "#{order.user.first_name} #{order.user.last_name}" %></td>
+          <td style="white-space: nowrap;"><%= order.user.phone %></td>
+          <td style="white-space: nowrap;"><%= order.dish.name %></td>
+          <td style="white-space: nowrap;">R$ <%= order.dish.price %></td>
+          <td style="white-space: nowrap;"><%= order.dish.created_at.to_formatted_s(:short) %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
 

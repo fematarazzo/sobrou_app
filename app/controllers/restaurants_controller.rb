@@ -7,6 +7,7 @@ class RestaurantsController < ApplicationController
   end
 
   def dashboard
+    # Unique method for displaying a dashboard for each restaurant
     @restaurant = Restaurant.find(params[:restaurant_id])
     authorize @restaurant
     @dish = Dish.new

@@ -3,6 +3,7 @@ class PagesController < ApplicationController
 
   def home
     @restaurants = Restaurant.all
+    # Setting markers for map
     @markers = @restaurants.geocoded.map do |restaurant|
       {
         lat: restaurant.latitude,

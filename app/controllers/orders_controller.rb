@@ -8,6 +8,7 @@ class OrdersController < ApplicationController
   def index_today
     @restaurant = Restaurant.find(params[:restaurant_id])
     authorize @restaurant
+    # Showing only orders made today
     @orders = policy_scope(Order).where( "created_at >= ? AND created_at <= ?", Date.today.beginning_of_day, Date.today.end_of_day)
     @orders = @orders.select { |order| @restaurant == order.dish.restaurant }
   end
@@ -33,11 +34,13 @@ class OrdersController < ApplicationController
       redirect_to restaurant_orders_path(@restaurant)
     else
       if @order.save
+        # Associate new orders to chatroom
         @chatroom = Chatroom.new(id: @order.id.to_s)
         @chatroom.order_code = @order.id
         @chatroom.save
         @dish.quantity = @dish.quantity - 1
         @dish.save
+        # Alert notifying order reservation details
         sweetalert_success('Confira agora os detalhes do seu pedido', 'Reserva agendada!', persistent: 'Vamos nessa!')
         redirect_to order_path(@order)
       else
@@ -51,6 +54,7 @@ class OrdersController < ApplicationController
 
   def update
     @order.update(order_params)
+    # Remembering user about the order
     sweetalert_info('Não se esqueça de avaliar seu prato! Acesse Meu Perfil', 'Tudo Pronto! Que tal avaliar o prato depois?', persistent: 'Ok, obrigado!')
     redirect_to root_path
   end
