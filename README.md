@@ -15,3 +15,7 @@ Como cliente pode-se selecionar a categoria de comida e/ou endereço. Pode-se vi
 <i>As a restaurant you can register new dishes, follow the orders of the day, manage dishes from restaurants and chat with customers.</i>
 
 <i>As a customer you can select the food category and / or address. You can visit the restaurant or dish and book. It is possible to evaluate the order, talk to the restaurant after placing the order and rate the dish.</i>
+
+## Contribuidores/Contributors
+
+![GitHub Contributors Image](https://contrib.rocks/image?repo=fematarazzo/sobrou_app)
